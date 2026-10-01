@@ -1,0 +1,12 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+
+# Flutter / Dart (the app has its own app/.gitignore too)
+.dart_tool/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies

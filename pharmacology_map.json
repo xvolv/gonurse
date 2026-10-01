@@ -1,0 +1,2572 @@
+{
+ "course": "Pharmacology",
+ "sources": {
+  "GEN_PDF": {
+   "file": "1General pharmacology.pdf Alkan for HO and Nurse 2nd Yr-1.pdf",
+   "short": "General pharm (PDF)",
+   "pages": 114,
+   "role": "secondary",
+   "note": "Covers the same ground as the General pharmacology slides"
+  },
+  "GEN_PPT": {
+   "file": "general pharmacology-1.pptx",
+   "short": "General pharm (slides)",
+   "pages": 132,
+   "role": "primary",
+   "note": "More complete: adds drug development and adverse reactions"
+  },
+  "ANS": {
+   "file": "Pharmacology of the ANS.pdf",
+   "short": "ANS",
+   "pages": 101,
+   "role": "primary"
+  },
+  "CNS_PPT": {
+   "file": "PHARMACOLOGY OF THE CENTRAL NERVOUS SYSTEM pharma.pptx",
+   "short": "CNS (slides)",
+   "pages": 277,
+   "role": "primary",
+   "note": "Largest file. Also covers analgesics and anesthetics"
+  },
+  "CNS_PDF": {
+   "file": "6CNS Pharmacology for ECCN-III.pdf",
+   "short": "CNS (summary)",
+   "pages": 45,
+   "role": "secondary",
+   "note": "Short summary of the CNS slides, good for quick review. Only source for stroke"
+  },
+  "CVS": {
+   "file": "CVS pharmacology (1).pdf",
+   "short": "CVS",
+   "pages": 159,
+   "role": "primary",
+   "note": "Overlaps heavily with Renal & cardiovascular"
+  },
+  "RCVS": {
+   "file": "Renal & cardiovascular pharmacology.pdf",
+   "short": "Renal & CVS",
+   "pages": 171,
+   "role": "primary",
+   "note": "Only source for antiarrhythmics and RAAS details"
+  },
+  "GI": {
+   "file": "GI pharmacology-1.pptx",
+   "short": "GI",
+   "pages": 20,
+   "role": "primary"
+  },
+  "TB": {
+   "file": "pharmacology Antituberculosis Drugs ppt.pptx",
+   "short": "Anti-TB",
+   "pages": 42,
+   "role": "primary"
+  },
+  "CONTRA": {
+   "file": "L4-Pharmacology of Contraception. (1).pdf",
+   "short": "Contraception",
+   "pages": 17,
+   "role": "primary",
+   "note": "From another university's lecture notes, dense pages"
+  },
+  "DERM": {
+   "file": "Dermatologic-pharmacology (Reading Assignment).pdf",
+   "short": "Dermatologic",
+   "pages": 29,
+   "role": "primary",
+   "note": "Reading assignment, probably low exam weight"
+  }
+ },
+ "units": [
+  {
+   "id": "gen",
+   "title": "General Pharmacology",
+   "refs": [
+    [
+     "GEN_PPT",
+     "1-132"
+    ],
+    [
+     "GEN_PDF",
+     "1-114"
+    ]
+   ],
+   "children": [
+    {
+     "id": "gen-intro",
+     "title": "Drug basics",
+     "children": [
+      {
+       "id": "branches",
+       "title": "Definition & branches",
+       "refs": [
+        [
+         "GEN_PDF",
+         "4-10"
+        ],
+        [
+         "GEN_PPT",
+         "3-10"
+        ]
+       ]
+      },
+      {
+       "id": "sources",
+       "title": "Sources of drugs",
+       "refs": [
+        [
+         "GEN_PDF",
+         "13-14"
+        ],
+        [
+         "GEN_PPT",
+         "12"
+        ]
+       ]
+      },
+      {
+       "id": "nomenclature",
+       "title": "Drug names (generic, brand)",
+       "refs": [
+        [
+         "GEN_PDF",
+         "15-16"
+        ],
+        [
+         "GEN_PPT",
+         "13"
+        ]
+       ]
+      },
+      {
+       "id": "dosage-forms",
+       "title": "Dosage forms",
+       "refs": [
+        [
+         "GEN_PDF",
+         "18-19"
+        ]
+       ]
+      },
+      {
+       "id": "drug-dev",
+       "title": "New drug development (phases I–IV)",
+       "refs": [
+        [
+         "GEN_PPT",
+         "17-22"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "gen-routes",
+     "title": "Routes of administration",
+     "children": [
+      {
+       "id": "oral",
+       "title": "Oral",
+       "refs": [
+        [
+         "GEN_PDF",
+         "23-25"
+        ]
+       ]
+      },
+      {
+       "id": "sublingual",
+       "title": "Sublingual",
+       "refs": [
+        [
+         "GEN_PDF",
+         "26"
+        ]
+       ]
+      },
+      {
+       "id": "parenteral",
+       "title": "Parenteral (IV, IM, SC)",
+       "refs": [
+        [
+         "GEN_PDF",
+         "27-31"
+        ]
+       ]
+      },
+      {
+       "id": "rectal-vaginal",
+       "title": "Rectal & vaginal",
+       "refs": [
+        [
+         "GEN_PDF",
+         "32-35"
+        ]
+       ]
+      },
+      {
+       "id": "inhalation",
+       "title": "Inhalation",
+       "refs": [
+        [
+         "GEN_PDF",
+         "36-37"
+        ]
+       ]
+      },
+      {
+       "id": "topical",
+       "title": "Topical & transdermal",
+       "refs": [
+        [
+         "GEN_PDF",
+         "38-41"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "gen-pk",
+     "title": "Pharmacokinetics",
+     "children": [
+      {
+       "id": "absorption",
+       "title": "Absorption & membrane transport",
+       "refs": [
+        [
+         "GEN_PDF",
+         "45-52"
+        ],
+        [
+         "GEN_PPT",
+         "24-37"
+        ]
+       ]
+      },
+      {
+       "id": "absorption-factors",
+       "title": "Factors affecting absorption",
+       "refs": [
+        [
+         "GEN_PDF",
+         "53-56"
+        ],
+        [
+         "GEN_PPT",
+         "38-45"
+        ]
+       ]
+      },
+      {
+       "id": "bioavailability",
+       "title": "Bioavailability & first-pass effect",
+       "refs": [
+        [
+         "GEN_PDF",
+         "60-64"
+        ],
+        [
+         "GEN_PPT",
+         "46-51"
+        ]
+       ]
+      },
+      {
+       "id": "distribution",
+       "title": "Distribution",
+       "refs": [
+        [
+         "GEN_PDF",
+         "65-68"
+        ],
+        [
+         "GEN_PPT",
+         "52-59"
+        ]
+       ]
+      },
+      {
+       "id": "metabolism",
+       "title": "Metabolism (phase I & II)",
+       "refs": [
+        [
+         "GEN_PDF",
+         "71-76"
+        ],
+        [
+         "GEN_PPT",
+         "60-66"
+        ]
+       ]
+      },
+      {
+       "id": "enzyme-ind",
+       "title": "Enzyme induction & inhibition",
+       "refs": [
+        [
+         "GEN_PDF",
+         "79-80"
+        ]
+       ],
+       "links": [
+        "carbamazepine",
+        "rifampin"
+       ]
+      },
+      {
+       "id": "excretion",
+       "title": "Excretion & clearance",
+       "refs": [
+        [
+         "GEN_PDF",
+         "82"
+        ],
+        [
+         "GEN_PPT",
+         "67-73"
+        ]
+       ]
+      },
+      {
+       "id": "half-life",
+       "title": "Half-life & order of kinetics",
+       "refs": [
+        [
+         "GEN_PDF",
+         "81"
+        ],
+        [
+         "GEN_PPT",
+         "74-77"
+        ]
+       ]
+      },
+      {
+       "id": "loading-dose",
+       "title": "Steady state & loading dose",
+       "refs": [
+        [
+         "GEN_PDF",
+         "83-87"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "gen-pd",
+     "title": "Pharmacodynamics",
+     "children": [
+      {
+       "id": "receptors",
+       "title": "Receptors & mechanisms of action",
+       "refs": [
+        [
+         "GEN_PDF",
+         "90-91"
+        ],
+        [
+         "GEN_PPT",
+         "80-86"
+        ]
+       ]
+      },
+      {
+       "id": "potency",
+       "title": "Potency vs efficacy",
+       "refs": [
+        [
+         "GEN_PDF",
+         "94"
+        ],
+        [
+         "GEN_PPT",
+         "88-89"
+        ]
+       ]
+      },
+      {
+       "id": "agonists",
+       "title": "Full & partial agonists",
+       "refs": [
+        [
+         "GEN_PDF",
+         "95-96"
+        ],
+        [
+         "GEN_PPT",
+         "90-91"
+        ]
+       ]
+      },
+      {
+       "id": "antagonism",
+       "title": "Types of antagonism",
+       "refs": [
+        [
+         "GEN_PDF",
+         "97-98"
+        ],
+        [
+         "GEN_PPT",
+         "92-95"
+        ]
+       ]
+      },
+      {
+       "id": "dose-response",
+       "title": "Dose–response curves",
+       "refs": [
+        [
+         "GEN_PDF",
+         "100-105"
+        ],
+        [
+         "GEN_PPT",
+         "87, 96"
+        ]
+       ]
+      },
+      {
+       "id": "ti",
+       "title": "Therapeutic index",
+       "refs": [
+        [
+         "GEN_PDF",
+         "106-107"
+        ],
+        [
+         "GEN_PPT",
+         "97"
+        ]
+       ],
+       "links": [
+        "digoxin"
+       ]
+      },
+      {
+       "id": "tolerance",
+       "title": "Tolerance & sensitization",
+       "refs": [
+        [
+         "GEN_PPT",
+         "98-100"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "gen-int",
+     "title": "Drug interactions",
+     "children": [
+      {
+       "id": "int-types",
+       "title": "Types & levels of interaction",
+       "refs": [
+        [
+         "GEN_PDF",
+         "108-113"
+        ],
+        [
+         "GEN_PPT",
+         "101"
+        ]
+       ]
+      },
+      {
+       "id": "synergy",
+       "title": "Additive, synergistic, antagonistic effects",
+       "refs": [
+        [
+         "GEN_PPT",
+         "102-105"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "gen-adr",
+     "title": "Adverse drug reactions",
+     "children": [
+      {
+       "id": "adr-types",
+       "title": "ADR types A, B, C",
+       "refs": [
+        [
+         "GEN_PPT",
+         "106-112"
+        ]
+       ]
+      },
+      {
+       "id": "pharmacovig",
+       "title": "Pharmacovigilance",
+       "refs": [
+        [
+         "GEN_PPT",
+         "113-115"
+        ]
+       ]
+      },
+      {
+       "id": "side-toxic",
+       "title": "Side effects, toxicity, idiosyncrasy",
+       "refs": [
+        [
+         "GEN_PPT",
+         "116-119"
+        ]
+       ]
+      },
+      {
+       "id": "allergy",
+       "title": "Drug allergy & photosensitivity",
+       "refs": [
+        [
+         "GEN_PPT",
+         "120-124"
+        ]
+       ]
+      },
+      {
+       "id": "dependence",
+       "title": "Drug dependence & abuse",
+       "refs": [
+        [
+         "GEN_PPT",
+         "125-127"
+        ]
+       ],
+       "links": [
+        "opioid-dep"
+       ]
+      },
+      {
+       "id": "teratogen",
+       "title": "Teratogenicity & carcinogenicity",
+       "refs": [
+        [
+         "GEN_PPT",
+         "128-130"
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ans",
+   "title": "Autonomic Nervous System",
+   "refs": [
+    [
+     "ANS",
+     "1-101"
+    ]
+   ],
+   "children": [
+    {
+     "id": "ans-basics",
+     "title": "ANS basics",
+     "children": [
+      {
+       "id": "ans-receptors",
+       "title": "Cholinergic & adrenergic receptors",
+       "refs": [
+        [
+         "ANS",
+         "3-6"
+        ]
+       ]
+      },
+      {
+       "id": "ans-effects",
+       "title": "Effects on organs",
+       "refs": [
+        [
+         "ANS",
+         "7-8"
+        ]
+       ]
+      },
+      {
+       "id": "ans-class",
+       "title": "Classification of ANS drugs",
+       "refs": [
+        [
+         "ANS",
+         "9"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "ans-chol",
+     "title": "Cholinergic agonists",
+     "children": [
+      {
+       "id": "ach-bethanechol",
+       "title": "Acetylcholine & bethanechol",
+       "refs": [
+        [
+         "ANS",
+         "10-14"
+        ]
+       ]
+      },
+      {
+       "id": "pilocarpine",
+       "title": "Pilocarpine & glaucoma",
+       "refs": [
+        [
+         "ANS",
+         "15-22"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "ans-ache",
+     "title": "Cholinesterase inhibitors",
+     "children": [
+      {
+       "id": "reversible-ache",
+       "title": "Reversible (neostigmine, physostigmine)",
+       "refs": [
+        [
+         "ANS",
+         "23-28"
+        ]
+       ]
+      },
+      {
+       "id": "alz-ache",
+       "title": "Alzheimer drugs (donepezil…)",
+       "refs": [
+        [
+         "ANS",
+         "29"
+        ]
+       ],
+       "links": [
+        "alzheimer"
+       ]
+      },
+      {
+       "id": "op-poisoning",
+       "title": "Organophosphate poisoning",
+       "refs": [
+        [
+         "ANS",
+         "30-32"
+        ]
+       ],
+       "card": "op",
+       "links": [
+        "atropine"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "ans-anti",
+     "title": "Anticholinergics",
+     "children": [
+      {
+       "id": "atropine",
+       "title": "Atropine",
+       "refs": [
+        [
+         "ANS",
+         "35-40"
+        ]
+       ],
+       "links": [
+        "op-poisoning",
+        "digoxin"
+       ]
+      },
+      {
+       "id": "scopolamine",
+       "title": "Scopolamine",
+       "refs": [
+        [
+         "ANS",
+         "41-42"
+        ]
+       ]
+      },
+      {
+       "id": "ipratropium",
+       "title": "Ipratropium & tiotropium",
+       "refs": [
+        [
+         "ANS",
+         "43"
+        ]
+       ]
+      },
+      {
+       "id": "tropicamide",
+       "title": "Tropicamide (eye)",
+       "refs": [
+        [
+         "ANS",
+         "44"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "ans-nmb",
+     "title": "Neuromuscular blockers",
+     "children": [
+      {
+       "id": "nondepol",
+       "title": "Non-depolarizing blockers",
+       "refs": [
+        [
+         "ANS",
+         "45-51"
+        ]
+       ]
+      },
+      {
+       "id": "sux",
+       "title": "Succinylcholine (depolarizing)",
+       "refs": [
+        [
+         "ANS",
+         "52-56"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "ans-adr",
+     "title": "Adrenergic agonists",
+     "children": [
+      {
+       "id": "catechol",
+       "title": "Catecholamines",
+       "refs": [
+        [
+         "ANS",
+         "57-63"
+        ]
+       ]
+      },
+      {
+       "id": "adrenaline",
+       "title": "Adrenaline (prototype)",
+       "refs": [
+        [
+         "ANS",
+         "64-72"
+        ]
+       ]
+      },
+      {
+       "id": "alpha-agon",
+       "title": "α-agonists: phenylephrine, methyldopa",
+       "refs": [
+        [
+         "ANS",
+         "73-78"
+        ]
+       ],
+       "links": [
+        "central-symp",
+        "htn-preg"
+       ]
+      },
+      {
+       "id": "dopamine",
+       "title": "Dopamine (dose-dependent effects)",
+       "refs": [
+        [
+         "ANS",
+         "79-82"
+        ]
+       ]
+      },
+      {
+       "id": "beta2",
+       "title": "β2 agonists (asthma)",
+       "refs": [
+        [
+         "ANS",
+         "83-85"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "ans-block",
+     "title": "Adrenergic blockers",
+     "children": [
+      {
+       "id": "alpha-block",
+       "title": "α-blockers",
+       "refs": [
+        [
+         "ANS",
+         "86-92"
+        ]
+       ]
+      },
+      {
+       "id": "beta-block",
+       "title": "β-blockers",
+       "refs": [
+        [
+         "ANS",
+         "93-100"
+        ]
+       ],
+       "links": [
+        "hf-drugs",
+        "angina-ccb-bb",
+        "class2"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cns",
+   "title": "Central Nervous System",
+   "refs": [
+    [
+     "CNS_PPT",
+     "1-277"
+    ],
+    [
+     "CNS_PDF",
+     "1-45"
+    ]
+   ],
+   "children": [
+    {
+     "id": "cns-nt",
+     "title": "Neurotransmitters",
+     "children": [
+      {
+       "id": "nt",
+       "title": "GABA, glutamate, dopamine, serotonin, NE, ACh",
+       "refs": [
+        [
+         "CNS_PPT",
+         "5-21"
+        ],
+        [
+         "CNS_PDF",
+         "3-10"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cns-sed",
+     "title": "Sedatives, hypnotics & anxiolytics",
+     "children": [
+      {
+       "id": "buspirone",
+       "title": "Buspirone",
+       "refs": [
+        [
+         "CNS_PPT",
+         "29-36"
+        ]
+       ]
+      },
+      {
+       "id": "bzd",
+       "title": "Benzodiazepines",
+       "refs": [
+        [
+         "CNS_PPT",
+         "39-54"
+        ],
+        [
+         "CNS_PDF",
+         "21-23"
+        ]
+       ],
+       "links": [
+        "status-ep"
+       ]
+      },
+      {
+       "id": "flumazenil",
+       "title": "Flumazenil (BZD antagonist)",
+       "refs": [
+        [
+         "CNS_PPT",
+         "55"
+        ]
+       ]
+      },
+      {
+       "id": "barbiturates",
+       "title": "Barbiturates & poisoning",
+       "refs": [
+        [
+         "CNS_PPT",
+         "57-68"
+        ]
+       ]
+      },
+      {
+       "id": "zdrugs",
+       "title": "Zolpidem & other non-BZDs",
+       "refs": [
+        [
+         "CNS_PPT",
+         "69-79"
+        ],
+        [
+         "CNS_PDF",
+         "24"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cns-alc",
+     "title": "Alcohol",
+     "children": [
+      {
+       "id": "ethanol",
+       "title": "Ethanol",
+       "refs": [
+        [
+         "CNS_PPT",
+         "81-82"
+        ]
+       ]
+      },
+      {
+       "id": "disulfiram",
+       "title": "Disulfiram & naltrexone",
+       "refs": [
+        [
+         "CNS_PPT",
+         "83-86"
+        ]
+       ]
+      },
+      {
+       "id": "methanol",
+       "title": "Methanol",
+       "refs": [
+        [
+         "CNS_PPT",
+         "87"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cns-aed",
+     "title": "Antiepileptics",
+     "children": [
+      {
+       "id": "seizure-types",
+       "title": "Seizure types",
+       "refs": [
+        [
+         "CNS_PPT",
+         "88-98"
+        ],
+        [
+         "CNS_PDF",
+         "17-18"
+        ]
+       ]
+      },
+      {
+       "id": "status-ep",
+       "title": "Status epilepticus",
+       "refs": [
+        [
+         "CNS_PPT",
+         "99"
+        ]
+       ],
+       "links": [
+        "bzd"
+       ]
+      },
+      {
+       "id": "phenytoin",
+       "title": "Phenytoin",
+       "refs": [
+        [
+         "CNS_PPT",
+         "107-110"
+        ]
+       ]
+      },
+      {
+       "id": "carbamazepine",
+       "title": "Carbamazepine",
+       "refs": [
+        [
+         "CNS_PPT",
+         "111-114"
+        ]
+       ],
+       "links": [
+        "enzyme-ind"
+       ]
+      },
+      {
+       "id": "valproate",
+       "title": "Valproic acid",
+       "refs": [
+        [
+         "CNS_PPT",
+         "115-118"
+        ]
+       ]
+      },
+      {
+       "id": "ethosuximide",
+       "title": "Ethosuximide",
+       "refs": [
+        [
+         "CNS_PPT",
+         "119"
+        ]
+       ]
+      },
+      {
+       "id": "new-aed",
+       "title": "Newer antiepileptics",
+       "refs": [
+        [
+         "CNS_PPT",
+         "120-129"
+        ]
+       ]
+      },
+      {
+       "id": "ep-preg",
+       "title": "Epilepsy in pregnancy",
+       "refs": [
+        [
+         "CNS_PPT",
+         "130-131"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cns-neuro",
+     "title": "Parkinson & Alzheimer",
+     "children": [
+      {
+       "id": "levodopa",
+       "title": "Levodopa + carbidopa",
+       "refs": [
+        [
+         "CNS_PPT",
+         "133-144"
+        ],
+        [
+         "CNS_PDF",
+         "11-16"
+        ]
+       ]
+      },
+      {
+       "id": "selegiline",
+       "title": "Selegiline & COMT inhibitors",
+       "refs": [
+        [
+         "CNS_PPT",
+         "145-148"
+        ]
+       ]
+      },
+      {
+       "id": "da-agonists",
+       "title": "Bromocriptine & amantadine",
+       "refs": [
+        [
+         "CNS_PPT",
+         "149-153"
+        ]
+       ]
+      },
+      {
+       "id": "alzheimer",
+       "title": "Alzheimer drugs",
+       "refs": [
+        [
+         "CNS_PPT",
+         "154-161"
+        ]
+       ],
+       "links": [
+        "alz-ache"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cns-psych",
+     "title": "Antipsychotics",
+     "children": [
+      {
+       "id": "typical-ap",
+       "title": "Typical antipsychotics",
+       "refs": [
+        [
+         "CNS_PPT",
+         "164-175"
+        ],
+        [
+         "CNS_PDF",
+         "25-26"
+        ]
+       ]
+      },
+      {
+       "id": "atypical-ap",
+       "title": "Atypical antipsychotics",
+       "refs": [
+        [
+         "CNS_PPT",
+         "176-178"
+        ],
+        [
+         "CNS_PDF",
+         "27-29"
+        ]
+       ]
+      },
+      {
+       "id": "eps",
+       "title": "Extrapyramidal side effects",
+       "refs": [
+        [
+         "CNS_PPT",
+         "179-182"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cns-mood",
+     "title": "Antidepressants & lithium",
+     "children": [
+      {
+       "id": "tca",
+       "title": "Tricyclic antidepressants",
+       "refs": [
+        [
+         "CNS_PPT",
+         "188-192"
+        ]
+       ]
+      },
+      {
+       "id": "ssri",
+       "title": "SSRIs (fluoxetine)",
+       "refs": [
+        [
+         "CNS_PPT",
+         "193-198"
+        ],
+        [
+         "CNS_PDF",
+         "33-34"
+        ]
+       ]
+      },
+      {
+       "id": "maoi",
+       "title": "MAOIs & food interactions",
+       "refs": [
+        [
+         "CNS_PPT",
+         "199-202"
+        ],
+        [
+         "CNS_PDF",
+         "35"
+        ]
+       ]
+      },
+      {
+       "id": "lithium",
+       "title": "Lithium (bipolar)",
+       "refs": [
+        [
+         "CNS_PPT",
+         "203-207"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cns-pain",
+     "title": "Analgesics",
+     "children": [
+      {
+       "id": "aspirin",
+       "title": "Aspirin (salicylates)",
+       "refs": [
+        [
+         "CNS_PPT",
+         "212-217"
+        ]
+       ],
+       "links": [
+        "antiplatelet"
+       ]
+      },
+      {
+       "id": "paracetamol",
+       "title": "Paracetamol",
+       "refs": [
+        [
+         "CNS_PPT",
+         "218-221"
+        ]
+       ]
+      },
+      {
+       "id": "nsaids",
+       "title": "NSAIDs",
+       "refs": [
+        [
+         "CNS_PPT",
+         "222-225"
+        ]
+       ]
+      },
+      {
+       "id": "morphine",
+       "title": "Opioids & morphine",
+       "refs": [
+        [
+         "CNS_PPT",
+         "226-235"
+        ],
+        [
+         "CNS_PDF",
+         "36-41"
+        ]
+       ]
+      },
+      {
+       "id": "opioid-dep",
+       "title": "Opioid antagonists & dependence",
+       "refs": [
+        [
+         "CNS_PPT",
+         "236-237"
+        ]
+       ],
+       "links": [
+        "dependence"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cns-anes",
+     "title": "Anesthetics",
+     "children": [
+      {
+       "id": "inhaled-anes",
+       "title": "Inhaled general anesthetics",
+       "refs": [
+        [
+         "CNS_PPT",
+         "238-249"
+        ]
+       ]
+      },
+      {
+       "id": "iv-anes",
+       "title": "IV anesthetics (thiopentone, propofol, ketamine)",
+       "refs": [
+        [
+         "CNS_PPT",
+         "250-262"
+        ]
+       ]
+      },
+      {
+       "id": "local-anes",
+       "title": "Local anesthetics (lidocaine)",
+       "refs": [
+        [
+         "CNS_PPT",
+         "263-273"
+        ]
+       ],
+       "links": [
+        "class1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cns-other",
+     "title": "Other",
+     "children": [
+      {
+       "id": "stimulants",
+       "title": "CNS stimulants",
+       "refs": [
+        [
+         "CNS_PPT",
+         "275-276"
+        ]
+       ]
+      },
+      {
+       "id": "stroke",
+       "title": "Acute stroke management",
+       "refs": [
+        [
+         "CNS_PDF",
+         "42-44"
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cvs",
+   "title": "Renal & Cardiovascular",
+   "refs": [
+    [
+     "CVS",
+     "1-159"
+    ],
+    [
+     "RCVS",
+     "1-171"
+    ]
+   ],
+   "children": [
+    {
+     "id": "cvs-diur",
+     "title": "Diuretics",
+     "children": [
+      {
+       "id": "cai",
+       "title": "Carbonic anhydrase inhibitors",
+       "refs": [
+        [
+         "CVS",
+         "19-20"
+        ],
+        [
+         "RCVS",
+         "7-8"
+        ]
+       ]
+      },
+      {
+       "id": "loop",
+       "title": "Loop diuretics (furosemide)",
+       "refs": [
+        [
+         "CVS",
+         "21-25"
+        ],
+        [
+         "RCVS",
+         "9-12"
+        ]
+       ],
+       "links": [
+        "digoxin"
+       ]
+      },
+      {
+       "id": "thiazide",
+       "title": "Thiazides",
+       "refs": [
+        [
+         "CVS",
+         "26-30"
+        ],
+        [
+         "RCVS",
+         "13-18"
+        ]
+       ]
+      },
+      {
+       "id": "k-sparing",
+       "title": "Potassium-sparing diuretics",
+       "refs": [
+        [
+         "CVS",
+         "31-35"
+        ],
+        [
+         "RCVS",
+         "19-20"
+        ]
+       ]
+      },
+      {
+       "id": "osmotic",
+       "title": "Osmotic diuretics & ADH antagonists",
+       "refs": [
+        [
+         "RCVS",
+         "21-24"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cvs-raas",
+     "title": "RAAS drugs",
+     "children": [
+      {
+       "id": "raas",
+       "title": "How RAAS works",
+       "refs": [
+        [
+         "RCVS",
+         "28-40"
+        ]
+       ]
+      },
+      {
+       "id": "acei",
+       "title": "ACE inhibitors (captopril…)",
+       "refs": [
+        [
+         "CVS",
+         "67-76"
+        ],
+        [
+         "RCVS",
+         "43-56"
+        ]
+       ]
+      },
+      {
+       "id": "arb",
+       "title": "ARBs (sartans)",
+       "refs": [
+        [
+         "CVS",
+         "77-78"
+        ],
+        [
+         "RCVS",
+         "57-62"
+        ]
+       ]
+      },
+      {
+       "id": "aliskiren",
+       "title": "Direct renin inhibitor (aliskiren)",
+       "refs": [
+        [
+         "RCVS",
+         "41-42"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cvs-htn",
+     "title": "Hypertension",
+     "children": [
+      {
+       "id": "bp-reg",
+       "title": "BP regulation & pathophysiology",
+       "refs": [
+        [
+         "CVS",
+         "3-11"
+        ],
+        [
+         "RCVS",
+         "63-68"
+        ]
+       ]
+      },
+      {
+       "id": "lifestyle",
+       "title": "Lifestyle modification",
+       "refs": [
+        [
+         "CVS",
+         "12, 80-82"
+        ],
+        [
+         "RCVS",
+         "69"
+        ]
+       ]
+      },
+      {
+       "id": "central-symp",
+       "title": "Clonidine & methyldopa",
+       "refs": [
+        [
+         "CVS",
+         "40-45"
+        ],
+        [
+         "RCVS",
+         "73-77"
+        ]
+       ],
+       "links": [
+        "alpha-agon"
+       ]
+      },
+      {
+       "id": "vasodilators",
+       "title": "Hydralazine, minoxidil, nitroprusside",
+       "refs": [
+        [
+         "CVS",
+         "53-61"
+        ],
+        [
+         "RCVS",
+         "78-80, 85"
+        ]
+       ]
+      },
+      {
+       "id": "ccb",
+       "title": "Calcium channel blockers",
+       "refs": [
+        [
+         "CVS",
+         "62-66"
+        ],
+        [
+         "RCVS",
+         "81-84"
+        ]
+       ]
+      },
+      {
+       "id": "first-line",
+       "title": "Choosing first-line drugs",
+       "refs": [
+        [
+         "CVS",
+         "83-85"
+        ],
+        [
+         "RCVS",
+         "93"
+        ]
+       ]
+      },
+      {
+       "id": "htn-preg",
+       "title": "Hypertension in pregnancy",
+       "refs": [
+        [
+         "CVS",
+         "86"
+        ]
+       ],
+       "links": [
+        "alpha-agon"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cvs-hf",
+     "title": "Heart failure",
+     "children": [
+      {
+       "id": "hf-patho",
+       "title": "Pathophysiology & compensation",
+       "refs": [
+        [
+         "CVS",
+         "88-94"
+        ],
+        [
+         "RCVS",
+         "108-110"
+        ]
+       ]
+      },
+      {
+       "id": "digoxin",
+       "title": "Digoxin",
+       "refs": [
+        [
+         "CVS",
+         "96-100"
+        ],
+        [
+         "RCVS",
+         "114-119"
+        ]
+       ],
+       "card": "digoxin",
+       "links": [
+        "loop",
+        "atropine",
+        "ti"
+       ]
+      },
+      {
+       "id": "hf-beta-agon",
+       "title": "β-agonists (dobutamine)",
+       "refs": [
+        [
+         "CVS",
+         "101-102"
+        ],
+        [
+         "RCVS",
+         "120"
+        ]
+       ]
+      },
+      {
+       "id": "hf-drugs",
+       "title": "ACEIs, ARBs, β-blockers in HF",
+       "refs": [
+        [
+         "CVS",
+         "103-108"
+        ],
+        [
+         "RCVS",
+         "111-113"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cvs-angina",
+     "title": "Angina",
+     "children": [
+      {
+       "id": "angina-types",
+       "title": "Types of angina",
+       "refs": [
+        [
+         "CVS",
+         "110-120"
+        ],
+        [
+         "RCVS",
+         "95-100"
+        ]
+       ]
+      },
+      {
+       "id": "nitrates",
+       "title": "Nitrates (nitroglycerin)",
+       "refs": [
+        [
+         "CVS",
+         "121-130"
+        ],
+        [
+         "RCVS",
+         "101-104"
+        ]
+       ]
+      },
+      {
+       "id": "angina-ccb-bb",
+       "title": "CCBs & β-blockers in angina",
+       "refs": [
+        [
+         "CVS",
+         "131-143"
+        ],
+        [
+         "RCVS",
+         "105-106"
+        ]
+       ]
+      },
+      {
+       "id": "antiplatelet",
+       "title": "Antiplatelets (aspirin, clopidogrel)",
+       "refs": [
+        [
+         "CVS",
+         "144-146"
+        ]
+       ],
+       "links": [
+        "aspirin"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cvs-arr",
+     "title": "Antiarrhythmics",
+     "children": [
+      {
+       "id": "arr-mech",
+       "title": "How arrhythmias happen",
+       "refs": [
+        [
+         "RCVS",
+         "122-140"
+        ]
+       ]
+      },
+      {
+       "id": "class1",
+       "title": "Class I (Na⁺ channel blockers)",
+       "refs": [
+        [
+         "RCVS",
+         "141-148"
+        ]
+       ],
+       "links": [
+        "local-anes"
+       ]
+      },
+      {
+       "id": "class2",
+       "title": "Class II–IV",
+       "refs": [
+        [
+         "RCVS",
+         "149-152"
+        ]
+       ],
+       "links": [
+        "beta-block"
+       ]
+      },
+      {
+       "id": "arr-other",
+       "title": "Adenosine, magnesium",
+       "refs": [
+        [
+         "RCVS",
+         "153-154"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cvs-lipid",
+     "title": "Lipid lowering",
+     "children": [
+      {
+       "id": "statins",
+       "title": "Statins",
+       "refs": [
+        [
+         "CVS",
+         "147-159"
+        ],
+        [
+         "RCVS",
+         "155-164"
+        ]
+       ]
+      },
+      {
+       "id": "lipid-other",
+       "title": "Other lipid drugs",
+       "refs": [
+        [
+         "RCVS",
+         "165-170"
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gi",
+   "title": "Gastrointestinal",
+   "refs": [
+    [
+     "GI",
+     "1-20"
+    ]
+   ],
+   "children": [
+    {
+     "id": "gi-pud",
+     "title": "Peptic ulcer & GERD",
+     "children": [
+      {
+       "id": "pud",
+       "title": "PUD & GERD basics",
+       "refs": [
+        [
+         "GI",
+         "2-8"
+        ]
+       ]
+      },
+      {
+       "id": "antacids",
+       "title": "Antacids",
+       "refs": [
+        [
+         "GI",
+         "9"
+        ]
+       ]
+      },
+      {
+       "id": "h2",
+       "title": "H2 blockers",
+       "refs": [
+        [
+         "GI",
+         "10"
+        ]
+       ]
+      },
+      {
+       "id": "ppi",
+       "title": "Proton pump inhibitors",
+       "refs": [
+        [
+         "GI",
+         "11"
+        ]
+       ]
+      },
+      {
+       "id": "misoprostol",
+       "title": "Misoprostol & mucosal protectives",
+       "refs": [
+        [
+         "GI",
+         "12-13"
+        ]
+       ]
+      },
+      {
+       "id": "hpylori",
+       "title": "H. pylori therapy",
+       "refs": [
+        [
+         "GI",
+         "14"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "gi-bowel",
+     "title": "Diarrhea & constipation",
+     "children": [
+      {
+       "id": "antidiarrheal",
+       "title": "Antidiarrheals",
+       "refs": [
+        [
+         "GI",
+         "15-18"
+        ]
+       ]
+      },
+      {
+       "id": "laxatives",
+       "title": "Laxatives",
+       "refs": [
+        [
+         "GI",
+         "19-20"
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tb",
+   "title": "Anti-TB & Leprosy",
+   "refs": [
+    [
+     "TB",
+     "1-42"
+    ]
+   ],
+   "children": [
+    {
+     "id": "tb-first",
+     "title": "First-line TB drugs",
+     "children": [
+      {
+       "id": "isoniazid",
+       "title": "Isoniazid (INH)",
+       "refs": [
+        [
+         "TB",
+         "6-10"
+        ]
+       ],
+       "card": "inh",
+       "links": [
+        "rifampin"
+       ]
+      },
+      {
+       "id": "rifampin",
+       "title": "Rifampin",
+       "refs": [
+        [
+         "TB",
+         "11-15"
+        ]
+       ],
+       "links": [
+        "enzyme-ind",
+        "isoniazid"
+       ]
+      },
+      {
+       "id": "ethambutol",
+       "title": "Ethambutol",
+       "refs": [
+        [
+         "TB",
+         "16-20"
+        ]
+       ]
+      },
+      {
+       "id": "streptomycin",
+       "title": "Streptomycin",
+       "refs": [
+        [
+         "TB",
+         "21-24"
+        ]
+       ]
+      },
+      {
+       "id": "pza",
+       "title": "Pyrazinamide",
+       "refs": [
+        [
+         "TB",
+         "25-27"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "tb-second",
+     "title": "Second-line TB drugs",
+     "children": [
+      {
+       "id": "tb-2nd",
+       "title": "Quinolones, ethionamide, PAS, cycloserine",
+       "refs": [
+        [
+         "TB",
+         "28-38"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "leprosy",
+     "title": "Leprosy",
+     "children": [
+      {
+       "id": "dapsone",
+       "title": "Dapsone & clofazimine",
+       "refs": [
+        [
+         "TB",
+         "39-42"
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "contra",
+   "title": "Contraception",
+   "refs": [
+    [
+     "CONTRA",
+     "1-17"
+    ]
+   ],
+   "children": [
+    {
+     "id": "contra-main",
+     "title": "Contraceptive drugs",
+     "children": [
+      {
+       "id": "contra-methods",
+       "title": "How contraception works",
+       "refs": [
+        [
+         "CONTRA",
+         "4"
+        ]
+       ]
+      },
+      {
+       "id": "hormonal",
+       "title": "Hormonal contraceptives",
+       "refs": [
+        [
+         "CONTRA",
+         "5-15"
+        ]
+       ]
+      },
+      {
+       "id": "contra-q",
+       "title": "Practice questions",
+       "refs": [
+        [
+         "CONTRA",
+         "16"
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "derm",
+   "title": "Dermatologic",
+   "refs": [
+    [
+     "DERM",
+     "1-29"
+    ]
+   ],
+   "children": [
+    {
+     "id": "derm-main",
+     "title": "Skin drugs",
+     "children": [
+      {
+       "id": "skin-pk",
+       "title": "How drugs enter the skin",
+       "refs": [
+        [
+         "DERM",
+         "2-7"
+        ]
+       ]
+      },
+      {
+       "id": "acne",
+       "title": "Acne treatment",
+       "refs": [
+        [
+         "DERM",
+         "8-15"
+        ]
+       ]
+      },
+      {
+       "id": "psoriasis",
+       "title": "Psoriasis treatment",
+       "refs": [
+        [
+         "DERM",
+         "16-20"
+        ]
+       ]
+      },
+      {
+       "id": "pigment",
+       "title": "Pigmentation & hair agents",
+       "refs": [
+        [
+         "DERM",
+         "21-24"
+        ]
+       ]
+      },
+      {
+       "id": "topical-abx",
+       "title": "Topical antibacterials",
+       "refs": [
+        [
+         "DERM",
+         "25-28"
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "title": "Antibiotics",
+   "why": "Penicillins, cephalosporins, aminoglycosides, macrolides and others. Usually a large share of any nursing pharmacology exam.",
+   "level": "critical"
+  },
+  {
+   "title": "Antimalarials",
+   "why": "Very relevant in Ethiopia. Her Med-Surg folder has malaria slides, but no drug lecture here.",
+   "level": "critical"
+  },
+  {
+   "title": "Antiretrovirals (HIV)",
+   "why": "ART regimens and side effects. High priority in Ethiopian curricula.",
+   "level": "critical"
+  },
+  {
+   "title": "Endocrine drugs",
+   "why": "Insulin, oral antidiabetics, thyroid drugs, corticosteroids.",
+   "level": "critical"
+  },
+  {
+   "title": "Blood drugs",
+   "why": "Anticoagulants (heparin, warfarin), iron, folic acid, vitamin B12.",
+   "level": "important"
+  },
+  {
+   "title": "Antifungals, anthelmintics, antiprotozoals",
+   "why": "Common in community health questions too.",
+   "level": "important"
+  },
+  {
+   "title": "Respiratory drugs",
+   "why": "Partly covered: β2 agonists and ipratropium are in the ANS file. Steroid inhalers and theophylline are missing.",
+   "level": "partial"
+  },
+  {
+   "title": "Uterine & obstetric drugs",
+   "why": "Oxytocin, magnesium sulfate. Check whether her Maternity files cover them.",
+   "level": "check"
+  },
+  {
+   "title": "Dose calculation & medication administration",
+   "why": "Nursing-specific: rights of administration, IV drip rates, pediatric doses.",
+   "level": "important"
+  }
+ ],
+ "overlaps": [
+  {
+   "a": "GEN_PPT",
+   "b": "GEN_PDF",
+   "what": "Both cover the whole of general pharmacology. Study from the slides; use the PDF for its routes-of-administration section."
+  },
+  {
+   "a": "CNS_PPT",
+   "b": "CNS_PDF",
+   "what": "The PDF is a 45-page summary of the 277-slide deck. Learn from the slides, revise from the summary."
+  },
+  {
+   "a": "CVS",
+   "b": "RCVS",
+   "what": "Diuretics, RAAS, hypertension, heart failure, angina and lipids appear in both. Merge them into one branch; antiarrhythmics exist only in Renal & CVS."
+  }
+ ],
+ "cards": {
+  "digoxin": {
+   "title": "Digoxin",
+   "path": [
+    "Pharmacology",
+    "Renal & Cardiovascular",
+    "Heart failure"
+   ],
+   "en": "Digoxin makes a failing heart pump harder and beat slower. It blocks the Na⁺/K⁺-ATPase pump in heart cells. Sodium builds up inside, so the cell pushes out less calcium. More calcium inside means a stronger contraction. It also acts on the vagus nerve, which slows the heart rate. It is used for heart failure and atrial fibrillation. The main danger is its narrow therapeutic index: the helpful dose and the toxic dose are close. Low potassium makes toxicity much more likely, which is why digoxin given with most diuretics needs close watching.",
+   "am": "ዲጎክሲን (Digoxin) የደከመ ልብ በኃይል እንዲመታ እና ምቱ እንዲቀንስ ያደርጋል። በልብ ሴሎች ውስጥ ያለውን Na⁺/K⁺-ATPase pump ያግዳል። በዚህ ምክንያት Na⁺ በሴሉ ውስጥ ይከማቻል፣ ሴሉም Ca²⁺ን ወደ ውጭ የሚያስወጣው ይቀንሳል። በሴሉ ውስጥ ብዙ Ca²⁺ ሲኖር መኮማተሩ (contraction) ይጠነክራል። በተጨማሪም vagus nerve ላይ ስለሚሰራ የልብ ምት (heart rate) ይቀንሳል። ለ heart failure እና ለ atrial fibrillation ይሰጣል። ዋናው አደጋ narrow therapeutic index ነው፤ የሚያክመው መጠን እና የሚመርዘው መጠን በጣም ይቀራረባሉ። K⁺ ዝቅተኛ ሲሆን (hypokalemia) toxicity በቀላሉ ይከሰታል፤ ስለዚህ ከ diuretics ጋር ሲሰጥ በጥንቃቄ መከታተል ያስፈልጋል።",
+   "flow": [
+    "Blocks Na⁺/K⁺ pump",
+    "Na⁺ builds up inside",
+    "Less Ca²⁺ pushed out",
+    "More Ca²⁺ inside",
+    "Stronger contraction"
+   ],
+   "keys": [
+    [
+     "Uses",
+     "Congestive heart failure, atrial fibrillation",
+     "CVS p.98"
+    ],
+    [
+     "Signs of toxicity",
+     "Nausea, vomiting, visual disturbance, arrhythmias",
+     "RCVS p.118, CVS p.100"
+    ],
+    [
+     "Raises toxicity",
+     "Hypokalemia, high Ca²⁺, quinidine, verapamil",
+     "RCVS p.117, 119"
+    ],
+    [
+     "Treating toxicity",
+     "Stop digoxin and diuretics, correct K⁺, atropine for bradycardia, lidocaine for arrhythmia",
+     "RCVS p.119, CVS p.100"
+    ],
+    [
+     "Antidote",
+     "Digoxin immune Fab (Digibind)",
+     "RCVS p.119"
+    ],
+    [
+     "Dose",
+     "0.125–0.5 mg PO daily",
+     "RCVS p.117"
+    ]
+   ],
+   "mnemonic": "Low K⁺, high danger: when potassium drops, digoxin bites.",
+   "outside": "Nursing practice: count the apical pulse for a full minute before each dose and hold it if the rate is unusually low. This is standard nursing teaching but is not in her slides, so it is flagged for checking against her Fundamentals notes.",
+   "qs": [
+    {
+     "q": "A patient on digoxin and furosemide develops nausea, blurred vision and an irregular pulse. Which lab result most likely explains this?",
+     "opts": [
+      [
+       "Potassium 5.8 mEq/L",
+       "That is high potassium. High K⁺ does not make digoxin more toxic."
+      ],
+      [
+       "Potassium 2.9 mEq/L",
+       "Correct. Furosemide lowers potassium, and hypokalemia increases digoxin's effect, so a normal dose becomes toxic (RCVS p.117, 119)."
+      ],
+      [
+       "Sodium 138 mEq/L",
+       "That is a normal sodium level."
+      ],
+      [
+       "Magnesium 2.0 mg/dL",
+       "That is a normal magnesium level and does not explain toxicity."
+      ]
+     ],
+     "a": 1
+    },
+    {
+     "q": "How does digoxin increase the force of heart contraction?",
+     "opts": [
+      [
+       "It blocks β1 receptors",
+       "β-blockers do this, and they reduce force rather than increase it."
+      ],
+      [
+       "It inhibits Na⁺/K⁺-ATPase, raising calcium inside the cell",
+       "Correct. More intracellular Ca²⁺ means a stronger contraction (CVS p.97)."
+      ],
+      [
+       "It blocks calcium channels",
+       "That is how verapamil and nifedipine work. They reduce contraction."
+      ],
+      [
+       "It stimulates β1 receptors",
+       "That is dobutamine's mechanism, not digoxin's."
+      ]
+     ],
+     "a": 1
+    },
+    {
+     "q": "What is the specific antidote for severe digoxin toxicity?",
+     "opts": [
+      [
+       "Atropine",
+       "Atropine treats the bradycardia, but it does not remove digoxin."
+      ],
+      [
+       "Naloxone",
+       "Naloxone reverses opioids."
+      ],
+      [
+       "Digoxin immune Fab (Digibind)",
+       "Correct. It binds digoxin and removes it from action (RCVS p.119)."
+      ],
+      [
+       "Flumazenil",
+       "Flumazenil reverses benzodiazepines."
+      ]
+     ],
+     "a": 2
+    }
+   ]
+  },
+  "inh": {
+   "title": "Isoniazid (INH)",
+   "path": [
+    "Pharmacology",
+    "Anti-TB & Leprosy",
+    "First-line TB drugs"
+   ],
+   "en": "Isoniazid is the most active and safest first-line drug for tuberculosis. TB bacteria need mycolic acid to build their cell wall. The bacterium's own enzyme (KatG) activates isoniazid, and the activated drug blocks mycolic acid production. It kills rapidly dividing bacteria and stops resting ones from growing, including those hiding inside cells. It is used in every TB regimen, alone for latent TB, and as TB prevention in people with HIV. The two big side effects are hepatitis, which is more likely in people who drink alcohol and in pregnancy, and peripheral neuropathy caused by vitamin B6 (pyridoxine) deficiency. Giving pyridoxine with it prevents the neuropathy.",
+   "am": "ኢሶኒያዚድ (Isoniazid, INH) ለ TB በጣም ውጤታማ እና ደህንነቱ የተጠበቀ first-line መድሃኒት ነው። የ TB ባክቴሪያ የሴል ግድግዳውን ለመገንባት mycolic acid ያስፈልገዋል። የባክቴሪያው የራሱ ኢንዛይም (KatG) INHን ያነቃዋል፤ የነቃው መድሃኒት የ mycolic acid ምርትን ያግዳል። በፍጥነት የሚራቡ ባክቴሪያዎችን ይገድላል (bactericidal)፣ ያረፉትን ደግሞ እድገታቸውን ያቆማል (bacteriostatic)። በሴል ውስጥ የተደበቁትንም ይደርሳል። በሁሉም የ TB ሕክምና ውስጥ ይካተታል፤ ለ latent TB ብቻውን ይሰጣል፤ ለ HIV ታማሚዎችም TB መከላከያ (prophylaxis) ሆኖ ያገለግላል። ሁለቱ ዋና የጎንዮሽ ጉዳቶች፦ hepatitis (የጉበት ጉዳት) — በተለይ አልኮል በሚጠጡ እና በእርጉዝ ሴቶች ላይ፤ እና peripheral neuropathy (የእጅና የእግር መደንዘዝ ወይም ማቃጠል) — በ vitamin B6 (pyridoxine) እጥረት ምክንያት። pyridoxine አብሮ መስጠት neuropathyን ይከላከላል።",
+   "flow": [
+    "KatG activates INH",
+    "Blocks mycolic acid",
+    "Weak cell wall",
+    "TB bacteria die"
+   ],
+   "keys": [
+    [
+     "Action",
+     "Bactericidal on dividing bacilli, bacteriostatic on resting ones",
+     "TB slide 6"
+    ],
+    [
+     "Uses",
+     "All TB regimens, latent TB alone, TB prophylaxis in HIV",
+     "TB slide 9"
+    ],
+    [
+     "Hepatitis risk",
+     "Higher in alcoholics and pregnancy",
+     "TB slide 10"
+    ],
+    [
+     "Neuropathy",
+     "From pyridoxine (B6) deficiency; prevent with pyridoxine",
+     "TB slide 10"
+    ],
+    [
+     "Slow acetylators",
+     "Get peripheral neuropathy more easily",
+     "TB slide 8"
+    ]
+   ],
+   "mnemonic": "INH: Injures Neurons and Hepatocytes. B6 protects the neurons.",
+   "outside": null,
+   "qs": [
+    {
+     "q": "A patient on TB treatment reports burning and numbness in both feet. Which vitamin should be given with isoniazid to prevent this?",
+     "opts": [
+      [
+       "Vitamin B1 (thiamine)",
+       "Thiamine deficiency causes beriberi, but isoniazid does not cause it."
+      ],
+      [
+       "Vitamin B6 (pyridoxine)",
+       "Correct. Isoniazid causes relative pyridoxine deficiency, which leads to peripheral neuropathy (TB slide 10)."
+      ],
+      [
+       "Vitamin B12",
+       "B12 deficiency causes neuropathy, but it is not the one isoniazid causes."
+      ],
+      [
+       "Vitamin C",
+       "Vitamin C has no role here."
+      ]
+     ],
+     "a": 1
+    },
+    {
+     "q": "Isoniazid kills TB bacteria mainly by:",
+     "opts": [
+      [
+       "Blocking peptidoglycan cell wall synthesis",
+       "That is how penicillins work."
+      ],
+      [
+       "Inhibiting mycolic acid synthesis",
+       "Correct. Mycolic acid is unique to the mycobacterial cell wall (TB slide 7)."
+      ],
+      [
+       "Binding the 30S ribosome",
+       "That is streptomycin's mechanism."
+      ],
+      [
+       "Inhibiting RNA polymerase",
+       "That is rifampin's mechanism."
+      ]
+     ],
+     "a": 1
+    },
+    {
+     "q": "Which patient has the highest risk of isoniazid hepatitis?",
+     "opts": [
+      [
+       "A 25-year-old man who drinks alcohol daily",
+       "Correct. Alcohol use raises the risk of isoniazid hepatitis (TB slide 10)."
+      ],
+      [
+       "A child on prophylaxis",
+       "Children are not singled out as high-risk in her notes."
+      ],
+      [
+       "A patient also taking pyridoxine",
+       "Pyridoxine prevents neuropathy. It does not affect hepatitis risk."
+      ],
+      [
+       "A fast acetylator",
+       "Her notes link slow acetylation to neuropathy, not this."
+      ]
+     ],
+     "a": 0
+    }
+   ]
+  },
+  "op": {
+   "title": "Organophosphate poisoning",
+   "path": [
+    "Pharmacology",
+    "Autonomic Nervous System",
+    "Cholinesterase inhibitors"
+   ],
+   "en": "Organophosphates, like the insecticides malathion and parathion, bind permanently (irreversibly) to acetylcholinesterase (AChE). AChE's job is to break down acetylcholine. With AChE blocked, acetylcholine piles up everywhere it is released, causing a long-lasting cholinergic overload. Treatment has three parts. First, decontaminate to reduce absorption. Second, give atropine, the cornerstone of treatment, which blocks acetylcholine at muscarinic receptors. Third, give an oxime such as pralidoxime (2-PAM), which can reactivate AChE, but only if it is given before the enzyme ‘ages’ and the bond becomes permanent.",
+   "am": "Organophosphates (ለምሳሌ malathion እና parathion የተባሉ ፀረ-ተባይ መድሃኒቶች) acetylcholinesterase (AChE) ከሚባለው ኢንዛይም ጋር በቋሚነት (irreversibly) ይጣበቃሉ። የ AChE ሥራ acetylcholine (ACh)ን ማፍረስ ነው። AChE ሲታገድ ACh በሚለቀቅበት ቦታ ሁሉ ይከማቻል፤ ውጤቱም ለረጅም ጊዜ የሚቆይ ከመጠን ያለፈ cholinergic ተጽእኖ ነው። ሕክምናው ሦስት ክፍሎች አሉት፦ 1) Decontamination — ተጨማሪ መምጠጥን (absorption) መቀነስ። 2) Atropine — የሕክምናው ዋና መሰረት (cornerstone)፤ muscarinic receptors ላይ ACh የሚያደርገውን ተጽእኖ ያግዳል። 3) Pralidoxime (2-PAM) — AChEን መልሶ ሊያነቃ ይችላል፣ ነገር ግን ኢንዛይሙ 'aging' ከማድረጉ (ትስስሩ ቋሚ ከመሆኑ) በፊት ቶሎ መሰጠት አለበት።",
+   "flow": [
+    "Organophosphate binds AChE",
+    "AChE blocked for good",
+    "ACh piles up",
+    "Cholinergic crisis",
+    "Atropine + 2-PAM"
+   ],
+   "keys": [
+    [
+     "Examples",
+     "Malathion, parathion, diazinon (insecticides); sarin (nerve gas)",
+     "ANS p.30-31"
+    ],
+    [
+     "Mechanism",
+     "Irreversible, covalent AChE inhibition",
+     "ANS p.30"
+    ],
+    [
+     "Step 1",
+     "Decontaminate, minimize absorption",
+     "ANS p.32"
+    ],
+    [
+     "Step 2",
+     "Atropine: the cornerstone",
+     "ANS p.32"
+    ],
+    [
+     "Step 3",
+     "Pralidoxime (2-PAM), before aging",
+     "ANS p.32"
+    ]
+   ],
+   "mnemonic": "SLUDGE: Salivation, Lacrimation, Urination, Defecation, GI upset, Emesis.",
+   "outside": "The SLUDGE mnemonic and the full symptom list are not in her ANS slides. They are standard teaching but flagged for checking against her First Aid or Med-Surg notes.",
+   "qs": [
+    {
+     "q": "A farmer is brought in after spraying insecticide, with heavy salivation, sweating and pinpoint pupils. Which drug is the cornerstone of treatment?",
+     "opts": [
+      [
+       "Atropine",
+       "Correct. Atropine blocks the excess acetylcholine at muscarinic receptors (ANS p.32)."
+      ],
+      [
+       "Neostigmine",
+       "Neostigmine is another AChE inhibitor. It would make the poisoning worse."
+      ],
+      [
+       "Adrenaline",
+       "Adrenaline is for anaphylaxis and cardiac arrest, not cholinergic poisoning."
+      ],
+      [
+       "Naloxone",
+       "Naloxone reverses opioids. Pinpoint pupils here come from acetylcholine excess."
+      ]
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why must pralidoxime be given early in organophosphate poisoning?",
+     "opts": [
+      [
+       "It only works on an empty stomach",
+       "Timing relates to the enzyme, not to food."
+      ],
+      [
+       "The enzyme ‘ages’, after which the bond becomes permanent",
+       "Correct. Oximes reactivate AChE only before aging (ANS p.32)."
+      ],
+      [
+       "It is broken down quickly by the liver",
+       "That is not the reason given in her notes."
+      ],
+      [
+       "It causes tachycardia if given late",
+       "That is not related to timing."
+      ]
+     ],
+     "a": 1
+    },
+    {
+     "q": "Organophosphates cause toxicity by:",
+     "opts": [
+      [
+       "Reversibly inhibiting AChE",
+       "That describes neostigmine and physostigmine."
+      ],
+      [
+       "Irreversibly inhibiting AChE",
+       "Correct. They bind covalently, so ACh builds up for a long time (ANS p.30)."
+      ],
+      [
+       "Blocking muscarinic receptors",
+       "That is what atropine does. It is the treatment."
+      ],
+      [
+       "Blocking the neuromuscular junction",
+       "That describes neuromuscular blockers."
+      ]
+     ],
+     "a": 1
+    }
+   ]
+  }
+ },
+ "stats": {
+  "files": 11,
+  "pages": 1107,
+  "units": 8,
+  "topics": 37,
+  "concepts": 147,
+  "image_pages": 46
+ }
+}
