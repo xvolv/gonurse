@@ -1,0 +1,14 @@
+# Asset-only package: lets the Flutter app in app/ bundle content/ and files/
+# without copying them. Assets are loaded as packages/gonurse_files/<path>.
+name: gonurse_files
+description: Bundled GoNurse notes and source PDFs.
+publish_to: none
+version: 1.0.0
+
+environment:
+  sdk: ^3.11.0
+
+flutter:
+  assets:
+    - content/pharmacology_notes.json
+    - files/
