@@ -85,7 +85,7 @@ void main() {
     await tester.pump();
     await tester.tap(find.text('Digoxin'));
     await tester.pumpAndSettle();
-    expect(find.text('Note: Digoxin'), findsOneWidget);
+    expect(find.text('THE BIG IDEA'), findsOneWidget, reason: 'reader is open');
     expect(find.text('Pharmacology › Renal & Cardiovascular › Heart failure'),
         findsOneWidget);
   });

@@ -15,6 +15,9 @@ class Course {
   final List<Note> allNotes;
   final Map<String, Note> notesById;
 
+  /// The topic each note belongs to, by note ID.
+  final Map<String, Topic> topicByNoteId;
+
   Course({
     required this.course,
     required this.version,
@@ -30,6 +33,11 @@ class Course {
           for (final u in units)
             for (final t in u.topics)
               for (final n in t.notes) n.id: n,
+        },
+        topicByNoteId = {
+          for (final u in units)
+            for (final t in u.topics)
+              for (final n in t.notes) n.id: t,
         };
 
   factory Course.fromJson(Map<String, dynamic> json) => Course(
@@ -144,7 +152,9 @@ class Note {
 }
 
 class Section {
-  /// One of `big_idea`, `how`, `patient`, `facts`, `trap`.
+  /// Original format: `big_idea`, `how`, `patient`, `facts`, `trap`.
+  /// Bedside format: `scene`, `notice`, `actions`, `why`, `traps`, `numbers`.
+  /// Other values are allowed and shown plainly.
   final String type;
   final String title;
   final List<Line> lines;
@@ -166,13 +176,25 @@ class Line {
   final String text;
   final String ref;
 
-  const Line({required this.n, required this.text, required this.ref});
+  /// `notes` (from her files, has a [ref]) or `practice` (standard nursing
+  /// practice, [ref] may be empty).
+  final String basis;
+
+  const Line({
+    required this.n,
+    required this.text,
+    required this.ref,
+    this.basis = 'notes',
+  });
 
   factory Line.fromJson(Map<String, dynamic> json) => Line(
         n: json['n'] as int,
         text: json['text'] as String,
         ref: json['ref'] as String? ?? '',
+        basis: json['basis'] as String? ?? 'notes',
       );
+
+  bool get isPractice => basis == 'practice';
 }
 
 class Flag {

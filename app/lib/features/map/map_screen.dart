@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/providers.dart';
 import '../../models/course.dart';
-import '../reader/note_placeholder_screen.dart';
+import '../reader/reader_screen.dart';
 
 /// The course as an expandable tree: Unit → Topic → Note, with search.
 class MapScreen extends ConsumerStatefulWidget {
@@ -45,7 +45,7 @@ class _MapScreenState extends ConsumerState<MapScreen> {
   void _openNote(Note note) {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (_) =>
-          NotePlaceholderScreen(courseId: widget.courseId, noteId: note.id),
+          ReaderScreen(courseId: widget.courseId, noteId: note.id),
     ));
   }
 

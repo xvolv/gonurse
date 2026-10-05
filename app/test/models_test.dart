@@ -32,9 +32,11 @@ void main() {
     }
   });
 
-  test('every ref parses to a known source and a page in range', () {
+  test('every "notes" line has a ref to a known source and a page in range',
+      () {
     for (final line in course.allNotes.expand((n) => n.lines)) {
-      if (line.ref.isEmpty) continue;
+      expect(line.basis, anyOf('notes', 'practice'));
+      if (line.isPractice && line.ref.isEmpty) continue;
       final refs = parseRefs(line.ref);
       expect(refs, isNotEmpty, reason: line.ref);
       for (final r in refs) {
@@ -46,7 +48,10 @@ void main() {
   });
 
   test('section types are known', () {
-    const known = {'big_idea', 'how', 'patient', 'facts', 'trap'};
+    const known = {
+      'big_idea', 'how', 'patient', 'facts', 'trap', // original format
+      'scene', 'notice', 'actions', 'why', 'traps', 'numbers', // bedside
+    };
     for (final s in course.allNotes.expand((n) => n.sections)) {
       expect(known, contains(s.type));
     }
@@ -55,5 +60,27 @@ void main() {
   test('slide sources map to PDF file names', () {
     expect(course.sources['Gen slide']!.pdfFile, 'general pharmacology-1.pdf');
     expect(course.sources['CVS p.']!.pdfFile, 'CVS pharmacology (1).pdf');
+  });
+
+  test('bedside format: new types, basis, and practice lines without a ref',
+      () {
+    final note = Note.fromJson(const {
+      'id': 'x',
+      'title': 'X',
+      'path': ['U', 'T'],
+      'sections': [
+        {'type': 'scene', 'title': "The patient you'll meet", 'lines': [
+          {'n': 1, 'text': 'An older patient.', 'ref': 'CVS p.96'},
+        ]},
+        {'type': 'actions', 'title': 'What the nurse does', 'lines': [
+          {'n': 2, 'text': 'Check apical pulse.', 'ref': '', 'basis': 'practice'},
+          {'n': 3, 'text': 'Hold the dose.', 'ref': 'CVS p.100', 'basis': 'notes'},
+        ]},
+      ],
+    });
+    expect([for (final l in note.lines) l.isPractice], [false, true, false]);
+    expect(note.lines.first.basis, 'notes', reason: 'default when missing');
+    expect(note.links, isEmpty);
+    expect(note.flags, isEmpty);
   });
 }
