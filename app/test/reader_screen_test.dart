@@ -60,7 +60,11 @@ void main() {
       expect(find.text('$pos / ${topic.notes.length}'), findsOneWidget);
       expect(find.text('THE BIG IDEA'), findsOneWidget);
       expect(find.text('EXAM TRAP'), findsOneWidget);
-      expect(find.text('CVS p.96-97, RCVS p.116'), findsOneWidget);
+      expect(
+        find.text('CVS p.96-97, RCVS p.116'),
+        findsNothing,
+        reason: 'refs hidden',
+      );
       expect(find.text('1'), findsOneWidget);
       expect(find.text('RELATED'), findsOneWidget);
       expect(savedNote(), 'digoxin');
@@ -106,19 +110,38 @@ void main() {
     expect(savedNote(), linked.id);
   });
 
-  testWidgets('a ref with several sources offers a menu', (tester) async {
+  testWidgets('long-press a line: "Open in my notes" for each of its refs', (
+    tester,
+  ) async {
     await pumpReader(tester, 'digoxin');
-    await tester.tap(find.text('CVS p.96-97, RCVS p.116'));
+    final line1 = course.notesById['digoxin']!.lines.first; // two refs
+    await tester.longPress(find.text(line1.text));
     await tester.pumpAndSettle();
-    expect(find.text('CVS p.96-97'), findsOneWidget);
-    expect(find.text('RCVS p.116'), findsOneWidget);
-    expect(find.text('CVS pharmacology (1).pdf'), findsOneWidget);
+    expect(find.text('Open in my notes · CVS p.96-97'), findsOneWidget);
+    expect(find.text('Open in my notes · RCVS p.116'), findsOneWidget);
+    expect(find.text('CVS pharmacology (1).pdf · page 96'), findsOneWidget);
+    expect(
+      find.text('Renal & cardiovascular pharmacology.pdf · page 116'),
+      findsOneWidget,
+    );
   });
 
-  testWidgets('flags show in a Check box', (tester) async {
+  testWidgets('long-press a line with one ref shows a single entry', (
+    tester,
+  ) async {
+    await pumpReader(tester, 'digoxin');
+    final line2 = course.notesById['digoxin']!.lines[1]; // "CVS p.97"
+    await tester.longPress(find.text(line2.text));
+    await tester.pumpAndSettle();
+    expect(find.text('Open in my notes'), findsOneWidget);
+    expect(find.text('CVS pharmacology (1).pdf · page 97'), findsOneWidget);
+  });
+
+  testWidgets('flags stay in the data but are not shown', (tester) async {
     await pumpReader(tester, 'bp-reg');
-    expect(find.text('Check'), findsOneWidget);
-    expect(find.text('Her files disagree'), findsOneWidget);
+    expect(course.notesById['bp-reg']!.flags, isNotEmpty);
+    expect(find.text('Check'), findsNothing);
+    expect(find.textContaining('Her two files define'), findsNothing);
   });
 
   testWidgets('bedside format: new sections, practice tag, unknown type', (
@@ -206,8 +229,13 @@ void main() {
       findsOneWidget,
       reason: 'unknown type, title from JSON',
     );
-    expect(find.text('Standard practice – confirm'), findsOneWidget);
+    expect(find.text('Standard practice – confirm'), findsNothing);
     expect(find.text('4'), findsOneWidget);
+
+    // A practice line has no ref, so long-press offers nothing.
+    await tester.longPress(find.text('Check apical pulse for a full minute.'));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Open in my notes'), findsNothing);
 
     final scene = tester.widget<Text>(
       find.text('An older patient with heart failure.'),

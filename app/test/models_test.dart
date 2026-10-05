@@ -55,7 +55,8 @@ void main() {
   test('section types are known', () {
     const known = {
       'big_idea', 'how', 'patient', 'facts', 'trap', // original format
-      'scene', 'notice', 'actions', 'why', 'traps', 'numbers', // bedside
+      'scene', 'rules', 'notice', 'actions', 'why', 'traps', 'numbers',
+      'worked', // decision format
     };
     for (final s in course.allNotes.expand((n) => n.sections)) {
       expect(known, contains(s.type));

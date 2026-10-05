@@ -153,19 +153,9 @@ class _NotePageState extends ConsumerState<NotePage> {
             height: 1.2,
           ),
         ),
-        for (final section in note.sections) ...[
-          _SectionLabel(section),
-          for (final line in section.lines)
-            _LineRow(
-              key: _lineKeys.putIfAbsent(line.n, GlobalKey.new),
-              line: line,
-              highlighted: widget.highlightedLine == line.n,
-              lead: sectionKind(section.type) == SectionKind.lead,
-              body: body,
-              onRefs: (refs) => openRefs(context, widget.course, refs),
-            ),
-        ],
-        if (note.flags.isNotEmpty) _FlagsBox(note.flags, body: body),
+        // Refs, practice tags and flags stay in the data but are not shown:
+        // the page is only text. Long-press a line to open it in her notes.
+        for (final section in note.sections) _section(section, body),
         if (related.isNotEmpty) ...[
           const _Label('Related'),
           Wrap(
@@ -181,6 +171,39 @@ class _NotePageState extends ConsumerState<NotePage> {
           ),
         ],
       ],
+    );
+  }
+
+  Widget _section(Section section, double body) {
+    final kind = sectionKind(section.type);
+    final worked = kind == SectionKind.worked;
+    final children = [
+      _SectionLabel(section, top: worked ? 16 : 28),
+      for (final line in section.lines)
+        _LineRow(
+          key: _lineKeys.putIfAbsent(line.n, GlobalKey.new),
+          line: line,
+          highlighted: widget.highlightedLine == line.n,
+          lead: kind == SectionKind.lead,
+          body: body,
+          onRefs: (refs) => openRefs(context, widget.course, refs),
+        ),
+    ];
+    final column = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: children,
+    );
+    if (!worked) return column;
+    // The practice question stands apart in a lightly tinted box.
+    return Container(
+      key: const ValueKey('worked-box'),
+      margin: const EdgeInsets.only(top: 24),
+      padding: const EdgeInsets.fromLTRB(8, 0, 12, 10),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.secondaryContainer.withAlpha(110),
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: column,
     );
   }
 }
@@ -224,14 +247,15 @@ class _AskBadge extends StatelessWidget {
 }
 
 class _Label extends StatelessWidget {
-  const _Label(this.text, {this.color});
+  const _Label(this.text, {this.color, this.top = 28});
 
   final String text;
   final Color? color;
+  final double top;
 
   @override
   Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.only(top: 28, bottom: 8),
+    padding: EdgeInsets.only(top: top, bottom: 8),
     child: Text(
       text.toUpperCase(),
       style: TextStyle(
@@ -245,13 +269,15 @@ class _Label extends StatelessWidget {
 }
 
 class _SectionLabel extends StatelessWidget {
-  const _SectionLabel(this.section);
+  const _SectionLabel(this.section, {this.top = 28});
 
   final Section section;
+  final double top;
 
   @override
   Widget build(BuildContext context) => _Label(
     sectionTitle(section),
+    top: top,
     color: sectionKind(section.type) == SectionKind.danger
         ? Theme.of(context).colorScheme.error
         : null,
@@ -280,173 +306,52 @@ class _LineRow extends StatelessWidget {
     final refs = parseRefs(line.ref);
     return AnimatedContainer(
       duration: const Duration(milliseconds: 400),
-      margin: const EdgeInsets.only(bottom: 6),
+      margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         color: highlighted
             ? colors.primaryContainer
             : colors.primaryContainer.withAlpha(0),
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            width: 30,
-            child: Padding(
-              padding: EdgeInsets.only(top: body * 0.2),
-              child: Text(
-                '${line.n}',
-                textAlign: TextAlign.right,
-                style: TextStyle(
-                  fontSize: body * 0.8,
-                  color: colors.onSurfaceVariant,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(10),
+        // Only lines from her files can be opened there.
+        onLongPress: refs.isEmpty ? null : () => onRefs(refs),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 30,
+              child: Padding(
+                padding: EdgeInsets.only(top: body * 0.2),
+                child: Text(
+                  '${line.n}',
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    fontSize: body * 0.8,
+                    color: colors.onSurfaceVariant,
+                  ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  line.text,
-                  style: TextStyle(
-                    fontSize: lead ? body * 1.15 : body,
-                    fontStyle: lead ? FontStyle.italic : null,
-                    height: 1.5,
-                  ),
-                ),
-                if (line.isPractice)
-                  const _PracticeTag()
-                else if (refs.isNotEmpty)
-                  _RefLink(line.ref, onTap: () => onRefs(refs))
-                else if (line.ref.isNotEmpty)
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   Text(
-                    line.ref,
+                    line.text,
                     style: TextStyle(
-                      fontSize: 13,
-                      color: colors.onSurfaceVariant,
+                      fontSize: lead ? body * 1.15 : body,
+                      fontStyle: lead ? FontStyle.italic : null,
+                      height: 1.5,
                     ),
                   ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-/// The ref as small tappable text, with a tap area of at least 40dp.
-class _RefLink extends StatelessWidget {
-  const _RefLink(this.text, {required this.onTap});
-
-  final String text;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.primary;
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(8),
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(minHeight: 40),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.description_outlined, size: 15, color: color),
-              const SizedBox(width: 4),
-              Flexible(
-                child: Text(text, style: TextStyle(fontSize: 13, color: color)),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _PracticeTag extends StatelessWidget {
-  const _PracticeTag();
-
-  @override
-  Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.tertiary;
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-        decoration: BoxDecoration(
-          border: Border.all(color: color),
-          borderRadius: BorderRadius.circular(6),
-        ),
-        child: Text(
-          'Standard practice – confirm',
-          style: TextStyle(fontSize: 12, color: color),
-        ),
-      ),
-    );
-  }
-}
-
-/// Red-outlined "Check" box listing the note's flags.
-class _FlagsBox extends StatelessWidget {
-  const _FlagsBox(this.flags, {required this.body});
-
-  final List<Flag> flags;
-  final double body;
-
-  static const _kindLabels = {
-    'conflict': 'Her files disagree',
-    'outside': 'Not in her files',
-  };
-
-  @override
-  Widget build(BuildContext context) {
-    final red = Theme.of(context).colorScheme.error;
-    return Container(
-      margin: const EdgeInsets.only(top: 28),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        border: Border.all(color: red, width: 1.5),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Icon(Icons.flag_outlined, color: red, size: 20),
-              const SizedBox(width: 8),
-              Text(
-                'Check',
-                style: TextStyle(
-                  color: red,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                ),
-              ),
-            ],
-          ),
-          for (final f in flags) ...[
-            const SizedBox(height: 10),
-            Text(
-              _kindLabels[f.kind] ?? f.kind,
-              style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
-                color: red,
+                ],
               ),
             ),
-            const SizedBox(height: 2),
-            Text(f.text, style: TextStyle(fontSize: body * 0.95, height: 1.45)),
           ],
-        ],
+        ),
       ),
     );
   }
