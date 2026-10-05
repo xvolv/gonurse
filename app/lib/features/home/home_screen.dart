@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/providers.dart';
+import '../map/map_screen.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -50,12 +51,10 @@ class _CourseCard extends StatelessWidget {
             ? '${course.noteCount} notes · ${course.units.length} units'
             : 'Notes coming soon'),
         trailing: ready ? const Icon(Icons.chevron_right) : null,
-        onTap: () {
-          // The map screen is built in the next step.
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Map for ${entry.config.title} comes next')),
-          );
-        },
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (_) =>
+              MapScreen(courseId: entry.config.id, title: entry.config.title),
+        )),
       ),
     );
   }

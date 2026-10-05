@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive/hive.dart';
 
 import '../config.dart';
 import '../models/course.dart';
@@ -49,3 +50,15 @@ class CoursesNotifier extends AsyncNotifier<List<CourseEntry>> {
     }
   }
 }
+
+/// One course's notes, or null while loading or if it has none yet.
+final courseProvider = Provider.family<Course?, String>((ref, courseId) {
+  for (final entry in ref.watch(coursesProvider).valueOrNull ?? const []) {
+    if (entry.config.id == courseId) return entry.course;
+  }
+  return null;
+});
+
+/// Small UI state that should survive restarts (open map branches, last
+/// note, settings). Overridden in `main()` once Hive is open.
+final uiBoxProvider = Provider<Box>((ref) => throw UnimplementedError());
