@@ -14,14 +14,32 @@ class CourseConfig {
   /// Key in `version.json`; the remote notes file is `<id>_notes.json`.
   final String id;
 
-  /// Bundled copy, used until a newer version has been synced.
-  final String asset;
+  /// Name shown on the home screen.
+  final String title;
 
-  const CourseConfig(this.id, this.asset);
+  /// Bundled copy, used until a newer version has been synced. Courses
+  /// without one show as "coming soon" until their notes are published in
+  /// the content repo and downloaded.
+  final String? asset;
+
+  const CourseConfig(this.id, this.title, {this.asset});
 
   String get remoteFile => '${id}_notes.json';
 }
 
+/// All exit-exam courses, in the order shown on the home screen.
 const courses = [
-  CourseConfig('pharmacology', 'packages/gonurse_files/content/pharmacology_notes.json'),
+  CourseConfig('maternity', 'Maternity'),
+  CourseConfig('first_aid', 'First Aid'),
+  CourseConfig('gynecology', 'Gynecology'),
+  CourseConfig('research', 'Research'),
+  CourseConfig('medical_surgical', 'Medical-Surgical I & II'),
+  CourseConfig('psychiatry', 'Psychiatry'),
+  CourseConfig('fundamentals', 'Fundamentals of Nursing'),
+  CourseConfig('nutrition', 'Nutrition'),
+  CourseConfig('pediatrics', 'Pediatrics'),
+  CourseConfig('community_health', 'Community Health'),
+  CourseConfig('cdc', 'CDC (Communicable Disease Control)'),
+  CourseConfig('pharmacology', 'Pharmacology',
+      asset: 'packages/gonurse_files/content/pharmacology_notes.json'),
 ];

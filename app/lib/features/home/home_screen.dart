@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/providers.dart';
-import '../../models/course.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -31,23 +30,30 @@ class HomeScreen extends ConsumerWidget {
 }
 
 class _CourseCard extends StatelessWidget {
-  const _CourseCard(this.course);
+  const _CourseCard(this.entry);
 
-  final Course course;
+  final CourseEntry entry;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final course = entry.course;
+    final ready = course != null;
     return Card(
+      elevation: ready ? 1 : 0,
+      color: ready ? null : theme.colorScheme.surfaceContainerLow,
       child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-        title: Text(course.course, style: theme.textTheme.titleLarge),
-        subtitle: Text('${course.noteCount} notes · ${course.units.length} units'),
-        trailing: const Icon(Icons.chevron_right),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+        enabled: ready,
+        title: Text(entry.config.title, style: theme.textTheme.titleMedium),
+        subtitle: Text(ready
+            ? '${course.noteCount} notes · ${course.units.length} units'
+            : 'Notes coming soon'),
+        trailing: ready ? const Icon(Icons.chevron_right) : null,
         onTap: () {
           // The map screen is built in the next step.
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Map for ${course.course} comes next')),
+            SnackBar(content: Text('Map for ${entry.config.title} comes next')),
           );
         },
       ),

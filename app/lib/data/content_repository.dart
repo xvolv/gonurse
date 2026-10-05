@@ -42,14 +42,16 @@ class ContentRepository {
           ? _storedVersion(c.id)
           : _bundledVersions[c.id] ?? 0;
 
-  /// Loads a course from the device. Never touches the network.
-  Future<Course> load(CourseConfig c) async {
-    final bundled = await _loadAsset(c.asset);
-    _bundledVersions[c.id] = _peekVersion(bundled);
+  /// Loads a course from the device, or null if it has no notes yet.
+  /// Never touches the network.
+  Future<Course?> load(CourseConfig c) async {
+    final bundled = c.asset == null ? null : await _loadAsset(c.asset!);
+    _bundledVersions[c.id] = bundled == null ? 0 : _peekVersion(bundled);
     final stored = _box.get(_jsonKey(c.id)) as String?;
     final useStored =
         stored != null && _storedVersion(c.id) > _bundledVersions[c.id]!;
-    return compute(_parseCourse, useStored ? stored : bundled);
+    final json = useStored ? stored : bundled;
+    return json == null ? null : compute(_parseCourse, json);
   }
 
   /// Downloads any course whose version in `version.json` is newer than the
