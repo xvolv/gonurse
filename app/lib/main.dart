@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'data/content_repository.dart';
 import 'data/providers.dart';
@@ -10,7 +11,9 @@ import 'features/home/home_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
+  // App data goes in the app-support folder (AppData on Windows), not in
+  // Documents, which is often synced by OneDrive.
+  Hive.init((await getApplicationSupportDirectory()).path);
   final contentBox = await Hive.openBox(ContentRepository.boxName);
   final uiBox = await Hive.openBox('ui');
 
