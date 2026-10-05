@@ -11,10 +11,10 @@ enum SectionKind {
 }
 
 SectionKind sectionKind(String type) => switch (type) {
-      'big_idea' || 'scene' => SectionKind.lead,
-      'trap' || 'traps' => SectionKind.danger,
-      _ => SectionKind.plain,
-    };
+  'big_idea' || 'scene' => SectionKind.lead,
+  'trap' || 'traps' => SectionKind.danger,
+  _ => SectionKind.plain,
+};
 
 /// Used only when a section has no title in the JSON.
 const _defaultTitles = {

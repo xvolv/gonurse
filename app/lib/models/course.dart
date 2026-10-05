@@ -25,35 +25,35 @@ class Course {
     required this.language,
     required this.sources,
     required this.units,
-  })  : allNotes = [
-          for (final u in units)
-            for (final t in u.topics) ...t.notes,
-        ],
-        notesById = {
-          for (final u in units)
-            for (final t in u.topics)
-              for (final n in t.notes) n.id: n,
-        },
-        topicByNoteId = {
-          for (final u in units)
-            for (final t in u.topics)
-              for (final n in t.notes) n.id: t,
-        };
+  }) : allNotes = [
+         for (final u in units)
+           for (final t in u.topics) ...t.notes,
+       ],
+       notesById = {
+         for (final u in units)
+           for (final t in u.topics)
+             for (final n in t.notes) n.id: n,
+       },
+       topicByNoteId = {
+         for (final u in units)
+           for (final t in u.topics)
+             for (final n in t.notes) n.id: t,
+       };
 
   factory Course.fromJson(Map<String, dynamic> json) => Course(
-        course: json['course'] as String,
-        version: json['version'] as int,
-        updated: json['updated'] as String? ?? '',
-        language: json['language'] as String? ?? 'en',
-        sources: {
-          for (final e in (json['sources'] as Map<String, dynamic>).entries)
-            e.key: Source.fromJson(e.value as Map<String, dynamic>),
-        },
-        units: [
-          for (final u in json['units'] as List)
-            Unit.fromJson(u as Map<String, dynamic>),
-        ],
-      );
+    course: json['course'] as String,
+    version: json['version'] as int,
+    updated: json['updated'] as String? ?? '',
+    language: json['language'] as String? ?? 'en',
+    sources: {
+      for (final e in (json['sources'] as Map<String, dynamic>).entries)
+        e.key: Source.fromJson(e.value as Map<String, dynamic>),
+    },
+    units: [
+      for (final u in json['units'] as List)
+        Unit.fromJson(u as Map<String, dynamic>),
+    ],
+  );
 
   int get noteCount => allNotes.length;
 }
@@ -68,10 +68,10 @@ class Source {
   const Source({required this.file, required this.pages, required this.kind});
 
   factory Source.fromJson(Map<String, dynamic> json) => Source(
-        file: json['file'] as String,
-        pages: json['pages'] as int? ?? 0,
-        kind: json['kind'] as String? ?? 'page',
-      );
+    file: json['file'] as String,
+    pages: json['pages'] as int? ?? 0,
+    kind: json['kind'] as String? ?? 'page',
+  );
 
   bool get isSlide => kind == 'slide';
 
@@ -90,13 +90,13 @@ class Unit {
   const Unit({required this.id, required this.title, required this.topics});
 
   factory Unit.fromJson(Map<String, dynamic> json) => Unit(
-        id: json['id'] as String,
-        title: json['title'] as String,
-        topics: [
-          for (final t in json['topics'] as List)
-            Topic.fromJson(t as Map<String, dynamic>),
-        ],
-      );
+    id: json['id'] as String,
+    title: json['title'] as String,
+    topics: [
+      for (final t in json['topics'] as List)
+        Topic.fromJson(t as Map<String, dynamic>),
+    ],
+  );
 
   int get noteCount => topics.fold(0, (sum, t) => sum + t.notes.length);
 }
@@ -108,12 +108,12 @@ class Topic {
   const Topic({required this.title, required this.notes});
 
   factory Topic.fromJson(Map<String, dynamic> json) => Topic(
-        title: json['title'] as String,
-        notes: [
-          for (final n in json['notes'] as List)
-            Note.fromJson(n as Map<String, dynamic>),
-        ],
-      );
+    title: json['title'] as String,
+    notes: [
+      for (final n in json['notes'] as List)
+        Note.fromJson(n as Map<String, dynamic>),
+    ],
+  );
 }
 
 class Note {
@@ -134,19 +134,19 @@ class Note {
   });
 
   factory Note.fromJson(Map<String, dynamic> json) => Note(
-        id: json['id'] as String,
-        title: json['title'] as String,
-        path: [for (final p in json['path'] as List? ?? const []) p as String],
-        sections: [
-          for (final s in json['sections'] as List)
-            Section.fromJson(s as Map<String, dynamic>),
-        ],
-        links: [for (final l in json['links'] as List? ?? const []) l as String],
-        flags: [
-          for (final f in json['flags'] as List? ?? const [])
-            Flag.fromJson(f as Map<String, dynamic>),
-        ],
-      );
+    id: json['id'] as String,
+    title: json['title'] as String,
+    path: [for (final p in json['path'] as List? ?? const []) p as String],
+    sections: [
+      for (final s in json['sections'] as List)
+        Section.fromJson(s as Map<String, dynamic>),
+    ],
+    links: [for (final l in json['links'] as List? ?? const []) l as String],
+    flags: [
+      for (final f in json['flags'] as List? ?? const [])
+        Flag.fromJson(f as Map<String, dynamic>),
+    ],
+  );
 
   List<Line> get lines => [for (final s in sections) ...s.lines];
 }
@@ -162,13 +162,13 @@ class Section {
   const Section({required this.type, required this.title, required this.lines});
 
   factory Section.fromJson(Map<String, dynamic> json) => Section(
-        type: json['type'] as String,
-        title: json['title'] as String? ?? '',
-        lines: [
-          for (final l in json['lines'] as List)
-            Line.fromJson(l as Map<String, dynamic>),
-        ],
-      );
+    type: json['type'] as String,
+    title: json['title'] as String? ?? '',
+    lines: [
+      for (final l in json['lines'] as List)
+        Line.fromJson(l as Map<String, dynamic>),
+    ],
+  );
 }
 
 class Line {
@@ -188,11 +188,11 @@ class Line {
   });
 
   factory Line.fromJson(Map<String, dynamic> json) => Line(
-        n: json['n'] as int,
-        text: json['text'] as String,
-        ref: json['ref'] as String? ?? '',
-        basis: json['basis'] as String? ?? 'notes',
-      );
+    n: json['n'] as int,
+    text: json['text'] as String,
+    ref: json['ref'] as String? ?? '',
+    basis: json['basis'] as String? ?? 'notes',
+  );
 
   bool get isPractice => basis == 'practice';
 }
@@ -204,8 +204,6 @@ class Flag {
 
   const Flag({required this.kind, required this.text});
 
-  factory Flag.fromJson(Map<String, dynamic> json) => Flag(
-        kind: json['kind'] as String,
-        text: json['text'] as String? ?? '',
-      );
+  factory Flag.fromJson(Map<String, dynamic> json) =>
+      Flag(kind: json['kind'] as String, text: json['text'] as String? ?? '');
 }

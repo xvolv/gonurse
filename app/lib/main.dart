@@ -13,15 +13,17 @@ Future<void> main() async {
   final contentBox = await Hive.openBox(ContentRepository.boxName);
   final uiBox = await Hive.openBox('ui');
 
-  runApp(ProviderScope(
-    overrides: [
-      contentRepositoryProvider.overrideWithValue(
-        ContentRepository(contentBox, loadAsset: rootBundle.loadString),
-      ),
-      uiBoxProvider.overrideWithValue(uiBox),
-    ],
-    child: const GoNurseApp(),
-  ));
+  runApp(
+    ProviderScope(
+      overrides: [
+        contentRepositoryProvider.overrideWithValue(
+          ContentRepository(contentBox, loadAsset: rootBundle.loadString),
+        ),
+        uiBoxProvider.overrideWithValue(uiBox),
+      ],
+      child: const GoNurseApp(),
+    ),
+  );
 }
 
 class GoNurseApp extends StatelessWidget {

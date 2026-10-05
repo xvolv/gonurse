@@ -3,8 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'providers.dart';
 
 /// Reader text size: 0 = normal, 1 = large, 2 = extra large.
-final textSizeProvider =
-    NotifierProvider<TextSizeNotifier, int>(TextSizeNotifier.new);
+final textSizeProvider = NotifierProvider<TextSizeNotifier, int>(
+  TextSizeNotifier.new,
+);
 
 class TextSizeNotifier extends Notifier<int> {
   static const _key = 'text_size';
@@ -22,4 +23,5 @@ class TextSizeNotifier extends Notifier<int> {
 }
 
 final bodyFontSizeProvider = Provider<double>(
-    (ref) => TextSizeNotifier.bodySizes[ref.watch(textSizeProvider)]);
+  (ref) => TextSizeNotifier.bodySizes[ref.watch(textSizeProvider)],
+);

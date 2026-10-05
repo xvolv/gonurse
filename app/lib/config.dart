@@ -40,6 +40,9 @@ const courses = [
   CourseConfig('pediatrics', 'Pediatrics'),
   CourseConfig('community_health', 'Community Health'),
   CourseConfig('cdc', 'CDC (Communicable Disease Control)'),
-  CourseConfig('pharmacology', 'Pharmacology',
-      asset: 'packages/gonurse_files/content/pharmacology_notes.json'),
+  CourseConfig(
+    'pharmacology',
+    'Pharmacology',
+    asset: 'packages/gonurse_files/content/pharmacology_notes.json',
+  ),
 ];

@@ -16,7 +16,10 @@ class NotePage extends ConsumerStatefulWidget {
     required this.note,
     required this.onOpenNote,
     required this.onScrolled,
+    required this.onAsk,
     this.initialOffset = 0,
+    this.askActive = false,
+    this.highlightedLine,
   });
 
   final Course course;
@@ -25,17 +28,68 @@ class NotePage extends ConsumerStatefulWidget {
   final ValueChanged<double> onScrolled;
   final double initialOffset;
 
+  /// Ask mode: numbered badges on the lines visible on screen.
+  final bool askActive;
+  final ValueChanged<Line> onAsk;
+
+  /// Line number `n` to highlight (after returning from DeepSeek).
+  final int? highlightedLine;
+
   @override
   ConsumerState<NotePage> createState() => _NotePageState();
 }
 
 class _NotePageState extends ConsumerState<NotePage> {
-  late final _scroll = ScrollController(initialScrollOffset: widget.initialOffset);
+  late final _scroll = ScrollController(
+    initialScrollOffset: widget.initialOffset,
+  )..addListener(_scheduleBadges);
+  final _stackKey = GlobalKey();
+  final _lineKeys = <int, GlobalKey>{};
+
+  /// Visible lines and where their badge goes, in screen order.
+  List<(Line, Offset)> _badges = const [];
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.askActive) _scheduleBadges();
+  }
+
+  @override
+  void didUpdateWidget(NotePage old) {
+    super.didUpdateWidget(old);
+    if (widget.askActive != old.askActive) _scheduleBadges();
+  }
 
   @override
   void dispose() {
     _scroll.dispose();
     super.dispose();
+  }
+
+  /// Badges are placed after layout, so lines can be measured.
+  void _scheduleBadges() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      setState(() => _badges = widget.askActive ? _visibleLines() : const []);
+    });
+  }
+
+  List<(Line, Offset)> _visibleLines() {
+    final stack = _stackKey.currentContext?.findRenderObject() as RenderBox?;
+    if (stack == null) return const [];
+    final visible = <(Line, Offset)>[];
+    for (final line in widget.note.lines) {
+      final box =
+          _lineKeys[line.n]?.currentContext?.findRenderObject() as RenderBox?;
+      if (box == null || !box.attached) continue; // not built: far off screen
+      final top = box.localToGlobal(Offset.zero, ancestor: stack);
+      // The badge sits on the line's first row, so that row must be on screen.
+      if (top.dy >= -4 && top.dy + 36 <= stack.size.height) {
+        visible.add((line, top));
+      }
+    }
+    return visible;
   }
 
   @override
@@ -56,44 +110,112 @@ class _NotePageState extends ConsumerState<NotePage> {
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 720),
-          child: ListView(
-            controller: _scroll,
-            padding: const EdgeInsets.fromLTRB(20, 8, 20, 112),
+          child: Stack(
+            key: _stackKey,
             children: [
-              Text(
-                [widget.course.course, ...note.path].join(' › '),
-                style: TextStyle(fontSize: 13, color: colors.onSurfaceVariant),
-              ),
-              const SizedBox(height: 8),
-              Text(note.title,
-                  style: TextStyle(
-                      fontSize: body * 1.45, fontWeight: FontWeight.w700, height: 1.2)),
-              for (final section in note.sections) ...[
-                _SectionLabel(section),
-                for (final line in section.lines)
-                  _LineRow(
-                    line: line,
-                    lead: sectionKind(section.type) == SectionKind.lead,
-                    body: body,
-                    onRefs: (refs) => openRefs(context, widget.course, refs),
+              _content(context, body, colors, note, related),
+              if (widget.askActive)
+                for (final (i, (line, at)) in _badges.indexed)
+                  Positioned(
+                    // Centred on the line-number column (30 wide).
+                    left: at.dx + 15 - _AskBadge.size / 2,
+                    top: at.dy + body * 0.75 - _AskBadge.size / 2,
+                    child: _AskBadge(i + 1, onTap: () => widget.onAsk(line)),
                   ),
-              ],
-              if (note.flags.isNotEmpty) _FlagsBox(note.flags, body: body),
-              if (related.isNotEmpty) ...[
-                const _Label('Related'),
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 4,
-                  children: [
-                    for (final r in related)
-                      ActionChip(
-                        label: Text(r.title, style: const TextStyle(fontSize: 15)),
-                        onPressed: () => widget.onOpenNote(r.id),
-                      ),
-                  ],
-                ),
-              ],
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _content(
+    BuildContext context,
+    double body,
+    ColorScheme colors,
+    Note note,
+    List<Note> related,
+  ) {
+    return ListView(
+      controller: _scroll,
+      padding: const EdgeInsets.fromLTRB(20, 8, 20, 112),
+      children: [
+        Text(
+          [widget.course.course, ...note.path].join(' › '),
+          style: TextStyle(fontSize: 13, color: colors.onSurfaceVariant),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          note.title,
+          style: TextStyle(
+            fontSize: body * 1.45,
+            fontWeight: FontWeight.w700,
+            height: 1.2,
+          ),
+        ),
+        for (final section in note.sections) ...[
+          _SectionLabel(section),
+          for (final line in section.lines)
+            _LineRow(
+              key: _lineKeys.putIfAbsent(line.n, GlobalKey.new),
+              line: line,
+              highlighted: widget.highlightedLine == line.n,
+              lead: sectionKind(section.type) == SectionKind.lead,
+              body: body,
+              onRefs: (refs) => openRefs(context, widget.course, refs),
+            ),
+        ],
+        if (note.flags.isNotEmpty) _FlagsBox(note.flags, body: body),
+        if (related.isNotEmpty) ...[
+          const _Label('Related'),
+          Wrap(
+            spacing: 8,
+            runSpacing: 4,
+            children: [
+              for (final r in related)
+                ActionChip(
+                  label: Text(r.title, style: const TextStyle(fontSize: 15)),
+                  onPressed: () => widget.onOpenNote(r.id),
+                ),
+            ],
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+/// Large round number shown on a line in Ask mode.
+class _AskBadge extends StatelessWidget {
+  const _AskBadge(this.number, {required this.onTap});
+
+  static const size = 44.0;
+
+  final int number;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return Material(
+      key: ValueKey('ask-badge-$number'),
+      color: colors.primary,
+      shape: const CircleBorder(),
+      elevation: 3,
+      child: InkWell(
+        customBorder: const CircleBorder(),
+        onTap: onTap,
+        child: SizedBox.square(
+          dimension: size,
+          child: Center(
+            child: Text(
+              '$number',
+              style: TextStyle(
+                color: colors.onPrimary,
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
           ),
         ),
       ),
@@ -109,17 +231,17 @@ class _Label extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(top: 28, bottom: 8),
-        child: Text(
-          text.toUpperCase(),
-          style: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 1.1,
-            color: color ?? Theme.of(context).colorScheme.primary,
-          ),
-        ),
-      );
+    padding: const EdgeInsets.only(top: 28, bottom: 8),
+    child: Text(
+      text.toUpperCase(),
+      style: TextStyle(
+        fontSize: 13,
+        fontWeight: FontWeight.w700,
+        letterSpacing: 1.1,
+        color: color ?? Theme.of(context).colorScheme.primary,
+      ),
+    ),
+  );
 }
 
 class _SectionLabel extends StatelessWidget {
@@ -129,32 +251,42 @@ class _SectionLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => _Label(
-        sectionTitle(section),
-        color: sectionKind(section.type) == SectionKind.danger
-            ? Theme.of(context).colorScheme.error
-            : null,
-      );
+    sectionTitle(section),
+    color: sectionKind(section.type) == SectionKind.danger
+        ? Theme.of(context).colorScheme.error
+        : null,
+  );
 }
 
 class _LineRow extends StatelessWidget {
   const _LineRow({
+    super.key,
     required this.line,
     required this.lead,
     required this.body,
     required this.onRefs,
+    this.highlighted = false,
   });
 
   final Line line;
   final bool lead;
   final double body;
   final ValueChanged<List<SourceRef>> onRefs;
+  final bool highlighted;
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     final refs = parseRefs(line.ref);
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 6),
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 400),
+      margin: const EdgeInsets.only(bottom: 6),
+      decoration: BoxDecoration(
+        color: highlighted
+            ? colors.primaryContainer
+            : colors.primaryContainer.withAlpha(0),
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -162,10 +294,14 @@ class _LineRow extends StatelessWidget {
             width: 30,
             child: Padding(
               padding: EdgeInsets.only(top: body * 0.2),
-              child: Text('${line.n}',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                      fontSize: body * 0.8, color: colors.onSurfaceVariant)),
+              child: Text(
+                '${line.n}',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  fontSize: body * 0.8,
+                  color: colors.onSurfaceVariant,
+                ),
+              ),
             ),
           ),
           const SizedBox(width: 14),
@@ -186,8 +322,13 @@ class _LineRow extends StatelessWidget {
                 else if (refs.isNotEmpty)
                   _RefLink(line.ref, onTap: () => onRefs(refs))
                 else if (line.ref.isNotEmpty)
-                  Text(line.ref,
-                      style: TextStyle(fontSize: 13, color: colors.onSurfaceVariant)),
+                  Text(
+                    line.ref,
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: colors.onSurfaceVariant,
+                    ),
+                  ),
               ],
             ),
           ),
@@ -244,8 +385,10 @@ class _PracticeTag extends StatelessWidget {
           border: Border.all(color: color),
           borderRadius: BorderRadius.circular(6),
         ),
-        child: Text('Standard practice – confirm',
-            style: TextStyle(fontSize: 12, color: color)),
+        child: Text(
+          'Standard practice – confirm',
+          style: TextStyle(fontSize: 12, color: color),
+        ),
       ),
     );
   }
@@ -276,16 +419,30 @@ class _FlagsBox extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(children: [
-            Icon(Icons.flag_outlined, color: red, size: 20),
-            const SizedBox(width: 8),
-            Text('Check',
-                style: TextStyle(color: red, fontWeight: FontWeight.w700, fontSize: 16)),
-          ]),
+          Row(
+            children: [
+              Icon(Icons.flag_outlined, color: red, size: 20),
+              const SizedBox(width: 8),
+              Text(
+                'Check',
+                style: TextStyle(
+                  color: red,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16,
+                ),
+              ),
+            ],
+          ),
           for (final f in flags) ...[
             const SizedBox(height: 10),
-            Text(_kindLabels[f.kind] ?? f.kind,
-                style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: red)),
+            Text(
+              _kindLabels[f.kind] ?? f.kind,
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: red,
+              ),
+            ),
             const SizedBox(height: 2),
             Text(f.text, style: TextStyle(fontSize: body * 0.95, height: 1.45)),
           ],

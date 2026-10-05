@@ -21,8 +21,8 @@ class ContentRepository {
     this._box, {
     required Future<String> Function(String asset) loadAsset,
     http.Client? client,
-  })  : _loadAsset = loadAsset,
-        _client = client ?? http.Client();
+  }) : _loadAsset = loadAsset,
+       _client = client ?? http.Client();
 
   static const boxName = 'content';
 
@@ -39,8 +39,8 @@ class ContentRepository {
   /// Version of the copy [load] returns.
   int localVersion(CourseConfig c) =>
       _storedVersion(c.id) > (_bundledVersions[c.id] ?? 0)
-          ? _storedVersion(c.id)
-          : _bundledVersions[c.id] ?? 0;
+      ? _storedVersion(c.id)
+      : _bundledVersions[c.id] ?? 0;
 
   /// Loads a course from the device, or null if it has no notes yet.
   /// Never touches the network.
@@ -84,8 +84,9 @@ class ContentRepository {
 
   /// Reads `"version": N` from the start of a notes file without parsing it all.
   static int _peekVersion(String json) {
-    final m = RegExp(r'"version"\s*:\s*(\d+)')
-        .firstMatch(json.substring(0, json.length.clamp(0, 2000)));
+    final m = RegExp(
+      r'"version"\s*:\s*(\d+)',
+    ).firstMatch(json.substring(0, json.length.clamp(0, 2000)));
     return m == null ? 0 : int.parse(m.group(1)!);
   }
 }

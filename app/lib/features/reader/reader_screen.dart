@@ -1,8 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 
 import '../../data/providers.dart';
+import '../../models/course.dart';
+import '../ask/ask_action.dart';
+import '../ask/prompt_templates.dart';
 import 'note_page.dart';
 
 /// Where she was reading, saved so the app reopens there.
@@ -19,7 +24,10 @@ class LastPosition {
     final m = box.get(_key) as Map?;
     if (m == null) return null;
     return LastPosition(
-        m['course'] as String, m['note'] as String, (m['offset'] as num).toDouble());
+      m['course'] as String,
+      m['note'] as String,
+      (m['offset'] as num).toDouble(),
+    );
   }
 
   void save(Box box) =>
@@ -48,6 +56,18 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
   late final PageController _pages;
   late int _index;
 
+  bool _asking = false;
+  AskMode _mode = AskMode.explain;
+
+  /// Line she asked about, briefly highlighted when she comes back.
+  AskPending? _highlight;
+  Timer? _highlightTimer;
+
+  /// Runs for 2 seconds after a badge tap; resumes during it are ignored.
+  Timer? _justAsked;
+
+  late final AppLifecycleListener _lifecycle;
+
   @override
   void initState() {
     super.initState();
@@ -56,16 +76,95 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
     _index = i < 0 ? 0 : i;
     _pages = PageController(initialPage: _index);
     _save(widget.noteId, widget.initialOffset);
+    _lifecycle = AppLifecycleListener(onResume: _showPendingHighlight);
+    // Also covers the app being closed while she was in DeepSeek.
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _showPendingHighlight(),
+    );
   }
 
   @override
   void dispose() {
+    _lifecycle.dispose();
+    _highlightTimer?.cancel();
+    _justAsked?.cancel();
     _pages.dispose();
     super.dispose();
   }
 
-  void _save(String noteId, double offset) => LastPosition(widget.courseId, noteId, offset)
-      .save(ref.read(uiBoxProvider));
+  void _save(String noteId, double offset) => LastPosition(
+    widget.courseId,
+    noteId,
+    offset,
+  ).save(ref.read(uiBoxProvider));
+
+  void _showPendingHighlight() {
+    // On Windows the app briefly regains focus while the browser opens; that
+    // is not her coming back, so keep the highlight for the real return.
+    if (_justAsked?.isActive ?? false) return;
+    final box = ref.read(uiBoxProvider);
+    final pending = AskPending.read(box);
+    if (pending == null || !mounted) return;
+    AskPending.clear(box);
+    setState(() => _highlight = pending);
+    _highlightTimer?.cancel();
+    _highlightTimer = Timer(const Duration(seconds: 2), () {
+      if (mounted) setState(() => _highlight = null);
+    });
+  }
+
+  void _ask(Course course, Note note, Line line) {
+    setState(() => _asking = false);
+    _justAsked?.cancel();
+    _justAsked = Timer(const Duration(seconds: 2), () {});
+    askAboutLine(
+      context: context,
+      ref: ref,
+      course: course,
+      note: note,
+      line: line,
+      mode: _mode,
+    );
+  }
+
+  PreferredSizeWidget _askBar() {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      title: const Text('Tap a number'),
+      actions: [
+        TextButton(
+          onPressed: () => setState(() => _asking = false),
+          child: const Text('Cancel', style: TextStyle(fontSize: 16)),
+        ),
+        const SizedBox(width: 8),
+      ],
+    );
+  }
+
+  /// The three modes. They wrap onto two rows on narrow phones, so none is
+  /// hidden off screen.
+  Widget _modeChips() {
+    return Material(
+      color: Theme.of(context).colorScheme.surfaceContainer,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 4, 16, 10),
+        child: Wrap(
+          alignment: WrapAlignment.center,
+          spacing: 8,
+          runSpacing: 4,
+          children: [
+            for (final m in AskMode.values)
+              ChoiceChip(
+                label: Text(m.label, style: const TextStyle(fontSize: 15)),
+                showCheckmark: false,
+                selected: _mode == m,
+                onSelected: (_) => setState(() => _mode = m),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,46 +175,74 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
     final notes = course.allNotes;
     final current = notes[_index.clamp(0, notes.length - 1)];
     final topic = course.topicByNoteId[current.id]!;
-    final position = '${topic.notes.indexOf(current) + 1} / ${topic.notes.length}';
+    final position =
+        '${topic.notes.indexOf(current) + 1} / ${topic.notes.length}';
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(topic.title, overflow: TextOverflow.ellipsis),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: Center(
-              child: Text(position, style: Theme.of(context).textTheme.titleMedium),
+    return PopScope(
+      // Back leaves Ask mode first.
+      canPop: !_asking,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) setState(() => _asking = false);
+      },
+      child: Scaffold(
+        appBar: _asking
+            ? _askBar()
+            : AppBar(
+                title: Text(topic.title, overflow: TextOverflow.ellipsis),
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: Center(
+                      child: Text(
+                        position,
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+        floatingActionButton: _asking
+            ? null
+            : FloatingActionButton.extended(
+                onPressed: () => setState(() => _asking = true),
+                icon: const Icon(Icons.auto_awesome),
+                label: const Text('Ask AI', style: TextStyle(fontSize: 16)),
+              ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            if (_asking) _modeChips(),
+            Expanded(
+              child: PageView.builder(
+                controller: _pages,
+                // No swiping while choosing a line.
+                physics: _asking ? const NeverScrollableScrollPhysics() : null,
+                itemCount: notes.length,
+                onPageChanged: (i) {
+                  setState(() => _index = i);
+                  _save(notes[i].id, 0);
+                },
+                itemBuilder: (context, i) => NotePage(
+                  key: ValueKey(notes[i].id),
+                  course: course,
+                  note: notes[i],
+                  initialOffset: notes[i].id == widget.noteId
+                      ? widget.initialOffset
+                      : 0,
+                  onScrolled: (offset) => _save(notes[i].id, offset),
+                  onOpenNote: (id) {
+                    final target = notes.indexWhere((n) => n.id == id);
+                    if (target >= 0) _pages.jumpToPage(target);
+                  },
+                  askActive: _asking && i == _index,
+                  onAsk: (line) => _ask(course, notes[i], line),
+                  highlightedLine: _highlight?.noteId == notes[i].id
+                      ? _highlight!.lineN
+                      : null,
+                ),
+              ),
             ),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          // TODO(step 5): Ask mode.
-          ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Ask AI comes in step 5')));
-        },
-        icon: const Icon(Icons.auto_awesome),
-        label: const Text('Ask AI', style: TextStyle(fontSize: 16)),
-      ),
-      body: PageView.builder(
-        controller: _pages,
-        itemCount: notes.length,
-        onPageChanged: (i) {
-          setState(() => _index = i);
-          _save(notes[i].id, 0);
-        },
-        itemBuilder: (context, i) => NotePage(
-          key: ValueKey(notes[i].id),
-          course: course,
-          note: notes[i],
-          initialOffset: notes[i].id == widget.noteId ? widget.initialOffset : 0,
-          onScrolled: (offset) => _save(notes[i].id, offset),
-          onOpenNote: (id) {
-            final target = notes.indexWhere((n) => n.id == id);
-            if (target >= 0) _pages.jumpToPage(target);
-          },
+          ],
         ),
       ),
     );

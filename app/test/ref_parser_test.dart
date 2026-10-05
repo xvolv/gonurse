@@ -2,8 +2,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:gonurse/data/ref_parser.dart';
 
 void main() {
-  List<(String, int)> pages(String ref) =>
-      [for (final r in parseRefs(ref)) (r.sourceKey, r.page)];
+  List<(String, int)> pages(String ref) => [
+    for (final r in parseRefs(ref)) (r.sourceKey, r.page),
+  ];
 
   test('single page', () {
     expect(pages('CVS p.97'), [('CVS p.', 97)]);
@@ -19,7 +20,10 @@ void main() {
   });
 
   test('range opens at first page', () {
-    expect(pages('CVS p.96-97, RCVS p.116'), [('CVS p.', 96), ('RCVS p.', 116)]);
+    expect(pages('CVS p.96-97, RCVS p.116'), [
+      ('CVS p.', 96),
+      ('RCVS p.', 116),
+    ]);
   });
 
   test('slides, with trailing words', () {
@@ -28,9 +32,14 @@ void main() {
   });
 
   test('labels', () {
-    expect([for (final r in parseRefs('CVS p.96-97, RCVS p.116')) r.label],
-        ['CVS p.96-97', 'RCVS p.116']);
-    expect([for (final r in parseRefs('Gen slide 77')) r.label], ['Gen slide 77']);
+    expect(
+      [for (final r in parseRefs('CVS p.96-97, RCVS p.116')) r.label],
+      ['CVS p.96-97', 'RCVS p.116'],
+    );
+    expect(
+      [for (final r in parseRefs('Gen slide 77')) r.label],
+      ['Gen slide 77'],
+    );
   });
 
   test('CVS does not match inside RCVS', () {

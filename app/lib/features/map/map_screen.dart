@@ -43,10 +43,12 @@ class _MapScreenState extends ConsumerState<MapScreen> {
   }
 
   void _openNote(Note note) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (_) =>
-          ReaderScreen(courseId: widget.courseId, noteId: note.id),
-    ));
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) =>
+            ReaderScreen(courseId: widget.courseId, noteId: note.id),
+      ),
+    );
   }
 
   @override
@@ -91,35 +93,41 @@ class _MapScreenState extends ConsumerState<MapScreen> {
     for (final unit in course.units) {
       final unitKey = 'u:${unit.id}';
       final unitOpen = _open.contains(unitKey);
-      rows.add(_TreeRow(
-        depth: 0,
-        leading: _Chevron(open: unitOpen),
-        title: unit.title,
-        style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
-        count: unit.noteCount,
-        onTap: () => _toggle(unitKey),
-      ));
+      rows.add(
+        _TreeRow(
+          depth: 0,
+          leading: _Chevron(open: unitOpen),
+          title: unit.title,
+          style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
+          count: unit.noteCount,
+          onTap: () => _toggle(unitKey),
+        ),
+      );
       if (!unitOpen) continue;
       for (final topic in unit.topics) {
         final topicKey = 't:${unit.id}/${topic.title}';
         final topicOpen = _open.contains(topicKey);
-        rows.add(_TreeRow(
-          depth: 1,
-          leading: _Chevron(open: topicOpen),
-          title: topic.title,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-          count: topic.notes.length,
-          onTap: () => _toggle(topicKey),
-        ));
+        rows.add(
+          _TreeRow(
+            depth: 1,
+            leading: _Chevron(open: topicOpen),
+            title: topic.title,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            count: topic.notes.length,
+            onTap: () => _toggle(topicKey),
+          ),
+        );
         if (!topicOpen) continue;
         for (final note in topic.notes) {
-          rows.add(_TreeRow(
-            depth: 2,
-            leading: const _Dot(),
-            title: note.title,
-            style: const TextStyle(fontSize: 16),
-            onTap: () => _openNote(note),
-          ));
+          rows.add(
+            _TreeRow(
+              depth: 2,
+              leading: const _Dot(),
+              title: note.title,
+              style: const TextStyle(fontSize: 16),
+              onTap: () => _openNote(note),
+            ),
+          );
         }
       }
     }
@@ -188,9 +196,11 @@ class _SearchResults extends StatelessWidget {
     if (matches.isEmpty) {
       return Padding(
         padding: const EdgeInsets.all(32),
-        child: Text('No notes match "$shownQuery"',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16, color: muted)),
+        child: Text(
+          'No notes match "$shownQuery"',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 16, color: muted),
+        ),
       );
     }
     return ListView(
@@ -200,8 +210,10 @@ class _SearchResults extends StatelessWidget {
             minTileHeight: 56,
             contentPadding: const EdgeInsets.symmetric(horizontal: 24),
             title: Text(note.title, style: const TextStyle(fontSize: 16)),
-            subtitle: Text(note.path.join(' › '),
-                style: TextStyle(fontSize: 13, color: muted)),
+            subtitle: Text(
+              note.path.join(' › '),
+              style: TextStyle(fontSize: 13, color: muted),
+            ),
             onTap: () => onTap(note),
           ),
       ],
@@ -241,10 +253,16 @@ class _TreeRow extends StatelessWidget {
         child: ConstrainedBox(
           constraints: const BoxConstraints(minHeight: 52),
           child: Padding(
-            padding: EdgeInsets.only(left: _leftPad + depth * _indent, right: 20),
+            padding: EdgeInsets.only(
+              left: _leftPad + depth * _indent,
+              right: 20,
+            ),
             child: Row(
               children: [
-                SizedBox(width: _leadingWidth, child: Center(child: leading)),
+                SizedBox(
+                  width: _leadingWidth,
+                  child: Center(child: leading),
+                ),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Padding(
@@ -253,8 +271,13 @@ class _TreeRow extends StatelessWidget {
                   ),
                 ),
                 if (count != null)
-                  Text('$count',
-                      style: TextStyle(fontSize: 14, color: colors.onSurfaceVariant)),
+                  Text(
+                    '$count',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: colors.onSurfaceVariant,
+                    ),
+                  ),
               ],
             ),
           ),
@@ -283,7 +306,8 @@ class _GuidePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_GuidePainter old) => old.depth != depth || old.color != color;
+  bool shouldRepaint(_GuidePainter old) =>
+      old.depth != depth || old.color != color;
 }
 
 class _Chevron extends StatelessWidget {
@@ -293,9 +317,9 @@ class _Chevron extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Icon(
-        open ? Icons.expand_more : Icons.chevron_right,
-        color: Theme.of(context).colorScheme.onSurfaceVariant,
-      );
+    open ? Icons.expand_more : Icons.chevron_right,
+    color: Theme.of(context).colorScheme.onSurfaceVariant,
+  );
 }
 
 class _Dot extends StatelessWidget {
@@ -303,11 +327,11 @@ class _Dot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        width: 7,
-        height: 7,
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primary,
-          shape: BoxShape.circle,
-        ),
-      );
+    width: 7,
+    height: 7,
+    decoration: BoxDecoration(
+      color: Theme.of(context).colorScheme.primary,
+      shape: BoxShape.circle,
+    ),
+  );
 }

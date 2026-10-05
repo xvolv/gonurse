@@ -8,8 +8,9 @@ import '../models/course.dart';
 import 'content_repository.dart';
 
 /// Overridden in `main()` once Hive is open.
-final contentRepositoryProvider =
-    Provider<ContentRepository>((ref) => throw UnimplementedError());
+final contentRepositoryProvider = Provider<ContentRepository>(
+  (ref) => throw UnimplementedError(),
+);
 
 /// A course from [courses], with its notes if they are on the device yet.
 class CourseEntry {
@@ -21,8 +22,10 @@ class CourseEntry {
 
 /// All courses, loaded from the device. A version check runs in the
 /// background after loading; if it finds new notes the list is reloaded.
-final coursesProvider = AsyncNotifierProvider<CoursesNotifier, List<CourseEntry>>(
-    CoursesNotifier.new);
+final coursesProvider =
+    AsyncNotifierProvider<CoursesNotifier, List<CourseEntry>>(
+      CoursesNotifier.new,
+    );
 
 class CoursesNotifier extends AsyncNotifier<List<CourseEntry>> {
   @override

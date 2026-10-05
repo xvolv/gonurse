@@ -5,7 +5,11 @@ import '../../models/course.dart';
 
 /// Opens the source file of [refs] at its first page. With several refs she
 /// picks one from a small menu first.
-Future<void> openRefs(BuildContext context, Course course, List<SourceRef> refs) async {
+Future<void> openRefs(
+  BuildContext context,
+  Course course,
+  List<SourceRef> refs,
+) async {
   if (refs.isEmpty) return;
   final ref = refs.length == 1
       ? refs.single
@@ -36,6 +40,8 @@ void _openSource(BuildContext context, Course course, SourceRef ref) {
   // TODO(step 6): open the bundled PDF in the viewer.
   final file = course.sources[ref.sourceKey]?.pdfFile ?? ref.sourceKey;
   ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(content: Text('PDF viewer comes in step 6: $file, page ${ref.page}')),
+    SnackBar(
+      content: Text('PDF viewer comes in step 6: $file, page ${ref.page}'),
+    ),
   );
 }

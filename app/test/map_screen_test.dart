@@ -11,9 +11,10 @@ import 'package:gonurse/models/course.dart';
 import 'package:hive/hive.dart';
 
 void main() {
-  final course = Course.fromJson(jsonDecode(
-          File('../content/pharmacology_notes.json').readAsStringSync())
-      as Map<String, dynamic>);
+  final course = Course.fromJson(
+    jsonDecode(File('../content/pharmacology_notes.json').readAsStringSync())
+        as Map<String, dynamic>,
+  );
   late Box uiBox;
 
   // In memory: a file-backed box never finishes writing inside widget tests.
@@ -24,15 +25,17 @@ void main() {
     tester.view.physicalSize = const Size(800, 2400);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.reset);
-    await tester.pumpWidget(ProviderScope(
-      overrides: [
-        courseProvider.overrideWith((ref, id) => course),
-        uiBoxProvider.overrideWithValue(uiBox),
-      ],
-      child: const MaterialApp(
-        home: MapScreen(courseId: 'pharmacology', title: 'Pharmacology'),
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          courseProvider.overrideWith((ref, id) => course),
+          uiBoxProvider.overrideWithValue(uiBox),
+        ],
+        child: const MaterialApp(
+          home: MapScreen(courseId: 'pharmacology', title: 'Pharmacology'),
+        ),
       ),
-    ));
+    );
   }
 
   testWidgets('shows the 8 units, all closed', (tester) async {
@@ -42,19 +45,26 @@ void main() {
     }
     expect(course.units, hasLength(8));
     expect(find.text('Heart failure'), findsNothing);
-    expect(find.text('30'), findsOneWidget, reason: 'Renal & Cardiovascular count');
+    expect(
+      find.text('30'),
+      findsOneWidget,
+      reason: 'Renal & Cardiovascular count',
+    );
   });
 
-  testWidgets('opening a unit and a topic shows its notes, and is remembered',
-      (tester) async {
+  testWidgets('opening a unit and a topic shows its notes, and is remembered', (
+    tester,
+  ) async {
     await pumpMap(tester);
     await tester.tap(find.text('Renal & Cardiovascular'));
     await tester.pump();
     await tester.tap(find.text('Heart failure'));
     await tester.pump();
     expect(find.text('Digoxin'), findsOneWidget);
-    expect(uiBox.get('map_open_pharmacology'),
-        unorderedEquals(['u:cvs', 't:cvs/Heart failure']));
+    expect(
+      uiBox.get('map_open_pharmacology'),
+      unorderedEquals(['u:cvs', 't:cvs/Heart failure']),
+    );
 
     // Closing the unit hides its topics.
     await tester.tap(find.text('Renal & Cardiovascular'));
@@ -68,7 +78,11 @@ void main() {
     await tester.pump();
     expect(find.text('Digoxin'), findsOneWidget);
     expect(find.text('Renal & Cardiovascular › Heart failure'), findsOneWidget);
-    expect(find.text('General Pharmacology'), findsNothing, reason: 'tree hidden');
+    expect(
+      find.text('General Pharmacology'),
+      findsNothing,
+      reason: 'tree hidden',
+    );
 
     await tester.enterText(find.byType(TextField), 'zzzz');
     await tester.pump();
@@ -86,7 +100,9 @@ void main() {
     await tester.tap(find.text('Digoxin'));
     await tester.pumpAndSettle();
     expect(find.text('THE BIG IDEA'), findsOneWidget, reason: 'reader is open');
-    expect(find.text('Pharmacology › Renal & Cardiovascular › Heart failure'),
-        findsOneWidget);
+    expect(
+      find.text('Pharmacology › Renal & Cardiovascular › Heart failure'),
+      findsOneWidget,
+    );
   });
 }
