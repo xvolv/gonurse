@@ -34,14 +34,41 @@ void main() {
       expect(prompt, 'T: A\nX: "B"');
     });
 
-    test('several lines: numbered, one per row, in note order', () {
+    test('Amharic template: several lines numbered, in note order', () {
       final prompt = buildPrompt(
         AskMode.explain.defaultTemplate,
         course,
         digoxin,
         [line(3), line(1)], // selected in this order
       );
-      expect(prompt, startsWith('I am a nursing student in Ethiopia'));
+      expect(
+        prompt,
+        startsWith(
+          'በአማርኛ ብቻ መልስ። (Reply ONLY in Amharic, in Ge\'ez script. '
+          'Not English, not Tigrinya, not any other language.)\n\n'
+          'I am a nursing student preparing for the Ethiopian national '
+          'nursing exit exam.',
+        ),
+      );
+      expect(prompt, contains('- Explain each line by its number.\n'));
+      expect(
+        prompt,
+        endsWith(
+          'Text:\n1. ${line(1).text}\n2. ${line(3).text}\n\n'
+          'አስታውስ፦ መልሱ በሙሉ በአማርኛ ይሁን። '
+          '(Reminder: the entire answer must be in Amharic.)',
+        ),
+      );
+      expect(prompt, isNot(contains('{')), reason: 'no placeholder left');
+    });
+
+    test('templates with {topic} get the note title and breadcrumb', () {
+      final prompt = buildPrompt(
+        AskMode.simpler.defaultTemplate,
+        course,
+        digoxin,
+        [line(1)],
+      );
       expect(
         prompt,
         contains(
@@ -49,9 +76,57 @@ void main() {
           '(Pharmacology › Renal & Cardiovascular › Heart failure)',
         ),
       );
+    });
+
+    test('every note, all lines selected: the ChatGPT link stays under '
+        '6,000 characters', () {
+      for (final note in course.allNotes) {
+        final prompt = buildPrompt(
+          AskMode.explain.defaultTemplate,
+          course,
+          note,
+          note.lines,
+        );
+        final link = AiTarget.chatGpt.uriFor(prompt).toString();
+        expect(AiTarget.chatGpt.prefills(prompt), isTrue, reason: note.id);
+        expect(link.length, lessThanOrEqualTo(6000), reason: note.id);
+      }
+    });
+
+    test('1,500 characters of note-style text (with →, ⁺, β) stay under '
+        '6,000; 1,500 Amharic letters do not and fall back to paste', () {
+      String link(String text) => AiTarget.chatGpt
+          .uriFor(
+            fillTemplate(
+              AskMode.explain.defaultTemplate,
+              topic: '',
+              text: text,
+            ),
+          )
+          .toString();
+
+      final english = joinLines([
+        for (var i = 0; i < 40; i++) 'Low K⁺ → toxic dose; β-blocker ok.',
+      ]);
+      expect(english.length, greaterThan(1400));
+      expect(link(english).length, lessThanOrEqualTo(6000));
+
+      // Each Ge'ez letter is 3 bytes = 9 characters in a link.
+      final amharic = 'ሀ' * 1500;
+      final encoded = Uri.encodeComponent(
+        fillTemplate(AskMode.explain.defaultTemplate, topic: '', text: amharic),
+      );
+      expect(encoded.length, greaterThan(6000));
+      expect(link(amharic), chatGptUrl, reason: 'plain link: she pastes');
       expect(
-        prompt,
-        endsWith('Text:\n"1. ${line(1).text}\n2. ${line(3).text}"'),
+        AiTarget.chatGpt.prefills(
+          fillTemplate(
+            AskMode.explain.defaultTemplate,
+            topic: '',
+            text: amharic,
+          ),
+        ),
+        isFalse,
       );
     });
 
@@ -221,7 +296,7 @@ void main() {
         digoxin,
         [line(1), line(3)],
       );
-      expect(prompt, contains('"1. ${line(1).text}\n2. ${line(3).text}"'));
+      expect(prompt, contains('Text:\n1. ${line(1).text}\n2. ${line(3).text}'));
       expect(clipboard, prompt, reason: 'backup copy');
       expect(opened.single.host, 'chatgpt.com');
       expect(opened.single.queryParameters['q'], prompt);
@@ -253,7 +328,7 @@ void main() {
       await doubleTap(tester, 2);
       await tester.tap(find.byType(AskAiButton));
       await tester.pumpAndSettle();
-      expect(clipboard, contains('Explain the text below in simple Amharic.'));
+      expect(clipboard, startsWith('በአማርኛ ብቻ መልስ።'));
     });
 
     testWidgets('a link over 6,000 characters falls back to copy + paste', (
@@ -377,6 +452,48 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(SelectableText), findsNothing);
       expect(opened.single.queryParameters['q'], isNotEmpty);
+    });
+  });
+
+  group('saved templates', () {
+    late Box uiBox;
+    setUp(() async => uiBox = await Hive.openBox('ui', bytes: Uint8List(0)));
+    tearDown(() => uiBox.close());
+
+    Map<AskMode, String> templates() {
+      final container = ProviderContainer(
+        overrides: [uiBoxProvider.overrideWithValue(uiBox)],
+      );
+      addTearDown(container.dispose);
+      return container.read(promptTemplatesProvider);
+    }
+
+    test('a saved copy of an earlier default is replaced by the new one', () {
+      for (final old in AskMode.explain.previousDefaults) {
+        uiBox.put('prompt_explain', old);
+        expect(templates()[AskMode.explain], AskMode.explain.defaultTemplate);
+        expect(uiBox.get('prompt_explain'), isNull);
+      }
+    });
+
+    test('a template she really edited is kept', () {
+      uiBox.put('prompt_explain', 'My own words: {text}');
+      expect(templates()[AskMode.explain], 'My own words: {text}');
+    });
+
+    test('saving the default unchanged stores nothing', () {
+      final container = ProviderContainer(
+        overrides: [uiBoxProvider.overrideWithValue(uiBox)],
+      );
+      addTearDown(container.dispose);
+      container
+          .read(promptTemplatesProvider.notifier)
+          .set(AskMode.explain, AskMode.explain.defaultTemplate);
+      expect(uiBox.get('prompt_explain'), isNull);
+      expect(
+        container.read(promptTemplatesProvider)[AskMode.explain],
+        AskMode.explain.defaultTemplate,
+      );
     });
   });
 

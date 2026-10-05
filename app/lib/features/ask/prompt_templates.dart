@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart' show StringCharacters;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive/hive.dart';
 
 import '../../data/providers.dart';
 
@@ -9,7 +10,34 @@ import '../../data/providers.dart';
 /// selected lines (see [joinLines]). Settings can override each template
 /// (stored in Hive).
 enum AskMode {
-  explain('Explain in Amharic', '''
+  explain(
+    'Explain in Amharic',
+    '''
+በአማርኛ ብቻ መልስ። (Reply ONLY in Amharic, in Ge'ez script. Not English, not Tigrinya, not any other language.)
+
+I am a nursing student preparing for the Ethiopian national nursing exit exam. Explain the lines below in simple Amharic, like a senior nurse teaching a junior.
+Rules:
+- Write the whole answer in Amharic.
+- Keep medical terms and drug names in English inside brackets, e.g. ደም ግፊት (hypertension).
+- Explain each line by its number.
+- End with one short clinical example of how the exam could ask it.
+
+Text:
+{text}
+
+አስታውስ፦ መልሱ በሙሉ በአማርኛ ይሁን። (Reminder: the entire answer must be in Amharic.)''',
+    [
+      // Earlier defaults: a saved copy equal to one of these was never edited.
+      '''
+I am a nursing student in Ethiopia preparing for the national exit exam.
+Explain the text below in simple Amharic.
+Keep medical terms in English.
+Use a real-life example from a hospital or daily life.
+Then give me one exam-style question about it with the answer.
+
+Topic: {topic}
+Text: "{text}"''',
+      '''
 I am a nursing student in Ethiopia preparing for the national exit exam.
 Explain the text below in simple Amharic.
 Keep medical terms in English.
@@ -18,7 +46,9 @@ Then give me one exam-style question about it with the answer.
 
 Topic: {topic}
 Text:
-"{text}"'''),
+"{text}"''',
+    ],
+  ),
 
   simpler('Simpler', '''
 I am a nursing student in Ethiopia. I don't understand the text below at all.
@@ -51,10 +81,17 @@ Topic: {topic}
 Text:
 "{text}"''');
 
-  const AskMode(this.label, this.defaultTemplate);
+  const AskMode(
+    this.label,
+    this.defaultTemplate, [
+    this.previousDefaults = const [],
+  ]);
 
   final String label;
   final String defaultTemplate;
+
+  /// Older versions of [defaultTemplate].
+  final List<String> previousDefaults;
 }
 
 /// Longest combined text of the selected lines put into a prompt.
@@ -102,13 +139,23 @@ class PromptTemplatesNotifier extends Notifier<Map<AskMode, String>> {
   @override
   Map<AskMode, String> build() {
     final box = ref.read(uiBoxProvider);
-    return {
-      for (final m in AskMode.values)
-        m: box.get(_key(m)) as String? ?? m.defaultTemplate,
-    };
+    return {for (final m in AskMode.values) m: _saved(box, m)};
+  }
+
+  /// Her edited template, or the default. A saved copy of an earlier default
+  /// was never really edited, so it is dropped and the new default used.
+  String _saved(Box box, AskMode mode) {
+    final saved = box.get(_key(mode)) as String?;
+    if (saved == null || mode.previousDefaults.contains(saved)) {
+      if (saved != null) box.delete(_key(mode));
+      return mode.defaultTemplate;
+    }
+    return saved;
   }
 
   void set(AskMode mode, String template) {
+    // Saving the default unchanged is not an edit: keep following updates.
+    if (template == mode.defaultTemplate) return reset(mode);
     ref.read(uiBoxProvider).put(_key(mode), template);
     state = {...state, mode: template};
   }
