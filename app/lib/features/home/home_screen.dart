@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../data/providers.dart';
 import '../map/map_screen.dart';
 import '../reader/reader_screen.dart';
+import '../settings/settings_button.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -57,7 +58,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final courses = ref.watch(coursesProvider);
     return Scaffold(
-      appBar: AppBar(title: const Text('GoNurse')),
+      appBar: AppBar(
+        title: const Text('GoNurse'),
+        actions: const [SettingsButton()],
+      ),
       body: courses.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(

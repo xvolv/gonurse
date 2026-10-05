@@ -8,6 +8,7 @@ import '../../data/providers.dart';
 import '../../models/course.dart';
 import '../ask/ask_action.dart';
 import '../ask/prompt_templates.dart';
+import '../settings/settings_button.dart';
 import 'note_page.dart';
 
 /// Where she was reading, saved so the app reopens there.
@@ -190,8 +191,9 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
             : AppBar(
                 title: Text(topic.title, overflow: TextOverflow.ellipsis),
                 actions: [
+                  const SettingsButton(),
                   Padding(
-                    padding: const EdgeInsets.only(right: 20),
+                    padding: const EdgeInsets.only(right: 20, left: 4),
                     child: Center(
                       child: Text(
                         position,

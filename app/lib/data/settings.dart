@@ -25,3 +25,21 @@ class TextSizeNotifier extends Notifier<int> {
 final bodyFontSizeProvider = Provider<double>(
   (ref) => TextSizeNotifier.bodySizes[ref.watch(textSizeProvider)],
 );
+
+/// Light or dark theme (light by default).
+final darkThemeProvider = NotifierProvider<DarkThemeNotifier, bool>(
+  DarkThemeNotifier.new,
+);
+
+class DarkThemeNotifier extends Notifier<bool> {
+  static const _key = 'dark_theme';
+
+  @override
+  bool build() =>
+      ref.read(uiBoxProvider).get(_key, defaultValue: false) as bool;
+
+  void set(bool dark) {
+    state = dark;
+    ref.read(uiBoxProvider).put(_key, dark);
+  }
+}
