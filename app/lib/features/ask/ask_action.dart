@@ -4,15 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../config.dart';
 import '../../data/providers.dart';
 import '../../models/course.dart';
+import 'ai_target.dart';
 import 'prompt_templates.dart';
 
-/// "Copied. Paste it in DeepSeek and send."
-const copiedToast = 'ተቀድቷል። DeepSeek ላይ Paste አድርገሽ ላኪ';
-
-/// Opens a URL outside the app (the DeepSeek app if installed, else the
+/// Opens a URL outside the app (the AI's app if installed, else the
 /// browser). A provider so tests can replace it.
 final urlOpenerProvider = Provider<Future<bool> Function(Uri)>(
   (ref) =>
@@ -45,7 +42,8 @@ String buildPrompt(String template, Course course, Note note, Line line) =>
       text: line.text,
     );
 
-/// Copies the prompt for [line], remembers the line, and opens DeepSeek.
+/// Copies the prompt for [line], remembers the line, and opens the chosen AI
+/// (with the prompt filled in if it supports that; the copy is then a backup).
 /// Call straight from the tap handler: the copy must start inside it.
 Future<void> askAboutLine({
   required BuildContext context,
@@ -61,26 +59,35 @@ Future<void> askAboutLine({
     note,
     line,
   );
+  final target = ref.read(aiTargetProvider);
+  final uri = target.uriFor(prompt);
+  final prefilled = target.prefills(prompt);
   final copy = Clipboard.setData(ClipboardData(text: prompt));
   AskPending(note.id, line.n).save(ref.read(uiBoxProvider));
 
   try {
     await copy;
   } catch (_) {
-    if (!context.mounted) return;
-    final copied = await _showCopyDialog(context, prompt);
-    if (!copied || !context.mounted) return;
+    // Only matters when she has to paste the prompt herself.
+    if (!prefilled) {
+      if (!context.mounted) return;
+      final copied = await _showCopyDialog(context, prompt);
+      if (!copied) return;
+    }
   }
   if (!context.mounted) return;
   ScaffoldMessenger.of(context)
     ..hideCurrentSnackBar()
     ..showSnackBar(
-      const SnackBar(
-        content: Text(copiedToast, style: TextStyle(fontSize: 16)),
-        duration: Duration(seconds: 6),
+      SnackBar(
+        content: Text(
+          prefilled ? target.openedToast! : target.copiedToast,
+          style: const TextStyle(fontSize: 16),
+        ),
+        duration: const Duration(seconds: 6),
       ),
     );
-  await ref.read(urlOpenerProvider)(Uri.parse(deepSeekUrl));
+  await ref.read(urlOpenerProvider)(uri);
 }
 
 /// Shown when the clipboard fails: she can select the prompt herself, or try

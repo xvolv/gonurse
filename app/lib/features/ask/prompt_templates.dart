@@ -27,9 +27,22 @@ Topic: {topic}
 Text: "{text}"'''),
 
   quiz('Quiz me', '''
-I am a nursing student in Ethiopia preparing for the national exit exam.
-Ask me 3 exam-style multiple-choice questions about the text below, one at a time.
-Wait for my answer before showing the correct one and explaining why, in simple Amharic with English medical terms.
+I am preparing for the Ethiopian national nursing exit exam. The exam has ONLY
+clinical scenario questions, for example:
+"A 28-year-old multiparous woman visited a hospital for contraception service.
+She was on her 14 days of postpartum period and not breastfeeding. She had no
+history of chronic disease. What is the most appropriate contraceptive method
+for the client?"
+
+Using the text below, write 3 questions in exactly that style:
+- Start with a patient or situation: age, condition, key findings or vital signs.
+- Ask "most appropriate", "priority", "first action" or "most likely".
+- 4 options (a–d) that all look reasonable; only one is best.
+- Ask one question at a time and wait for my answer.
+- After I answer, say if I'm right, then explain in simple Amharic (medical terms
+  in English) why the correct option is right AND why each wrong option is wrong.
+- If I say "I don't know" or answer wrong, immediately give the correct answer
+  and explain it. Never leave a question unanswered.
 
 Topic: {topic}
 Text: "{text}"''');

@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gonurse/config.dart';
 import 'package:gonurse/data/providers.dart';
+import 'package:gonurse/features/ask/ai_target.dart';
 import 'package:gonurse/features/ask/ask_action.dart';
 import 'package:gonurse/features/ask/prompt_templates.dart';
 import 'package:gonurse/features/reader/reader_screen.dart';
@@ -89,7 +90,8 @@ void main() {
     });
     tearDown(() => uiBox.close());
 
-    Future<void> pumpReader(WidgetTester tester) async {
+    Future<void> pumpReader(WidgetTester tester, {AiTarget? ai}) async {
+      if (ai != null) uiBox.put('ai_target', ai.name);
       // Phone-sized: only part of the note fits on screen.
       tester.view.physicalSize = const Size(420, 900);
       tester.view.devicePixelRatio = 1;
@@ -179,7 +181,7 @@ void main() {
     );
 
     testWidgets(
-      'tapping a badge copies the prompt, saves the line, opens DeepSeek',
+      'by default a badge opens ChatGPT with the prompt filled in, and copies it',
       (tester) async {
         await pumpReader(tester);
         await startAsking(tester);
@@ -187,17 +189,41 @@ void main() {
         await tester.pump();
 
         final line = digoxin.lines.first;
-        expect(
-          clipboard,
-          buildPrompt(AskMode.explain.defaultTemplate, course, digoxin, line),
+        final prompt = buildPrompt(
+          AskMode.explain.defaultTemplate,
+          course,
+          digoxin,
+          line,
         );
-        expect(opened, [Uri.parse(deepSeekUrl)]);
-        expect(find.text(copiedToast), findsOneWidget);
+        expect(clipboard, prompt, reason: 'backup copy');
+        expect(opened, hasLength(1));
+        expect(opened.single.host, 'chatgpt.com');
+        expect(opened.single.queryParameters['q'], prompt);
+        expect(find.text(AiTarget.chatGpt.openedToast!), findsOneWidget);
         expect(uiBox.get('ask_pending'), {'note': 'digoxin', 'n': line.n});
         await tester.pumpAndSettle();
         expect(badge(1), findsNothing, reason: 'Ask mode ends');
       },
     );
+
+    testWidgets('with DeepSeek chosen: copy and open DeepSeek', (tester) async {
+      await pumpReader(tester, ai: AiTarget.deepSeek);
+      await startAsking(tester);
+      await tester.tap(badge(1));
+      await tester.pump();
+
+      expect(
+        clipboard,
+        buildPrompt(
+          AskMode.explain.defaultTemplate,
+          course,
+          digoxin,
+          digoxin.lines.first,
+        ),
+      );
+      expect(opened, [Uri.parse(deepSeekUrl)]);
+      expect(find.text(AiTarget.deepSeek.copiedToast), findsOneWidget);
+    });
 
     testWidgets('the selected mode picks the template', (tester) async {
       await pumpReader(tester);
@@ -210,10 +236,8 @@ void main() {
         clipboard,
         startsWith(AskMode.quiz.defaultTemplate.split('\n').first),
       );
-      expect(
-        clipboard,
-        contains('Ask me 3 exam-style multiple-choice questions'),
-      );
+      expect(clipboard, contains('ONLY\nclinical scenario questions'));
+      expect(clipboard, contains('Never leave a question unanswered.'));
     });
 
     testWidgets(
@@ -278,7 +302,7 @@ void main() {
     testWidgets('if the clipboard fails, a dialog shows the prompt to copy', (
       tester,
     ) async {
-      await pumpReader(tester);
+      await pumpReader(tester, ai: AiTarget.deepSeek);
       clipboardFails = true;
       await startAsking(tester);
       await tester.tap(badge(1));
@@ -303,6 +327,46 @@ void main() {
       expect(clipboard, prompt);
       expect(find.byType(SelectableText), findsNothing);
       expect(opened, [Uri.parse(deepSeekUrl)]);
+    });
+
+    testWidgets(
+      'with a pre-filled ChatGPT link, a clipboard failure is ignored',
+      (tester) async {
+        await pumpReader(tester);
+        clipboardFails = true;
+        await startAsking(tester);
+        await tester.tap(badge(1));
+        await tester.pumpAndSettle();
+
+        expect(find.byType(SelectableText), findsNothing);
+        expect(opened.single.queryParameters['q'], isNotEmpty);
+      },
+    );
+  });
+
+  group('AI targets', () {
+    test(
+      'ChatGPT link encodes the prompt (spaces as %20, quotes, Amharic)',
+      () {
+        const prompt = 'Explain "Na⁺/K⁺" in ቀላል Amharic & English';
+        final uri = AiTarget.chatGpt.uriFor(prompt);
+        expect(uri.toString(), startsWith('https://chatgpt.com/?q='));
+        expect(uri.toString(), contains('Explain%20%22Na'));
+        expect(uri.toString(), isNot(contains('+')));
+        expect(uri.queryParameters['q'], prompt);
+        expect(AiTarget.chatGpt.prefills(prompt), isTrue);
+      },
+    );
+
+    test('very long prompts fall back to the plain ChatGPT link', () {
+      final prompt = 'x' * AiTarget.maxPrefillUrlLength;
+      expect(AiTarget.chatGpt.uriFor(prompt), Uri.parse(chatGptUrl));
+      expect(AiTarget.chatGpt.prefills(prompt), isFalse);
+    });
+
+    test('DeepSeek never pre-fills', () {
+      expect(AiTarget.deepSeek.uriFor('hello'), Uri.parse(deepSeekUrl));
+      expect(AiTarget.deepSeek.prefills('hello'), isFalse);
     });
   });
 }

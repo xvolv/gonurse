@@ -5,6 +5,8 @@ library;
 const contentBaseUrl =
     'https://raw.githubusercontent.com/xvolv/gonurse-content/main/';
 
+/// Chat sites for Ask AI (see `features/ask/ai_target.dart`).
+const chatGptUrl = 'https://chatgpt.com/';
 const deepSeekUrl = 'https://chat.deepseek.com/';
 
 /// Source PDFs are bundled from the repo's `files/` folder (see ../pubspec.yaml).
