@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../data/ref_parser.dart';
 import '../../models/course.dart';
+import 'pdf_screen.dart';
 
 /// Long-press menu for a line: "Open in my notes", one entry per reference.
 /// Choosing one opens that source file at the reference's first page.
@@ -46,11 +47,11 @@ String _where(Source? source, SourceRef ref) {
 }
 
 void _openSource(BuildContext context, Course course, SourceRef ref) {
-  // TODO(step 6): open the bundled PDF in the viewer.
-  final file = course.sources[ref.sourceKey]?.pdfFile ?? ref.sourceKey;
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: Text('PDF viewer comes in step 6: $file, page ${ref.page}'),
+  final source = course.sources[ref.sourceKey];
+  if (source == null) return;
+  Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (_) => PdfScreen(source: source, page: ref.page),
     ),
   );
 }
