@@ -11,10 +11,10 @@ void main() {
         as Map<String, dynamic>,
   );
 
-  test('8 units and 141 notes', () {
+  test('8 units and 51 notes', () {
     expect(course.units.length, 8);
-    expect(course.noteCount, 141);
-    expect(course.notesById.length, 141, reason: 'note IDs are unique');
+    expect(course.noteCount, 51);
+    expect(course.notesById.length, 51, reason: 'note IDs are unique');
   });
 
   test('every link resolves to a note', () {

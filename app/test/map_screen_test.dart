@@ -46,7 +46,7 @@ void main() {
     expect(course.units, hasLength(8));
     expect(find.text('Heart failure'), findsNothing);
     expect(
-      find.text('30'),
+      find.text('10'),
       findsOneWidget,
       reason: 'Renal & Cardiovascular count',
     );
@@ -60,7 +60,10 @@ void main() {
     await tester.pump();
     await tester.tap(find.text('Heart failure'));
     await tester.pump();
-    expect(find.text('Digoxin'), findsOneWidget);
+    expect(
+      find.text('Is this digoxin toxicity? What do you do?'),
+      findsOneWidget,
+    );
     expect(
       uiBox.get('map_open_pharmacology'),
       unorderedEquals(['u:cvs', 't:cvs/Heart failure']),
@@ -69,14 +72,20 @@ void main() {
     // Closing the unit hides its topics.
     await tester.tap(find.text('Renal & Cardiovascular'));
     await tester.pump();
-    expect(find.text('Digoxin'), findsNothing);
+    expect(
+      find.text('Is this digoxin toxicity? What do you do?'),
+      findsNothing,
+    );
   });
 
   testWidgets('search shows matching notes with breadcrumb', (tester) async {
     await pumpMap(tester);
     await tester.enterText(find.byType(TextField), 'DIGO');
     await tester.pump();
-    expect(find.text('Digoxin'), findsOneWidget);
+    expect(
+      find.text('Is this digoxin toxicity? What do you do?'),
+      findsOneWidget,
+    );
     expect(find.text('Renal & Cardiovascular › Heart failure'), findsOneWidget);
     expect(
       find.text('General Pharmacology'),
@@ -97,9 +106,13 @@ void main() {
     await pumpMap(tester);
     await tester.enterText(find.byType(TextField), 'digo');
     await tester.pump();
-    await tester.tap(find.text('Digoxin'));
+    await tester.tap(find.text('Is this digoxin toxicity? What do you do?'));
     await tester.pumpAndSettle();
-    expect(find.text('THE BIG IDEA'), findsOneWidget, reason: 'reader is open');
+    expect(
+      find.text('THE SITUATION'),
+      findsOneWidget,
+      reason: 'reader is open',
+    );
     expect(
       find.text('Pharmacology › Renal & Cardiovascular › Heart failure'),
       findsOneWidget,

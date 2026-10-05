@@ -19,7 +19,7 @@ void main() {
     jsonDecode(File('../content/pharmacology_notes.json').readAsStringSync())
         as Map<String, dynamic>,
   );
-  final digoxin = course.notesById['digoxin']!;
+  final digoxin = course.notesById['v2-digoxin']!;
 
   group('templates', () {
     test('fills topic and text', () {
@@ -43,7 +43,7 @@ void main() {
       expect(
         prompt,
         contains(
-          'Topic: Digoxin (Pharmacology › Renal & Cardiovascular › Heart failure)',
+          'Topic: Is this digoxin toxicity? What do you do? (Pharmacology › Renal & Cardiovascular › Heart failure)',
         ),
       );
       expect(prompt, endsWith('Text: "${digoxin.lines.first.text}"'));
@@ -117,7 +117,7 @@ void main() {
             }),
           ],
           child: const MaterialApp(
-            home: ReaderScreen(courseId: 'pharmacology', noteId: 'digoxin'),
+            home: ReaderScreen(courseId: 'pharmacology', noteId: 'v2-digoxin'),
           ),
         ),
       );
@@ -200,7 +200,7 @@ void main() {
         expect(opened.single.host, 'chatgpt.com');
         expect(opened.single.queryParameters['q'], prompt);
         expect(find.text(AiTarget.chatGpt.openedToast!), findsOneWidget);
-        expect(uiBox.get('ask_pending'), {'note': 'digoxin', 'n': line.n});
+        expect(uiBox.get('ask_pending'), {'note': 'v2-digoxin', 'n': line.n});
         await tester.pumpAndSettle();
         expect(badge(1), findsNothing, reason: 'Ask mode ends');
       },

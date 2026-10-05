@@ -48,26 +48,29 @@ void main() {
   testWidgets(
     'shows a note with breadcrumb, position, numbered lines and refs',
     (tester) async {
-      await pumpReader(tester, 'digoxin');
-      final topic = course.topicByNoteId['digoxin']!;
-      final pos = topic.notes.indexWhere((n) => n.id == 'digoxin') + 1;
+      await pumpReader(tester, 'v2-digoxin');
+      final topic = course.topicByNoteId['v2-digoxin']!;
+      final pos = topic.notes.indexWhere((n) => n.id == 'v2-digoxin') + 1;
 
-      expect(find.text('Digoxin'), findsOneWidget);
+      expect(
+        find.text('Is this digoxin toxicity? What do you do?'),
+        findsOneWidget,
+      );
       expect(
         find.text('Pharmacology › Renal & Cardiovascular › Heart failure'),
         findsOneWidget,
       );
       expect(find.text('$pos / ${topic.notes.length}'), findsOneWidget);
-      expect(find.text('THE BIG IDEA'), findsOneWidget);
-      expect(find.text('EXAM TRAP'), findsOneWidget);
+      expect(find.text('THE SITUATION'), findsOneWidget);
+      expect(find.text('COMMON TRAPS'), findsOneWidget);
       expect(
-        find.text('CVS p.96-97, RCVS p.116'),
+        find.text('CVS p.98, RCVS p.117, 119'),
         findsNothing,
         reason: 'refs hidden',
       );
       expect(find.text('1'), findsOneWidget);
       expect(find.text('RELATED'), findsOneWidget);
-      expect(savedNote(), 'digoxin');
+      expect(savedNote(), 'v2-digoxin');
     },
   );
 
@@ -99,8 +102,9 @@ void main() {
   });
 
   testWidgets('related chip jumps to the linked note', (tester) async {
-    await pumpReader(tester, 'digoxin');
-    final linked = course.notesById[course.notesById['digoxin']!.links.first]!;
+    await pumpReader(tester, 'v2-digoxin');
+    final linked =
+        course.notesById[course.notesById['v2-digoxin']!.links.first]!;
     await tester.tap(find.widgetWithText(ActionChip, linked.title));
     await tester.pumpAndSettle();
     expect(
@@ -113,15 +117,17 @@ void main() {
   testWidgets('long-press a line: "Open in my notes" for each of its refs', (
     tester,
   ) async {
-    await pumpReader(tester, 'digoxin');
-    final line1 = course.notesById['digoxin']!.lines.first; // two refs
+    await pumpReader(tester, 'v2-digoxin');
+    // "CVS p.98, RCVS p.117, 119": three refs.
+    final line1 = course.notesById['v2-digoxin']!.lines.first;
     await tester.longPress(find.text(line1.text));
     await tester.pumpAndSettle();
-    expect(find.text('Open in my notes · CVS p.96-97'), findsOneWidget);
-    expect(find.text('Open in my notes · RCVS p.116'), findsOneWidget);
-    expect(find.text('CVS pharmacology (1).pdf · page 96'), findsOneWidget);
+    expect(find.text('Open in my notes · CVS p.98'), findsOneWidget);
+    expect(find.text('Open in my notes · RCVS p.117'), findsOneWidget);
+    expect(find.text('Open in my notes · RCVS p.119'), findsOneWidget);
+    expect(find.text('CVS pharmacology (1).pdf · page 98'), findsOneWidget);
     expect(
-      find.text('Renal & cardiovascular pharmacology.pdf · page 116'),
+      find.text('Renal & cardiovascular pharmacology.pdf · page 119'),
       findsOneWidget,
     );
   });
@@ -129,19 +135,14 @@ void main() {
   testWidgets('long-press a line with one ref shows a single entry', (
     tester,
   ) async {
-    await pumpReader(tester, 'digoxin');
-    final line2 = course.notesById['digoxin']!.lines[1]; // "CVS p.97"
-    await tester.longPress(find.text(line2.text));
+    await pumpReader(tester, 'v2-digoxin');
+    final line13 = course.notesById['v2-digoxin']!.lines[12]; // "CVS p.97"
+    expect(line13.ref, 'CVS p.97');
+    await tester.ensureVisible(find.text(line13.text));
+    await tester.longPress(find.text(line13.text));
     await tester.pumpAndSettle();
     expect(find.text('Open in my notes'), findsOneWidget);
     expect(find.text('CVS pharmacology (1).pdf · page 97'), findsOneWidget);
-  });
-
-  testWidgets('flags stay in the data but are not shown', (tester) async {
-    await pumpReader(tester, 'bp-reg');
-    expect(course.notesById['bp-reg']!.flags, isNotEmpty);
-    expect(find.text('Check'), findsNothing);
-    expect(find.textContaining('Her two files define'), findsNothing);
   });
 
   testWidgets('bedside format: new sections, practice tag, unknown type', (
@@ -161,6 +162,9 @@ void main() {
                   'id': 'digoxin',
                   'title': 'Digoxin',
                   'path': ['Renal & Cardiovascular', 'Heart failure'],
+                  'flags': [
+                    {'kind': 'conflict', 'text': 'Her two files disagree.'},
+                  ],
                   'sections': [
                     {
                       'type': 'scene',
@@ -230,6 +234,10 @@ void main() {
       reason: 'unknown type, title from JSON',
     );
     expect(find.text('Standard practice – confirm'), findsNothing);
+    // Flags stay in the data but are not shown.
+    expect(bedside.notesById['digoxin']!.flags, isNotEmpty);
+    expect(find.text('Check'), findsNothing);
+    expect(find.text('Her two files disagree.'), findsNothing);
     expect(find.text('4'), findsOneWidget);
 
     // A practice line has no ref, so long-press offers nothing.

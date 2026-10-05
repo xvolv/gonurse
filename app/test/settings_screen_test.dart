@@ -143,7 +143,7 @@ void main() {
 
   testWidgets('check for updated notes reports the result', (tester) async {
     await openSettings(tester);
-    expect(find.text('Version 1 · 141 notes'), findsOneWidget);
+    expect(find.text('Version 2 · 51 notes'), findsOneWidget);
 
     await tester.tap(find.text('Check for updated notes'));
     await tester.pumpAndSettle();

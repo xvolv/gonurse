@@ -196,7 +196,8 @@ class _NotePageState extends ConsumerState<NotePage> {
     if (!worked) return column;
     // The practice question stands apart in a lightly tinted box.
     return Container(
-      key: const ValueKey('worked-box'),
+      // A note can have several practice questions: one key per box.
+      key: ValueKey('worked-box-${section.lines.firstOrNull?.n}'),
       margin: const EdgeInsets.only(top: 24),
       padding: const EdgeInsets.fromLTRB(8, 0, 12, 10),
       decoration: BoxDecoration(

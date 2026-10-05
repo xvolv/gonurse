@@ -66,7 +66,7 @@ void main() {
     final r = repo(client: offline);
     final course = (await r.load(pharm))!;
     expect(course.course, 'Bundled');
-    expect(course.noteCount, 141);
+    expect(course.noteCount, 51);
     await expectLater(r.sync(), throwsA(isA<SocketException>()));
   });
 

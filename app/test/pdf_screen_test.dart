@@ -75,29 +75,29 @@ void main() {
         'and Back returns to the note', (tester) async {
       await pump(
         tester,
-        const ReaderScreen(courseId: 'pharmacology', noteId: 'digoxin'),
+        const ReaderScreen(courseId: 'pharmacology', noteId: 'v2-digoxin'),
       );
-      final line1 = course.notesById['digoxin']!.lines.first;
+      final line1 = course.notesById['v2-digoxin']!.lines.first;
       await tester.longPress(find.text(line1.text));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Open in my notes · CVS p.96-97'));
+      await tester.tap(find.text('Open in my notes · CVS p.98'));
       await tester.pumpAndSettle();
 
       expect(shown.last, (
         '${sourceFilesAssetDir}CVS pharmacology (1).pdf',
-        96,
+        98,
       ));
       expect(find.text('CVS pharmacology (1).pdf'), findsOneWidget);
-      expect(find.text('Page 96 of 159'), findsOneWidget);
+      expect(find.text('Page 98 of 159'), findsOneWidget);
 
-      turnPage(97);
+      turnPage(99);
       await tester.pump();
-      expect(find.text('Page 97 of 159'), findsOneWidget);
+      expect(find.text('Page 99 of 159'), findsOneWidget);
 
       await tester.pageBack();
       await tester.pumpAndSettle();
       expect(find.text(line1.text), findsOneWidget);
-      expect((uiBox.get('last_note') as Map)['note'], 'digoxin');
+      expect((uiBox.get('last_note') as Map)['note'], 'v2-digoxin');
     });
 
     testWidgets('slide decks open the converted PDF at slide N', (
