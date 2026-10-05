@@ -16,10 +16,10 @@ class NotePage extends ConsumerStatefulWidget {
     required this.note,
     required this.onOpenNote,
     required this.onScrolled,
-    required this.onAsk,
+    required this.onToggleLine,
     this.initialOffset = 0,
-    this.askActive = false,
-    this.highlightedLine,
+    this.selectedLines = const {},
+    this.highlightedLines = const {},
   });
 
   final Course course;
@@ -28,12 +28,12 @@ class NotePage extends ConsumerStatefulWidget {
   final ValueChanged<double> onScrolled;
   final double initialOffset;
 
-  /// Ask mode: numbered badges on the lines visible on screen.
-  final bool askActive;
-  final ValueChanged<Line> onAsk;
+  /// Double-tap on a line selects or unselects it (by line number `n`).
+  final ValueChanged<int> onToggleLine;
+  final Set<int> selectedLines;
 
-  /// Line number `n` to highlight (after returning from DeepSeek).
-  final int? highlightedLine;
+  /// Lines briefly highlighted after she comes back from the AI.
+  final Set<int> highlightedLines;
 
   @override
   ConsumerState<NotePage> createState() => _NotePageState();
@@ -42,54 +42,12 @@ class NotePage extends ConsumerStatefulWidget {
 class _NotePageState extends ConsumerState<NotePage> {
   late final _scroll = ScrollController(
     initialScrollOffset: widget.initialOffset,
-  )..addListener(_scheduleBadges);
-  final _stackKey = GlobalKey();
-  final _lineKeys = <int, GlobalKey>{};
-
-  /// Visible lines and where their badge goes, in screen order.
-  List<(Line, Offset)> _badges = const [];
-
-  @override
-  void initState() {
-    super.initState();
-    if (widget.askActive) _scheduleBadges();
-  }
-
-  @override
-  void didUpdateWidget(NotePage old) {
-    super.didUpdateWidget(old);
-    if (widget.askActive != old.askActive) _scheduleBadges();
-  }
+  );
 
   @override
   void dispose() {
     _scroll.dispose();
     super.dispose();
-  }
-
-  /// Badges are placed after layout, so lines can be measured.
-  void _scheduleBadges() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted) return;
-      setState(() => _badges = widget.askActive ? _visibleLines() : const []);
-    });
-  }
-
-  List<(Line, Offset)> _visibleLines() {
-    final stack = _stackKey.currentContext?.findRenderObject() as RenderBox?;
-    if (stack == null) return const [];
-    final visible = <(Line, Offset)>[];
-    for (final line in widget.note.lines) {
-      final box =
-          _lineKeys[line.n]?.currentContext?.findRenderObject() as RenderBox?;
-      if (box == null || !box.attached) continue; // not built: far off screen
-      final top = box.localToGlobal(Offset.zero, ancestor: stack);
-      // The badge sits on the line's first row, so that row must be on screen.
-      if (top.dy >= -4 && top.dy + 36 <= stack.size.height) {
-        visible.add((line, top));
-      }
-    }
-    return visible;
   }
 
   @override
@@ -110,20 +68,7 @@ class _NotePageState extends ConsumerState<NotePage> {
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 720),
-          child: Stack(
-            key: _stackKey,
-            children: [
-              _content(context, body, colors, note, related),
-              if (widget.askActive)
-                for (final (i, (line, at)) in _badges.indexed)
-                  Positioned(
-                    // Centred on the line-number column (30 wide).
-                    left: at.dx + 15 - _AskBadge.size / 2,
-                    top: at.dy + body * 0.75 - _AskBadge.size / 2,
-                    child: _AskBadge(i + 1, onTap: () => widget.onAsk(line)),
-                  ),
-            ],
-          ),
+          child: _content(context, body, colors, note, related),
         ),
       ),
     );
@@ -181,11 +126,12 @@ class _NotePageState extends ConsumerState<NotePage> {
       _SectionLabel(section, top: worked ? 16 : 28),
       for (final line in section.lines)
         _LineRow(
-          key: _lineKeys.putIfAbsent(line.n, GlobalKey.new),
           line: line,
-          highlighted: widget.highlightedLine == line.n,
+          selected: widget.selectedLines.contains(line.n),
+          highlighted: widget.highlightedLines.contains(line.n),
           lead: kind == SectionKind.lead,
           body: body,
+          onDoubleTap: () => widget.onToggleLine(line.n),
           onRefs: (refs) => openRefs(context, widget.course, refs),
         ),
     ];
@@ -205,44 +151,6 @@ class _NotePageState extends ConsumerState<NotePage> {
         borderRadius: BorderRadius.circular(14),
       ),
       child: column,
-    );
-  }
-}
-
-/// Large round number shown on a line in Ask mode.
-class _AskBadge extends StatelessWidget {
-  const _AskBadge(this.number, {required this.onTap});
-
-  static const size = 44.0;
-
-  final int number;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
-    return Material(
-      key: ValueKey('ask-badge-$number'),
-      color: colors.primary,
-      shape: const CircleBorder(),
-      elevation: 3,
-      child: InkWell(
-        customBorder: const CircleBorder(),
-        onTap: onTap,
-        child: SizedBox.square(
-          dimension: size,
-          child: Center(
-            child: Text(
-              '$number',
-              style: TextStyle(
-                color: colors.onPrimary,
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ),
-        ),
-      ),
     );
   }
 }
@@ -287,73 +195,98 @@ class _SectionLabel extends StatelessWidget {
 
 class _LineRow extends StatelessWidget {
   const _LineRow({
-    super.key,
     required this.line,
     required this.lead,
     required this.body,
+    required this.onDoubleTap,
     required this.onRefs,
+    this.selected = false,
     this.highlighted = false,
   });
 
   final Line line;
   final bool lead;
   final double body;
+  final VoidCallback onDoubleTap;
   final ValueChanged<List<SourceRef>> onRefs;
+
+  /// Chosen for Ask AI: tinted, with an accent bar on the left.
+  final bool selected;
+
+  /// Just sent to the AI: briefly tinted when she comes back.
   final bool highlighted;
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     final refs = parseRefs(line.ref);
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 400),
-      margin: const EdgeInsets.only(bottom: 10),
-      decoration: BoxDecoration(
-        color: highlighted
-            ? colors.primaryContainer
-            : colors.primaryContainer.withAlpha(0),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
-      ),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(10),
-        // Only lines from her files can be opened there.
-        onLongPress: refs.isEmpty ? null : () => onRefs(refs),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: 30,
-              child: Padding(
-                padding: EdgeInsets.only(top: body * 0.2),
-                child: Text(
-                  '${line.n}',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    fontSize: body * 0.8,
-                    color: colors.onSurfaceVariant,
-                  ),
-                ),
+        child: AnimatedContainer(
+          key: ValueKey('line-${line.n}'),
+          duration: const Duration(milliseconds: 250),
+          decoration: BoxDecoration(
+            color: selected
+                ? colors.primaryContainer.withAlpha(170)
+                : highlighted
+                ? colors.primaryContainer
+                : colors.primaryContainer.withAlpha(0),
+            border: Border(
+              left: BorderSide(
+                width: 4,
+                color: selected ? colors.primary : colors.primary.withAlpha(0),
               ),
             ),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    line.text,
-                    style: TextStyle(
-                      fontSize: lead ? body * 1.15 : body,
-                      fontStyle: lead ? FontStyle.italic : null,
-                      height: 1.5,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+          ),
+          child: InkWell(
+            // Single tap does nothing, so reading and scrolling stay calm.
+            onDoubleTap: onDoubleTap,
+            // Only lines from her files can be opened there.
+            onLongPress: refs.isEmpty ? null : () => onRefs(refs),
+            child: _content(colors),
+          ),
         ),
       ),
+    );
+  }
+
+  Widget _content(ColorScheme colors) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          width: 30,
+          child: Padding(
+            padding: EdgeInsets.only(top: body * 0.2),
+            child: Text(
+              '${line.n}',
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                fontSize: body * 0.8,
+                color: colors.onSurfaceVariant,
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(width: 14),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                line.text,
+                style: TextStyle(
+                  fontSize: lead ? body * 1.15 : body,
+                  fontStyle: lead ? FontStyle.italic : null,
+                  height: 1.5,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

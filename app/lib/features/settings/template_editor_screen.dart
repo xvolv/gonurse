@@ -59,7 +59,7 @@ class _TemplateEditorScreenState extends ConsumerState<TemplateEditorScreen> {
               children: [
                 Text(
                   '{topic} becomes the note title and where it is.\n'
-                  '{text} becomes the line you tapped.',
+                  '{text} becomes the lines you selected (double-tap).',
                   style: TextStyle(fontSize: 14, color: muted),
                 ),
                 const SizedBox(height: 12),

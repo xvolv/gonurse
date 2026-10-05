@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,6 +10,7 @@ import 'package:gonurse/config.dart';
 import 'package:gonurse/data/providers.dart';
 import 'package:gonurse/features/ask/ai_target.dart';
 import 'package:gonurse/features/ask/ask_action.dart';
+import 'package:gonurse/features/ask/ask_button.dart';
 import 'package:gonurse/features/ask/prompt_templates.dart';
 import 'package:gonurse/features/reader/reader_screen.dart';
 import 'package:gonurse/models/course.dart';
@@ -20,6 +22,7 @@ void main() {
         as Map<String, dynamic>,
   );
   final digoxin = course.notesById['v2-digoxin']!;
+  Line line(int n) => digoxin.lines[n - 1];
 
   group('templates', () {
     test('fills topic and text', () {
@@ -31,52 +34,49 @@ void main() {
       expect(prompt, 'T: A\nX: "B"');
     });
 
-    test('the default Amharic template gets title, breadcrumb and line', () {
+    test('several lines: numbered, one per row, in note order', () {
       final prompt = buildPrompt(
         AskMode.explain.defaultTemplate,
         course,
         digoxin,
-        digoxin.lines.first,
+        [line(3), line(1)], // selected in this order
       );
       expect(prompt, startsWith('I am a nursing student in Ethiopia'));
-      expect(prompt, contains('Explain the text below in simple Amharic.'));
       expect(
         prompt,
         contains(
-          'Topic: Is this digoxin toxicity? What do you do? (Pharmacology › Renal & Cardiovascular › Heart failure)',
+          'Topic: Is this digoxin toxicity? What do you do? '
+          '(Pharmacology › Renal & Cardiovascular › Heart failure)',
         ),
       );
-      expect(prompt, endsWith('Text: "${digoxin.lines.first.text}"'));
+      expect(
+        prompt,
+        endsWith('Text:\n"1. ${line(1).text}\n2. ${line(3).text}"'),
+      );
     });
 
-    test('line text is capped at 1000 characters', () {
-      final prompt = fillTemplate('"{text}"', topic: '', text: 'a' * 1500);
-      expect(prompt, '"${'a' * 1000}"');
-      final exact = fillTemplate('{text}', topic: '', text: 'b' * 1000);
-      expect(exact.length, 1000);
+    test('one line is sent as it is', () {
+      final prompt = buildPrompt('{text}', course, digoxin, [line(2)]);
+      expect(prompt, line(2).text);
+    });
+
+    test('combined text is capped at 1,500 characters at a line boundary', () {
+      final text = joinLines(['a' * 600, 'b' * 600, 'c' * 600]);
+      expect(text, '1. ${'a' * 600}\n2. ${'b' * 600}\n…');
+      expect(text.length, lessThanOrEqualTo(maxPromptTextLength + 2));
+    });
+
+    test('a single line longer than the cap is cut inside the line', () {
+      expect(joinLines(['x' * 2000]), '${'x' * 1500}\n…');
     });
 
     test('the cap does not split a character made of several code units', () {
-      final text = '${'a' * 999}Na⁺👍🏽 more';
-      final prompt = fillTemplate('{text}', topic: '', text: text);
-      expect(prompt, '${'a' * 999}N');
-    });
-
-    test('practice lines (no ref) build a prompt like any other line', () {
-      const line = Line(
-        n: 2,
-        text: 'Check apical pulse.',
-        ref: '',
-        basis: 'practice',
-      );
-      expect(
-        buildPrompt('{text}', course, digoxin, line),
-        'Check apical pulse.',
-      );
+      final text = joinLines(['${'a' * 1499}👍🏽 more']);
+      expect(text, '${'a' * 1499}👍🏽\n…');
     });
   });
 
-  group('ask mode', () {
+  group('selecting lines', () {
     late Box uiBox;
     late List<Uri> opened;
     String? clipboard;
@@ -92,8 +92,8 @@ void main() {
 
     Future<void> pumpReader(WidgetTester tester, {AiTarget? ai}) async {
       if (ai != null) uiBox.put('ai_target', ai.name);
-      // Phone-sized: only part of the note fits on screen.
-      tester.view.physicalSize = const Size(420, 900);
+      // Phone-wide and tall enough that the whole note is built.
+      tester.view.physicalSize = const Size(420, 5000);
       tester.view.devicePixelRatio = 1;
       addTearDown(tester.view.reset);
       tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(
@@ -124,224 +124,260 @@ void main() {
       await tester.pumpAndSettle();
     }
 
-    Future<void> startAsking(WidgetTester tester) async {
-      await tester.tap(find.text('Ask AI'));
-      await tester.pumpAndSettle();
-    }
-
-    Finder badge(int i) => find.byKey(ValueKey('ask-badge-$i'));
-
-    int badgeCount() {
-      var n = 0;
-      while (badge(n + 1).evaluate().isNotEmpty) {
-        n++;
-      }
-      return n;
-    }
-
-    testWidgets(
-      'badges only on visible lines, numbered from 1, at least 40dp',
-      (tester) async {
-        await pumpReader(tester);
-        expect(badge(1), findsNothing);
-        await startAsking(tester);
-
-        final count = badgeCount();
-        expect(count, greaterThan(0));
-        expect(
-          count,
-          lessThan(digoxin.lines.length),
-          reason: 'some lines are off screen',
-        );
-        for (var i = 1; i <= count; i++) {
-          final size = tester.getSize(badge(i));
-          expect(size.width, greaterThanOrEqualTo(40));
-          expect(size.height, greaterThanOrEqualTo(40));
-        }
-        expect(find.text('Explain in Amharic'), findsOneWidget);
-        expect(find.text('Simpler'), findsOneWidget);
-        expect(find.text('Quiz me'), findsOneWidget);
-        expect(find.text('Ask AI'), findsNothing);
-
-        // After scrolling, numbering restarts at 1 on the lines now visible.
-        await tester.drag(find.byType(ListView), const Offset(0, -500));
-        await tester.pumpAndSettle();
-        expect(badge(1), findsOneWidget);
-        await tester.tap(badge(1));
-        await tester.pumpAndSettle();
-        expect(clipboard, isNot(contains(digoxin.lines.first.text)));
-
-        // Cancel leaves Ask mode.
-        await startAsking(tester);
-        await tester.tap(find.text('Cancel'));
-        await tester.pumpAndSettle();
-        expect(badge(1), findsNothing);
-        expect(find.text('Ask AI'), findsOneWidget);
-      },
-    );
-
-    testWidgets(
-      'by default a badge opens ChatGPT with the prompt filled in, and copies it',
-      (tester) async {
-        await pumpReader(tester);
-        await startAsking(tester);
-        await tester.tap(badge(1));
-        await tester.pump();
-
-        final line = digoxin.lines.first;
-        final prompt = buildPrompt(
-          AskMode.explain.defaultTemplate,
-          course,
-          digoxin,
-          line,
-        );
-        expect(clipboard, prompt, reason: 'backup copy');
-        expect(opened, hasLength(1));
-        expect(opened.single.host, 'chatgpt.com');
-        expect(opened.single.queryParameters['q'], prompt);
-        expect(find.text(AiTarget.chatGpt.openedToast!), findsOneWidget);
-        expect(uiBox.get('ask_pending'), {'note': 'v2-digoxin', 'n': line.n});
-        await tester.pumpAndSettle();
-        expect(badge(1), findsNothing, reason: 'Ask mode ends');
-      },
-    );
-
-    testWidgets('with DeepSeek chosen: copy and open DeepSeek', (tester) async {
-      await pumpReader(tester, ai: AiTarget.deepSeek);
-      await startAsking(tester);
-      await tester.tap(badge(1));
-      await tester.pump();
-
-      expect(
-        clipboard,
-        buildPrompt(
-          AskMode.explain.defaultTemplate,
-          course,
-          digoxin,
-          digoxin.lines.first,
+    Future<void> doubleTap(WidgetTester tester, int n) async {
+      final f = find.text(line(n).text);
+      // Lines far down the note are only built once scrolled to.
+      await tester.scrollUntilVisible(
+        f,
+        200,
+        scrollable: find.byWidgetPredicate(
+          (w) => w is Scrollable && w.axisDirection == AxisDirection.down,
         ),
       );
-      expect(opened, [Uri.parse(deepSeekUrl)]);
-      expect(find.text(AiTarget.deepSeek.copiedToast), findsOneWidget);
-    });
-
-    testWidgets('the selected mode picks the template', (tester) async {
-      await pumpReader(tester);
-      await startAsking(tester);
-      await tester.tap(find.text('Quiz me'));
       await tester.pumpAndSettle();
-      await tester.tap(badge(1));
+      await tester.tap(f);
+      await tester.pump(kDoubleTapMinTime);
+      await tester.tap(f);
       await tester.pumpAndSettle();
-      expect(
-        clipboard,
-        startsWith(AskMode.quiz.defaultTemplate.split('\n').first),
-      );
-      expect(clipboard, contains('ONLY\nclinical scenario questions'));
-      expect(clipboard, contains('Never leave a question unanswered.'));
-    });
+    }
 
-    testWidgets(
-      'coming back to the app highlights the line for about 2 seconds',
-      (tester) async {
-        await pumpReader(tester);
-        await startAsking(tester);
-        await tester.tap(badge(1));
-        await tester.pumpAndSettle();
+    BoxDecoration decoration(WidgetTester tester, int n) =>
+        tester
+                .widget<AnimatedContainer>(find.byKey(ValueKey('line-$n')))
+                .decoration!
+            as BoxDecoration;
 
-        Color? lineColor() {
-          final box = tester.widget<AnimatedContainer>(
-            find.ancestor(
-              of: find.text(digoxin.lines.first.text),
-              matching: find.byType(AnimatedContainer),
-            ),
-          );
-          return (box.decoration as BoxDecoration).color;
-        }
+    bool isSelected(WidgetTester tester, int n) =>
+        (decoration(tester, n).border! as Border).left.color.a > 0;
 
-        final highlight = Theme.of(
-          tester.element(find.byType(ReaderScreen)),
-        ).colorScheme.primaryContainer;
-        expect(lineColor(), isNot(highlight));
+    AskAiButton askButton(WidgetTester tester) =>
+        tester.widget<AskAiButton>(find.byType(AskAiButton));
 
-        // Windows: focus flickers back to the app while the browser opens.
-        // That is not her returning; keep the highlight for later.
-        tester.binding.handleAppLifecycleStateChanged(
-          AppLifecycleState.inactive,
-        );
-        tester.binding.handleAppLifecycleStateChanged(
-          AppLifecycleState.resumed,
-        );
-        await tester.pump(const Duration(milliseconds: 500));
-        expect(lineColor(), isNot(highlight));
-        expect(uiBox.get('ask_pending'), isNotNull);
-        await tester.pump(const Duration(seconds: 30)); // she reads DeepSeek
-
-        // She goes to DeepSeek and comes back.
-        tester.binding.handleAppLifecycleStateChanged(
-          AppLifecycleState.inactive,
-        );
-        tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.hidden);
-        tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.paused);
-        tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.hidden);
-        tester.binding.handleAppLifecycleStateChanged(
-          AppLifecycleState.inactive,
-        );
-        tester.binding.handleAppLifecycleStateChanged(
-          AppLifecycleState.resumed,
-        );
-        await tester.pumpAndSettle();
-        expect(lineColor(), highlight);
-        expect(uiBox.get('ask_pending'), isNull, reason: 'shown once');
-
-        await tester.pump(const Duration(seconds: 2));
-        await tester.pumpAndSettle();
-        expect(lineColor(), isNot(highlight));
-      },
+    Badge badge(WidgetTester tester) => tester.widget<Badge>(
+      find.descendant(
+        of: find.byType(AskAiButton),
+        matching: find.byType(Badge),
+      ),
     );
 
-    testWidgets('if the clipboard fails, a dialog shows the prompt to copy', (
-      tester,
-    ) async {
-      await pumpReader(tester, ai: AiTarget.deepSeek);
-      clipboardFails = true;
-      await startAsking(tester);
-      await tester.tap(badge(1));
+    testWidgets('double-tap selects, double-tap again unselects; '
+        'single tap does nothing', (tester) async {
+      await pumpReader(tester);
+      await tester.tap(find.text(line(2).text));
       await tester.pumpAndSettle();
+      expect(isSelected(tester, 2), isFalse);
+
+      await doubleTap(tester, 2);
+      expect(isSelected(tester, 2), isTrue);
+      await doubleTap(tester, 2);
+      expect(isSelected(tester, 2), isFalse);
+    });
+
+    testWidgets('practice-question lines can be selected too', (tester) async {
+      await pumpReader(tester);
+      final option = digoxin.lines.firstWhere(
+        (l) => l.text.startsWith('a. ') && l.isPractice,
+      );
+      await doubleTap(tester, option.n);
+      expect(isSelected(tester, option.n), isTrue);
+    });
+
+    testWidgets('the AI button is greyed out until lines are selected, '
+        'then shows how many; × clears', (tester) async {
+      await pumpReader(tester);
+      expect(askButton(tester).count, 0);
+      expect(badge(tester).isLabelVisible, isFalse);
+      expect(find.byKey(const ValueKey('clear-selection')), findsNothing);
+
+      // Tapping it with nothing selected sends nothing.
+      await tester.tap(find.byType(AskAiButton));
+      await tester.pumpAndSettle();
+      expect(opened, isEmpty);
+
+      await doubleTap(tester, 1);
+      await doubleTap(tester, 3);
+      expect(askButton(tester).count, 2);
+      expect(badge(tester).isLabelVisible, isTrue);
+      expect((badge(tester).label! as Text).data, '2');
+
+      await tester.tap(find.byKey(const ValueKey('clear-selection')));
+      await tester.pumpAndSettle();
+      expect(askButton(tester).count, 0);
+      expect(isSelected(tester, 1), isFalse);
+      expect(find.byKey(const ValueKey('clear-selection')), findsNothing);
+    });
+
+    testWidgets('tap sends all selected lines in note order to ChatGPT, '
+        'copies them, and clears the selection', (tester) async {
+      await pumpReader(tester);
+      await doubleTap(tester, 3);
+      await doubleTap(tester, 1);
+      await tester.tap(find.byType(AskAiButton));
+      await tester.pump();
 
       final prompt = buildPrompt(
         AskMode.explain.defaultTemplate,
         course,
         digoxin,
-        digoxin.lines.first,
+        [line(1), line(3)],
       );
-      expect(find.byType(SelectableText), findsOneWidget);
-      expect(
-        tester.widget<SelectableText>(find.byType(SelectableText)).data,
-        prompt,
-      );
-      expect(opened, isEmpty);
-
-      clipboardFails = false;
-      await tester.tap(find.text('Copy'));
+      expect(prompt, contains('"1. ${line(1).text}\n2. ${line(3).text}"'));
+      expect(clipboard, prompt, reason: 'backup copy');
+      expect(opened.single.host, 'chatgpt.com');
+      expect(opened.single.queryParameters['q'], prompt);
+      expect(find.text(AiTarget.chatGpt.openedToast!), findsOneWidget);
+      expect(uiBox.get('ask_pending'), {
+        'note': 'v2-digoxin',
+        'lines': [1, 3],
+      });
       await tester.pumpAndSettle();
-      expect(clipboard, prompt);
-      expect(find.byType(SelectableText), findsNothing);
+      expect(askButton(tester).count, 0);
+      expect(isSelected(tester, 1), isFalse);
+    });
+
+    testWidgets('long-press the AI button: the chosen mode is used once', (
+      tester,
+    ) async {
+      await pumpReader(tester);
+      await doubleTap(tester, 2);
+      await tester.longPress(find.byType(AskAiButton));
+      await tester.pumpAndSettle();
+      expect(find.text('Explain in Amharic'), findsOneWidget);
+      expect(find.text('Simpler'), findsOneWidget);
+      await tester.tap(find.text('Quiz me'));
+      await tester.pumpAndSettle();
+      expect(clipboard, contains('ONLY\nclinical scenario questions'));
+      expect(clipboard, contains(line(2).text));
+
+      // The next plain tap is back to "Explain in Amharic".
+      await doubleTap(tester, 2);
+      await tester.tap(find.byType(AskAiButton));
+      await tester.pumpAndSettle();
+      expect(clipboard, contains('Explain the text below in simple Amharic.'));
+    });
+
+    testWidgets('a link over 6,000 characters falls back to copy + paste', (
+      tester,
+    ) async {
+      uiBox.put('prompt_explain', '${'x' * 6000}\n{text}');
+      await pumpReader(tester);
+      await doubleTap(tester, 1);
+      await tester.tap(find.byType(AskAiButton));
+      await tester.pump();
+      expect(opened, [Uri.parse(chatGptUrl)]);
+      expect(clipboard, endsWith(line(1).text));
+      expect(find.text(AiTarget.chatGpt.copiedToast), findsOneWidget);
+    });
+
+    testWidgets('with DeepSeek chosen: same selection, copy and open', (
+      tester,
+    ) async {
+      await pumpReader(tester, ai: AiTarget.deepSeek);
+      await doubleTap(tester, 2);
+      await doubleTap(tester, 1);
+      await tester.tap(find.byType(AskAiButton));
+      await tester.pump();
+      expect(
+        clipboard,
+        buildPrompt(AskMode.explain.defaultTemplate, course, digoxin, [
+          line(1),
+          line(2),
+        ]),
+      );
       expect(opened, [Uri.parse(deepSeekUrl)]);
+      expect(find.text(AiTarget.deepSeek.copiedToast), findsOneWidget);
+    });
+
+    testWidgets('swiping to another note clears the selection', (tester) async {
+      await pumpReader(tester);
+      await doubleTap(tester, 1);
+      expect(askButton(tester).count, 1);
+
+      await tester.fling(find.byType(PageView), const Offset(-400, 0), 2000);
+      await tester.pumpAndSettle();
+      expect(askButton(tester).count, 0);
+
+      await tester.fling(find.byType(PageView), const Offset(400, 0), 2000);
+      await tester.pumpAndSettle();
+      expect(askButton(tester).count, 0);
+      expect(isSelected(tester, 1), isFalse);
+    });
+
+    testWidgets('coming back highlights the sent lines for about 2 seconds', (
+      tester,
+    ) async {
+      await pumpReader(tester);
+      await doubleTap(tester, 2);
+      await doubleTap(tester, 3);
+      await tester.tap(find.byType(AskAiButton));
+      await tester.pumpAndSettle();
+
+      final highlight = Theme.of(
+        tester.element(find.byType(ReaderScreen)),
+      ).colorScheme.primaryContainer;
+      Color? color(int n) => decoration(tester, n).color;
+      expect(color(2), isNot(highlight));
+
+      // Windows: focus flickers back while the browser opens; not a return.
+      tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
+      tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+      await tester.pump(const Duration(milliseconds: 500));
+      expect(color(2), isNot(highlight));
+      await tester.pump(const Duration(seconds: 30)); // she reads ChatGPT
+
+      tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
+      tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+      await tester.pumpAndSettle();
+      expect(color(2), highlight);
+      expect(color(3), highlight);
+      expect(color(1), isNot(highlight));
+      expect(uiBox.get('ask_pending'), isNull, reason: 'shown once');
+
+      await tester.pump(const Duration(seconds: 2));
+      await tester.pumpAndSettle();
+      expect(color(2), isNot(highlight));
     });
 
     testWidgets(
-      'with a pre-filled ChatGPT link, a clipboard failure is ignored',
+      'DeepSeek + clipboard failure: dialog with the prompt to copy',
       (tester) async {
-        await pumpReader(tester);
+        await pumpReader(tester, ai: AiTarget.deepSeek);
         clipboardFails = true;
-        await startAsking(tester);
-        await tester.tap(badge(1));
+        await doubleTap(tester, 1);
+        await tester.tap(find.byType(AskAiButton));
         await tester.pumpAndSettle();
 
-        expect(find.byType(SelectableText), findsNothing);
-        expect(opened.single.queryParameters['q'], isNotEmpty);
+        final prompt = buildPrompt(
+          AskMode.explain.defaultTemplate,
+          course,
+          digoxin,
+          [line(1)],
+        );
+        expect(
+          tester.widget<SelectableText>(find.byType(SelectableText)).data,
+          prompt,
+        );
+        expect(opened, isEmpty);
+
+        clipboardFails = false;
+        await tester.tap(find.text('Copy'));
+        await tester.pumpAndSettle();
+        expect(clipboard, prompt);
+        expect(opened, [Uri.parse(deepSeekUrl)]);
       },
     );
+
+    testWidgets('ChatGPT pre-fill: a clipboard failure is ignored', (
+      tester,
+    ) async {
+      await pumpReader(tester);
+      clipboardFails = true;
+      await doubleTap(tester, 1);
+      await tester.tap(find.byType(AskAiButton));
+      await tester.pumpAndSettle();
+      expect(find.byType(SelectableText), findsNothing);
+      expect(opened.single.queryParameters['q'], isNotEmpty);
+    });
   });
 
   group('AI targets', () {

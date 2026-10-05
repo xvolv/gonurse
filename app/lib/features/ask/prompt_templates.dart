@@ -6,7 +6,8 @@ import '../../data/providers.dart';
 /// The three Ask AI modes and their default prompt templates.
 ///
 /// `{topic}` is replaced by the note title and breadcrumb, `{text}` by the
-/// tapped line. Settings can override each template (stored in Hive).
+/// selected lines (see [joinLines]). Settings can override each template
+/// (stored in Hive).
 enum AskMode {
   explain('Explain in Amharic', '''
 I am a nursing student in Ethiopia preparing for the national exit exam.
@@ -16,7 +17,8 @@ Use a real-life example from a hospital or daily life.
 Then give me one exam-style question about it with the answer.
 
 Topic: {topic}
-Text: "{text}"'''),
+Text:
+"{text}"'''),
 
   simpler('Simpler', '''
 I am a nursing student in Ethiopia. I don't understand the text below at all.
@@ -24,7 +26,8 @@ Explain it like I know nothing, in simple Amharic, using a short story or an eve
 Keep medical terms in English. Keep it short.
 
 Topic: {topic}
-Text: "{text}"'''),
+Text:
+"{text}"'''),
 
   quiz('Quiz me', '''
 I am preparing for the Ethiopian national nursing exit exam. The exam has ONLY
@@ -45,7 +48,8 @@ Using the text below, write 3 questions in exactly that style:
   and explain it. Never leave a question unanswered.
 
 Topic: {topic}
-Text: "{text}"''');
+Text:
+"{text}"''');
 
   const AskMode(this.label, this.defaultTemplate);
 
@@ -53,20 +57,38 @@ Text: "{text}"''');
   final String defaultTemplate;
 }
 
-/// Longest line text put into a prompt.
-const maxPromptTextLength = 1000;
+/// Longest combined text of the selected lines put into a prompt.
+const maxPromptTextLength = 1500;
+
+/// The selected lines as the prompt's `{text}`: one line stays as it is;
+/// several are numbered "1. …", "2. …", one per row. Lines that would go past
+/// [maxPromptTextLength] are left out (cut at a line boundary) and "…" added.
+String joinLines(List<String> lines) {
+  final numbered = lines.length == 1
+      ? lines
+      : [for (final (i, l) in lines.indexed) '${i + 1}. $l'];
+  final kept = <String>[];
+  var length = 0;
+  for (final line in numbered) {
+    final added = (kept.isEmpty ? 0 : 1) + line.characters.length;
+    if (length + added > maxPromptTextLength) {
+      // A single line longer than the cap is cut inside the line.
+      if (kept.isEmpty) {
+        kept.add(line.characters.take(maxPromptTextLength).toString());
+      }
+      return '${kept.join('\n')}\n…';
+    }
+    kept.add(line);
+    length += added;
+  }
+  return kept.join('\n');
+}
 
 String fillTemplate(
   String template, {
   required String topic,
   required String text,
-}) {
-  final chars = text.characters;
-  final capped = chars.length > maxPromptTextLength
-      ? chars.take(maxPromptTextLength).toString()
-      : text;
-  return template.replaceAll('{topic}', topic).replaceAll('{text}', capped);
-}
+}) => template.replaceAll('{topic}', topic).replaceAll('{text}', text);
 
 /// Current template for each mode: her edited version, or the default.
 final promptTemplatesProvider =

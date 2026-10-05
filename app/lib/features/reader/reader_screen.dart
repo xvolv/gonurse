@@ -6,7 +6,9 @@ import 'package:hive/hive.dart';
 
 import '../../data/providers.dart';
 import '../../models/course.dart';
+import '../ask/ai_target.dart';
 import '../ask/ask_action.dart';
+import '../ask/ask_button.dart';
 import '../ask/prompt_templates.dart';
 import '../settings/settings_button.dart';
 import 'note_page.dart';
@@ -57,14 +59,15 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
   late final PageController _pages;
   late int _index;
 
-  bool _asking = false;
-  AskMode _mode = AskMode.explain;
+  /// Lines selected (double-tap) in the current note, by line number.
+  /// Swiping to another note clears them.
+  final _selected = <int>{};
 
-  /// Line she asked about, briefly highlighted when she comes back.
+  /// Lines she sent to the AI, briefly highlighted when she comes back.
   AskPending? _highlight;
   Timer? _highlightTimer;
 
-  /// Runs for 2 seconds after a badge tap; resumes during it are ignored.
+  /// Runs for 2 seconds after sending; resumes during it are ignored.
   Timer? _justAsked;
 
   late final AppLifecycleListener _lifecycle;
@@ -78,7 +81,7 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
     _pages = PageController(initialPage: _index);
     _save(widget.noteId, widget.initialOffset);
     _lifecycle = AppLifecycleListener(onResume: _showPendingHighlight);
-    // Also covers the app being closed while she was in DeepSeek.
+    // Also covers the app being closed while she was in the AI app.
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => _showPendingHighlight(),
     );
@@ -114,56 +117,27 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
     });
   }
 
-  void _ask(Course course, Note note, Line line) {
-    setState(() => _asking = false);
+  void _toggle(int n) => setState(
+    () => _selected.contains(n) ? _selected.remove(n) : _selected.add(n),
+  );
+
+  /// Sends the selected lines (in note order) to the AI with [mode].
+  void _send(Note note, AskMode mode) {
+    final lines = [
+      for (final l in note.lines)
+        if (_selected.contains(l.n)) l,
+    ];
+    if (lines.isEmpty) return;
+    setState(_selected.clear);
     _justAsked?.cancel();
     _justAsked = Timer(const Duration(seconds: 2), () {});
-    askAboutLine(
+    askAboutLines(
       context: context,
       ref: ref,
-      course: course,
+      course: ref.read(courseProvider(widget.courseId))!,
       note: note,
-      line: line,
-      mode: _mode,
-    );
-  }
-
-  PreferredSizeWidget _askBar() {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      title: const Text('Tap a number'),
-      actions: [
-        TextButton(
-          onPressed: () => setState(() => _asking = false),
-          child: const Text('Cancel', style: TextStyle(fontSize: 16)),
-        ),
-        const SizedBox(width: 8),
-      ],
-    );
-  }
-
-  /// The three modes. They wrap onto two rows on narrow phones, so none is
-  /// hidden off screen.
-  Widget _modeChips() {
-    return Material(
-      color: Theme.of(context).colorScheme.surfaceContainer,
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 4, 16, 10),
-        child: Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 8,
-          runSpacing: 4,
-          children: [
-            for (final m in AskMode.values)
-              ChoiceChip(
-                label: Text(m.label, style: const TextStyle(fontSize: 15)),
-                showCheckmark: false,
-                selected: _mode == m,
-                onSelected: (_) => setState(() => _mode = m),
-              ),
-          ],
-        ),
-      ),
+      lines: lines,
+      mode: mode,
     );
   }
 
@@ -179,72 +153,61 @@ class _ReaderScreenState extends ConsumerState<ReaderScreen> {
     final position =
         '${topic.notes.indexOf(current) + 1} / ${topic.notes.length}';
 
-    return PopScope(
-      // Back leaves Ask mode first.
-      canPop: !_asking,
-      onPopInvokedWithResult: (didPop, _) {
-        if (!didPop) setState(() => _asking = false);
-      },
-      child: Scaffold(
-        appBar: _asking
-            ? _askBar()
-            : AppBar(
-                title: Text(topic.title, overflow: TextOverflow.ellipsis),
-                actions: [
-                  const SettingsButton(),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20, left: 4),
-                    child: Center(
-                      child: Text(
-                        position,
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-        floatingActionButton: _asking
-            ? null
-            : FloatingActionButton.extended(
-                onPressed: () => setState(() => _asking = true),
-                icon: const Icon(Icons.auto_awesome),
-                label: const Text('Ask AI', style: TextStyle(fontSize: 16)),
-              ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            if (_asking) _modeChips(),
-            Expanded(
-              child: PageView.builder(
-                controller: _pages,
-                // No swiping while choosing a line.
-                physics: _asking ? const NeverScrollableScrollPhysics() : null,
-                itemCount: notes.length,
-                onPageChanged: (i) {
-                  setState(() => _index = i);
-                  _save(notes[i].id, 0);
-                },
-                itemBuilder: (context, i) => NotePage(
-                  key: ValueKey(notes[i].id),
-                  course: course,
-                  note: notes[i],
-                  initialOffset: notes[i].id == widget.noteId
-                      ? widget.initialOffset
-                      : 0,
-                  onScrolled: (offset) => _save(notes[i].id, offset),
-                  onOpenNote: (id) {
-                    final target = notes.indexWhere((n) => n.id == id);
-                    if (target >= 0) _pages.jumpToPage(target);
-                  },
-                  askActive: _asking && i == _index,
-                  onAsk: (line) => _ask(course, notes[i], line),
-                  highlightedLine: _highlight?.noteId == notes[i].id
-                      ? _highlight!.lineN
-                      : null,
-                ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(topic.title, overflow: TextOverflow.ellipsis),
+        actions: [
+          if (_selected.isNotEmpty)
+            IconButton(
+              key: const ValueKey('clear-selection'),
+              icon: const Icon(Icons.close),
+              onPressed: () => setState(_selected.clear),
+            ),
+          AskAiButton(
+            count: _selected.length,
+            label: ref.watch(aiTargetProvider).label,
+            onSend: (mode) => _send(current, mode),
+          ),
+          const SettingsButton(),
+          Padding(
+            padding: const EdgeInsets.only(right: 20, left: 4),
+            child: Center(
+              child: Text(
+                position,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
-          ],
+          ),
+        ],
+      ),
+      body: PageView.builder(
+        controller: _pages,
+        itemCount: notes.length,
+        onPageChanged: (i) {
+          // The selection belongs to one note.
+          setState(() {
+            _index = i;
+            _selected.clear();
+          });
+          _save(notes[i].id, 0);
+        },
+        itemBuilder: (context, i) => NotePage(
+          key: ValueKey(notes[i].id),
+          course: course,
+          note: notes[i],
+          initialOffset: notes[i].id == widget.noteId
+              ? widget.initialOffset
+              : 0,
+          onScrolled: (offset) => _save(notes[i].id, offset),
+          onOpenNote: (id) {
+            final target = notes.indexWhere((n) => n.id == id);
+            if (target >= 0) _pages.jumpToPage(target);
+          },
+          selectedLines: i == _index ? _selected : const {},
+          onToggleLine: _toggle,
+          highlightedLines: _highlight?.noteId == notes[i].id
+              ? _highlight!.lines
+              : const {},
         ),
       ),
     );

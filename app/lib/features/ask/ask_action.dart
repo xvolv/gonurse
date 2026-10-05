@@ -16,54 +16,69 @@ final urlOpenerProvider = Provider<Future<bool> Function(Uri)>(
       (uri) => launchUrl(uri, mode: LaunchMode.externalApplication),
 );
 
-/// The line she asked about, highlighted when she comes back to the app.
+/// The lines she asked about, highlighted when she comes back to the app.
 class AskPending {
   static const _key = 'ask_pending';
 
   final String noteId;
-  final int lineN;
+  final Set<int> lines;
 
-  const AskPending(this.noteId, this.lineN);
+  const AskPending(this.noteId, this.lines);
 
   static AskPending? read(Box box) {
     final m = box.get(_key) as Map?;
-    return m == null ? null : AskPending(m['note'] as String, m['n'] as int);
+    if (m == null) return null;
+    return AskPending(m['note'] as String, {
+      for (final n in m['lines'] as List? ?? [m['n']]) n as int,
+    });
   }
 
-  void save(Box box) => box.put(_key, {'note': noteId, 'n': lineN});
+  void save(Box box) =>
+      box.put(_key, {'note': noteId, 'lines': lines.toList()});
 
   static void clear(Box box) => box.delete(_key);
 }
 
-String buildPrompt(String template, Course course, Note note, Line line) =>
-    fillTemplate(
-      template,
-      topic: '${note.title} (${[course.course, ...note.path].join(' › ')})',
-      text: line.text,
-    );
+/// [lines] are put in note order (by line number), whatever order she
+/// selected them in.
+String buildPrompt(
+  String template,
+  Course course,
+  Note note,
+  Iterable<Line> lines,
+) {
+  final ordered = lines.toList()..sort((a, b) => a.n.compareTo(b.n));
+  return fillTemplate(
+    template,
+    topic: '${note.title} (${[course.course, ...note.path].join(' › ')})',
+    text: joinLines([for (final l in ordered) l.text]),
+  );
+}
 
-/// Copies the prompt for [line], remembers the line, and opens the chosen AI
+/// Copies the prompt for [lines], remembers them, and opens the chosen AI
 /// (with the prompt filled in if it supports that; the copy is then a backup).
 /// Call straight from the tap handler: the copy must start inside it.
-Future<void> askAboutLine({
+Future<void> askAboutLines({
   required BuildContext context,
   required WidgetRef ref,
   required Course course,
   required Note note,
-  required Line line,
+  required Iterable<Line> lines,
   required AskMode mode,
 }) async {
   final prompt = buildPrompt(
     ref.read(promptTemplatesProvider)[mode]!,
     course,
     note,
-    line,
+    lines,
   );
   final target = ref.read(aiTargetProvider);
   final uri = target.uriFor(prompt);
   final prefilled = target.prefills(prompt);
   final copy = Clipboard.setData(ClipboardData(text: prompt));
-  AskPending(note.id, line.n).save(ref.read(uiBoxProvider));
+  AskPending(note.id, {
+    for (final l in lines) l.n,
+  }).save(ref.read(uiBoxProvider));
 
   try {
     await copy;
