@@ -115,15 +115,14 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
               const _Header('Notes'),
               for (final entry in courses)
-                if (entry.course != null)
-                  ListTile(
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 20),
-                    title: Text(entry.config.title),
-                    subtitle: Text(
-                      'Version ${entry.course!.version} · '
-                      '${entry.course!.noteCount} notes',
-                    ),
+                ListTile(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+                  title: Text(entry.course.course),
+                  subtitle: Text(
+                    'Version ${entry.course.version} · '
+                    '${entry.course.noteCount} notes',
                   ),
+                ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
                 child: Align(

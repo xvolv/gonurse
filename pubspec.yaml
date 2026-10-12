@@ -10,5 +10,6 @@ environment:
 
 flutter:
   assets:
-    - content/pharmacology_notes.json
+    # version.json (its keys are the bundled courses) and <course>_notes.json
+    - content/
     - files/

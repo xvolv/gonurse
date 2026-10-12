@@ -32,15 +32,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   void _resume(List<CourseEntry> courses) {
     final last = LastPosition.read(ref.read(uiBoxProvider));
     if (last == null || !mounted) return;
-    final entry = courses
-        .where((c) => c.config.id == last.courseId)
-        .firstOrNull;
-    if (entry?.course?.notesById[last.noteId] == null) return;
+    final entry = courses.where((c) => c.id == last.courseId).firstOrNull;
+    if (entry?.course.notesById[last.noteId] == null) return;
     Navigator.of(context)
       ..push(
         MaterialPageRoute(
           builder: (_) =>
-              MapScreen(courseId: last.courseId, title: entry!.config.title),
+              MapScreen(courseId: last.courseId, title: entry!.course.course),
         ),
       )
       ..push(
@@ -75,13 +73,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ),
         data: (list) => ListView(
           padding: const EdgeInsets.all(16),
-          // Courses with notes first; the rest keep the exam order.
-          children: [
-            for (final c in list)
-              if (c.course != null) _CourseCard(c),
-            for (final c in list)
-              if (c.course == null) _CourseCard(c),
-          ],
+          children: [for (final c in list) _CourseCard(c)],
         ),
       ),
     );
@@ -97,24 +89,17 @@ class _CourseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final course = entry.course;
-    final ready = course != null;
     return Card(
-      elevation: ready ? 1 : 0,
-      color: ready ? null : theme.colorScheme.surfaceContainerLow,
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-        enabled: ready,
-        title: Text(entry.config.title, style: theme.textTheme.titleMedium),
+        title: Text(course.course, style: theme.textTheme.titleMedium),
         subtitle: Text(
-          ready
-              ? '${course.noteCount} notes · ${course.units.length} units'
-              : 'Notes coming soon',
+          '${course.noteCount} notes · ${course.units.length} units',
         ),
-        trailing: ready ? const Icon(Icons.chevron_right) : null,
+        trailing: const Icon(Icons.chevron_right),
         onTap: () => Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (_) =>
-                MapScreen(courseId: entry.config.id, title: entry.config.title),
+            builder: (_) => MapScreen(courseId: entry.id, title: course.course),
           ),
         ),
       ),

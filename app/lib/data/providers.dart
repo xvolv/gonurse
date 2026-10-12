@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 
-import '../config.dart';
 import '../models/course.dart';
 import 'content_repository.dart';
 
@@ -12,12 +11,12 @@ final contentRepositoryProvider = Provider<ContentRepository>(
   (ref) => throw UnimplementedError(),
 );
 
-/// A course from [courses], with its notes if they are on the device yet.
+/// A course on the device: its ID (a key of `version.json`) and its notes.
 class CourseEntry {
-  final CourseConfig config;
-  final Course? course;
+  final String id;
+  final Course course;
 
-  const CourseEntry(this.config, this.course);
+  const CourseEntry(this.id, this.course);
 }
 
 /// All courses, loaded from the device. A version check runs in the
@@ -37,7 +36,10 @@ class CoursesNotifier extends AsyncNotifier<List<CourseEntry>> {
 
   Future<List<CourseEntry>> _loadAll() async {
     final repo = ref.read(contentRepositoryProvider);
-    return [for (final c in courses) CourseEntry(c, await repo.load(c))];
+    return [
+      for (final id in await repo.courseIds())
+        if (await repo.load(id) case final course?) CourseEntry(id, course),
+    ];
   }
 
   /// Fails silently (returns [SyncResult.offline]) when there is no internet.
@@ -54,10 +56,10 @@ class CoursesNotifier extends AsyncNotifier<List<CourseEntry>> {
   }
 }
 
-/// One course's notes, or null while loading or if it has none yet.
+/// One course's notes, or null while loading or if it isn't on the device.
 final courseProvider = Provider.family<Course?, String>((ref, courseId) {
   for (final entry in ref.watch(coursesProvider).valueOrNull ?? const []) {
-    if (entry.config.id == courseId) return entry.course;
+    if (entry.id == courseId) return entry.course;
   }
   return null;
 });

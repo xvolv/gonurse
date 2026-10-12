@@ -1,4 +1,4 @@
-/// Data models for a course notes file (e.g. `content/pharmacology_notes.json`).
+/// Data models for a course notes file (`content/<course>_notes.json`).
 ///
 /// The JSON format is fixed; these classes only read it.
 library;
@@ -73,7 +73,8 @@ class Source {
     kind: json['kind'] as String? ?? 'page',
   );
 
-  bool get isSlide => kind == 'slide';
+  /// Slide decks (`slide`/`slides`) count slides; other kinds count pages.
+  bool get isSlide => kind.startsWith('slide');
 
   /// Name of the PDF in `files/`. Slide decks are stored as PDFs converted
   /// from PowerPoint, so `x.pptx` becomes `x.pdf` (slide N = PDF page N).

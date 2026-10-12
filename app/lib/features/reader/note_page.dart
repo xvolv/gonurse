@@ -132,6 +132,7 @@ class _NotePageState extends ConsumerState<NotePage> {
           lead: kind == SectionKind.lead,
           body: body,
           onDoubleTap: () => widget.onToggleLine(line.n),
+          sourceKeys: widget.course.sources.keys,
           onRefs: (refs) => openRefs(context, widget.course, refs),
         ),
     ];
@@ -199,6 +200,7 @@ class _LineRow extends StatelessWidget {
     required this.lead,
     required this.body,
     required this.onDoubleTap,
+    required this.sourceKeys,
     required this.onRefs,
     this.selected = false,
     this.highlighted = false,
@@ -208,6 +210,9 @@ class _LineRow extends StatelessWidget {
   final bool lead;
   final double body;
   final VoidCallback onDoubleTap;
+
+  /// The course's source keys, to read [Line.ref].
+  final Iterable<String> sourceKeys;
   final ValueChanged<List<SourceRef>> onRefs;
 
   /// Chosen for Ask AI: tinted, with an accent bar on the left.
@@ -219,7 +224,7 @@ class _LineRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    final refs = parseRefs(line.ref);
+    final refs = parseRefs(line.ref, sourceKeys);
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: ClipRRect(

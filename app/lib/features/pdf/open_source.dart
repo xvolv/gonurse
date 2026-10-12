@@ -40,7 +40,8 @@ Future<void> openRefs(
   _openSource(context, course, ref);
 }
 
-/// e.g. "CVS pharmacology (1).pdf · page 97" or "… · slide 14".
+/// e.g. "Malaria Case Management Manual 2022.pdf · page 47" or
+/// "Burns.pdf · slide 27".
 String _where(Source? source, SourceRef ref) {
   if (source == null) return ref.label;
   return '${source.pdfFile} · ${source.isSlide ? 'slide' : 'page'} ${ref.page}';

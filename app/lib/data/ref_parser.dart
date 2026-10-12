@@ -25,15 +25,29 @@ class SourceRef {
   String toString() => 'SourceRef($sourceKey, $page)';
 }
 
-final _refPattern = RegExp(
-  r'(Gen slide|Gen p\.|ANS p\.|CNS slide|CNS-sum p\.|RCVS p\.|CVS p\.|GI slide|TB slide|Contra p\.|Derm p\.)\s*([\d\-–, ]+)',
-);
+final _patterns = <String, RegExp>{};
 
-/// One [SourceRef] per page number or range. A bare number after a comma belongs
-/// to the previous key: `"RCVS p.117, 119"` gives RCVS pages 117 and 119.
-List<SourceRef> parseRefs(String ref) {
+/// Matches any of a course's source keys followed by page numbers. Longer
+/// keys come first, so "RCVS p." wins over "CVS p." inside "RCVS p.12".
+RegExp _patternFor(Iterable<String> sourceKeys) {
+  final keys = sourceKeys.toList()..sort((a, b) => b.length - a.length);
+  return _patterns.putIfAbsent(
+    keys.join('\u0000'),
+    () => RegExp(
+      '(${keys.map(RegExp.escape).join('|')})'
+      r'\s*([\d\-–, ]+)',
+    ),
+  );
+}
+
+/// One [SourceRef] per page number or range, for a course whose `sources`
+/// have [sourceKeys] (e.g. "CVS p.", "Burns slide"). A bare number after a
+/// comma belongs to the previous key: `"RCVS p.117, 119"` gives RCVS pages
+/// 117 and 119.
+List<SourceRef> parseRefs(String ref, Iterable<String> sourceKeys) {
+  if (ref.trim().isEmpty || sourceKeys.isEmpty) return const [];
   final result = <SourceRef>[];
-  for (final m in _refPattern.allMatches(ref)) {
+  for (final m in _patternFor(sourceKeys).allMatches(ref)) {
     final key = m.group(1)!;
     for (final part in m.group(2)!.split(',')) {
       final range = part.trim();

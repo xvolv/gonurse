@@ -8,18 +8,16 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 
-/// A copy of the real notes file with a different version and course name,
+/// A copy of a real notes file with a different version and course name,
 /// so tests can tell which copy was loaded.
-String notesJson({required int version, required String name}) {
+String notesJson(String id, {required int version, required String name}) {
   final json =
-      jsonDecode(File('../content/pharmacology_notes.json').readAsStringSync())
+      jsonDecode(File('../content/${id}_notes.json').readAsStringSync())
           as Map<String, dynamic>;
   return jsonEncode({...json, 'version': version, 'course': name});
 }
 
 void main() {
-  final pharm = courses.firstWhere((c) => c.id == 'pharmacology');
-  final firstAid = courses.firstWhere((c) => c.id == 'first_aid');
   late Directory dir;
   late Box box;
   final requested = <String>[];
@@ -36,26 +34,38 @@ void main() {
     await dir.delete(recursive: true);
   });
 
+  /// An app that bundles only Pharmacology, at [bundledVersion].
   ContentRepository repo({
     required http.Client client,
     int bundledVersion = 1,
   }) => ContentRepository(
     box,
-    loadAsset: (_) async => notesJson(version: bundledVersion, name: 'Bundled'),
+    loadAsset: (asset) async => switch (asset) {
+      '${bundledContentDir}version.json' => '{"pharmacology": $bundledVersion}',
+      '${bundledContentDir}pharmacology_notes.json' => notesJson(
+        'pharmacology',
+        version: bundledVersion,
+        name: 'Bundled',
+      ),
+      _ => throw StateError('no asset $asset'),
+    },
     client: client,
   );
 
-  /// Serves `version.json` with [remoteVersion] and a notes file named 'Remote'.
-  MockClient server(int remoteVersion) => MockClient((req) async {
-    requested.add(req.url.pathSegments.last);
-    return switch (req.url.pathSegments.last) {
-      'version.json' => http.Response('{"pharmacology": $remoteVersion}', 200),
-      'pharmacology_notes.json' => http.Response.bytes(
-        utf8.encode(notesJson(version: remoteVersion, name: 'Remote')),
-        200,
-      ),
-      _ => http.Response('', 404),
-    };
+  /// Serves `version.json` with [versions] and a notes file named 'Remote'.
+  MockClient server(Map<String, int> versions) => MockClient((req) async {
+    final file = req.url.pathSegments.last;
+    requested.add(file);
+    if (file == 'version.json') return http.Response(jsonEncode(versions), 200);
+    for (final MapEntry(key: id, value: v) in versions.entries) {
+      if (file == notesFile(id)) {
+        return http.Response.bytes(
+          utf8.encode(notesJson(id, version: v, name: 'Remote $id')),
+          200,
+        );
+      }
+    }
+    return http.Response('', 404);
   });
 
   final offline = MockClient(
@@ -64,7 +74,8 @@ void main() {
 
   test('first launch offline uses the bundled notes', () async {
     final r = repo(client: offline);
-    final course = (await r.load(pharm))!;
+    expect(await r.courseIds(), ['pharmacology']);
+    final course = (await r.load('pharmacology'))!;
     expect(course.course, 'Bundled');
     expect(course.noteCount, 51);
     await expectLater(r.sync(), throwsA(isA<SocketException>()));
@@ -73,19 +84,19 @@ void main() {
   test(
     'newer remote version is downloaded, stored and used offline later',
     () async {
-      final r = repo(client: server(2));
-      await r.load(pharm);
-      expect(await r.sync(), [pharm]);
-      expect(r.localVersion(pharm), 2);
+      final r = repo(client: server({'pharmacology': 2}));
+      await r.load('pharmacology');
+      expect(await r.sync(), ['pharmacology']);
+      expect(r.localVersion('pharmacology'), 2);
 
       final later = repo(client: offline);
-      expect((await later.load(pharm))!.course, 'Remote');
+      expect((await later.load('pharmacology'))!.course, 'Remote pharmacology');
     },
   );
 
   test('same remote version: notes are not downloaded', () async {
-    final r = repo(client: server(1));
-    await r.load(pharm);
+    final r = repo(client: server({'pharmacology': 1}));
+    await r.load('pharmacology');
     expect(await r.sync(), isEmpty);
     expect(requested, ['version.json']);
   });
@@ -98,48 +109,49 @@ void main() {
             : http.Response('{"course": "half a fi', 200),
       ),
     );
-    await r.load(pharm);
+    await r.load('pharmacology');
     await expectLater(r.sync(), throwsA(anything));
-    expect(r.localVersion(pharm), 1);
-    expect((await r.load(pharm))!.course, 'Bundled');
+    expect(r.localVersion('pharmacology'), 1);
+    expect((await r.load('pharmacology'))!.course, 'Bundled');
   });
 
   test(
     'a newer bundled copy (app update) wins over older stored notes',
     () async {
-      final r = repo(client: server(2));
-      await r.load(pharm);
+      final r = repo(client: server({'pharmacology': 2}));
+      await r.load('pharmacology');
       await r.sync();
 
       final updatedApp = repo(client: offline, bundledVersion: 3);
-      expect((await updatedApp.load(pharm))!.course, 'Bundled');
-      expect(updatedApp.localVersion(pharm), 3);
+      expect((await updatedApp.load('pharmacology'))!.course, 'Bundled');
+      expect(updatedApp.localVersion('pharmacology'), 3);
     },
   );
 
-  test('a course without notes loads as null until it is published', () async {
-    final r = repo(client: offline);
-    expect(await r.load(firstAid), isNull);
+  test('a new key on the server is downloaded and becomes a course', () async {
+    final r = repo(client: server({'pharmacology': 1, 'medsurg': 1}));
+    expect(await r.load('medsurg'), isNull, reason: 'not on the device yet');
+    expect(await r.sync(), ['medsurg']);
+    expect(requested, ['version.json', 'medsurg_notes.json']);
 
-    final online = repo(
-      client: MockClient(
-        (req) async => switch (req.url.pathSegments.last) {
-          'version.json' => http.Response(
-            '{"pharmacology": 1, "first_aid": 1}',
-            200,
-          ),
-          'first_aid_notes.json' => http.Response.bytes(
-            utf8.encode(notesJson(version: 1, name: 'First Aid')),
-            200,
-          ),
-          _ => http.Response('', 404),
-        },
-      ),
+    // Later, offline: it is still listed and loads.
+    final later = repo(client: offline);
+    expect(await later.courseIds(), ['pharmacology', 'medsurg']);
+    final medsurg = (await later.load('medsurg'))!;
+    expect(medsurg.course, 'Remote medsurg');
+    expect(medsurg.noteCount, 47);
+  });
+
+  test('the real bundled version.json: both courses, from the files', () async {
+    final r = ContentRepository(
+      box,
+      loadAsset: (asset) async => File(
+        '../content/${asset.substring(bundledContentDir.length)}',
+      ).readAsString(),
+      client: offline,
     );
-    for (final c in courses) {
-      await online.load(c);
-    }
-    expect(await online.sync(), [firstAid]);
-    expect((await r.load(firstAid))!.course, 'First Aid');
+    expect(await r.courseIds(), ['pharmacology', 'medsurg']);
+    expect((await r.load('pharmacology'))!.noteCount, 51);
+    expect((await r.load('medsurg'))!.course, 'Medical-Surgical Nursing');
   });
 }

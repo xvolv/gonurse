@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gonurse/config.dart';
 import 'package:gonurse/data/content_repository.dart';
 import 'package:gonurse/data/providers.dart';
 import 'package:gonurse/data/settings.dart';
@@ -15,43 +14,49 @@ import 'package:gonurse/main.dart';
 import 'package:gonurse/models/course.dart';
 import 'package:hive/hive.dart';
 
-/// Serves the real Pharmacology notes; [sync] behaves as told.
+/// Serves the real notes of both courses; [sync] behaves as told.
 class FakeRepository implements ContentRepository {
-  FakeRepository(this.course);
+  FakeRepository(this.courses);
 
-  final Course course;
+  final Map<String, Course> courses;
   Object syncOutcome = const SocketException('offline');
 
   @override
-  Future<Course?> load(CourseConfig c) async =>
-      c.id == 'pharmacology' ? course : null;
+  Future<List<String>> courseIds() async => courses.keys.toList();
 
   @override
-  int localVersion(CourseConfig c) => c.id == 'pharmacology' ? 1 : 0;
+  Future<Course?> load(String id) async => courses[id];
 
   @override
-  Future<List<CourseConfig>> sync() async {
+  int localVersion(String id) => courses[id]?.version ?? 0;
+
+  @override
+  Future<List<String>> sync() async {
     final outcome = syncOutcome;
-    if (outcome is List<CourseConfig>) return outcome;
+    if (outcome is List<String>) return outcome;
     throw outcome;
   }
 }
 
+Course loadCourse(String id) => Course.fromJson(
+  jsonDecode(File('../content/${id}_notes.json').readAsStringSync())
+      as Map<String, dynamic>,
+);
+
 void main() {
-  final course = Course.fromJson(
-    jsonDecode(File('../content/pharmacology_notes.json').readAsStringSync())
-        as Map<String, dynamic>,
-  );
+  final courses = {
+    for (final id in ['pharmacology', 'medsurg']) id: loadCourse(id),
+  };
   late Box uiBox;
   late FakeRepository repo;
 
   setUp(() async {
     uiBox = await Hive.openBox('ui', bytes: Uint8List(0));
-    repo = FakeRepository(course);
+    repo = FakeRepository(courses);
   });
   tearDown(() => uiBox.close());
 
-  Future<ProviderContainer> openSettings(WidgetTester tester) async {
+  Future<void> openApp(WidgetTester tester) async {
     tester.view.physicalSize = const Size(800, 1600);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.reset);
@@ -65,6 +70,30 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
+  }
+
+  group('home', () {
+    testWidgets('lists both courses with their note counts', (tester) async {
+      await openApp(tester);
+      expect(find.text('Pharmacology'), findsOneWidget);
+      expect(find.text('51 notes · 8 units'), findsOneWidget);
+      expect(find.text('Medical-Surgical Nursing'), findsOneWidget);
+      expect(find.text('47 notes · 6 units'), findsOneWidget);
+    });
+
+    testWidgets("tapping a course opens that course's map", (tester) async {
+      await openApp(tester);
+      await tester.tap(find.text('Medical-Surgical Nursing'));
+      await tester.pumpAndSettle();
+      for (final unit in courses['medsurg']!.units) {
+        expect(find.text(unit.title), findsOneWidget);
+      }
+      expect(find.text('General Pharmacology'), findsNothing);
+    });
+  });
+
+  Future<ProviderContainer> openSettings(WidgetTester tester) async {
+    await openApp(tester);
     await tester.tap(find.byTooltip('Settings'));
     await tester.pumpAndSettle();
     return ProviderScope.containerOf(tester.element(find.text('Settings')));
@@ -144,6 +173,8 @@ void main() {
   testWidgets('check for updated notes reports the result', (tester) async {
     await openSettings(tester);
     expect(find.text('Version 2 · 51 notes'), findsOneWidget);
+    expect(find.text('Medical-Surgical Nursing'), findsOneWidget);
+    expect(find.text('Version 2 · 47 notes'), findsOneWidget);
 
     await tester.tap(find.text('Check for updated notes'));
     await tester.pumpAndSettle();
@@ -152,7 +183,7 @@ void main() {
       findsOneWidget,
     );
 
-    repo.syncOutcome = <CourseConfig>[];
+    repo.syncOutcome = <String>[];
     ScaffoldMessenger.of(
       tester.element(find.text('Settings')),
     ).clearSnackBars();
