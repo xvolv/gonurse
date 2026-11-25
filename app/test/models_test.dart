@@ -17,8 +17,8 @@ void main() {
           .keys
           .toList();
 
-  test('version.json lists both courses, each with a notes file', () {
-    expect(courseIds, ['pharmacology', 'medsurg']);
+  test('version.json lists the courses, each with a notes file', () {
+    expect(courseIds, ['pharmacology', 'medsurg', 'obgyn']);
     for (final id in courseIds) {
       expect(File('../content/${id}_notes.json').existsSync(), isTrue);
     }
@@ -34,6 +34,13 @@ void main() {
     final course = load('medsurg');
     expect(course.course, 'Medical-Surgical Nursing');
     expect(course.units.length, 6);
+    expect(course.noteCount, 47);
+  });
+
+  test('Obstetrics & Gynecology: 7 units, 47 notes', () {
+    final course = load('obgyn');
+    expect(course.course, 'Obstetrics & Gynecology Nursing');
+    expect(course.units.length, 7);
     expect(course.noteCount, 47);
   });
 

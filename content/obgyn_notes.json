@@ -1,0 +1,5266 @@
+{
+ "course": "Obstetrics & Gynecology Nursing",
+ "version": 1,
+ "updated": "2026-11-25",
+ "language": "en",
+ "sources": {
+  "OG slide": {
+   "file": "Obstetrics and Gynecology Nursing.pdf",
+   "pages": 941,
+   "kind": "slides"
+  }
+ },
+ "units": [
+  {
+   "id": "og-preg",
+   "title": "Pregnancy & antenatal care",
+   "topics": [
+    {
+     "title": "Diagnosing pregnancy",
+     "notes": [
+      {
+       "id": "og-preg-signs",
+       "title": "Is she pregnant? Presumptive, probable, positive",
+       "path": [
+        "Pregnancy & antenatal care",
+        "Diagnosing pregnancy"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A woman has missed her period for 8 weeks, has nausea and breast tenderness. Her urine hCG test is positive.",
+           "ref": "OG slide 208, 214",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Presumptive signs = what the WOMAN feels: missed period, nausea, breast changes, urinary frequency, fatigue, quickening (16–18 weeks).",
+           "ref": "OG slide 208, 209",
+           "n": 2
+          },
+          {
+           "text": "Probable signs = what the EXAMINER finds but other causes are possible: Goodell (soft cervix), Hegar (soft lower segment), Chadwick (bluish vagina), ballottement, Braxton Hicks, positive hCG test.",
+           "ref": "OG slide 209, 211, 212, 214",
+           "n": 3
+          },
+          {
+           "text": "Positive signs = only 3: fetal heart heard, fetal movements felt by the examiner, fetus seen on ultrasound.",
+           "ref": "OG slide 215, 216, 217",
+           "n": 4
+          },
+          {
+           "text": "A positive pregnancy test is a PROBABLE sign, not positive: tests are 95–98% accurate.",
+           "ref": "OG slide 214",
+           "n": 5
+          }
+         ]
+        },
+        {
+         "type": "numbers",
+         "title": "Key numbers",
+         "lines": [
+          {
+           "text": "Urine hCG positive about 14 days after conception.",
+           "ref": "OG slide 214",
+           "n": 6
+          },
+          {
+           "text": "Fetal heart: ultrasound from 6–7 weeks; fetoscope from 18–20 weeks; normal 120–160/min.",
+           "ref": "OG slide 215, 217",
+           "n": 7
+          },
+          {
+           "text": "Examiner feels fetal movement from 20–24 weeks.",
+           "ref": "OG slide 216",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "Which finding is a positive sign of pregnancy?",
+           "ref": "OG slide 215, 217",
+           "n": 9
+          },
+          {
+           "text": "a. Positive urine hCG test ✗: a probable sign: tests can be wrong.",
+           "ref": "",
+           "basis": "practice",
+           "n": 10
+          },
+          {
+           "text": "b. Hegar's sign ✗: a probable sign found by the examiner.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "c. Fetal heart beat seen on ultrasound ✓: only the fetus itself proves pregnancy.",
+           "ref": "OG slide 215, 217",
+           "n": 12
+          },
+          {
+           "text": "d. Quickening felt by the woman ✗: a presumptive sign: subjective.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-edd-gtpal",
+       "title": "EDD, gestational age, gravida and para",
+       "path": [
+        "Pregnancy & antenatal care",
+        "Diagnosing pregnancy"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A woman with LNMP 10/01/2017 E.C. asks when she will deliver. She has 2 children, 2 stillbirths and 1 abortion.",
+           "ref": "OG slide 222, 226",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Pregnancy lasts 280 days (40 weeks) from the first day of the LNMP.",
+           "ref": "OG slide 223",
+           "n": 2
+          },
+          {
+           "text": "Ethiopian calendar: add 9 months and 10 days to LNMP (9 months and 5 days if Pagume falls in between).",
+           "ref": "OG slide 221, 222",
+           "n": 3
+          },
+          {
+           "text": "Gregorian calendar (Naegele): add 7 days, subtract 3 months, add 1 year.",
+           "ref": "OG slide 222",
+           "n": 4
+          },
+          {
+           "text": "Gravida = number of pregnancies including the current one.",
+           "ref": "OG slide 225",
+           "n": 5
+          },
+          {
+           "text": "Para = number of pregnancies that reached viability (28 weeks in Ethiopia), alive or dead; twins count once.",
+           "ref": "OG slide 225",
+           "n": 6
+          },
+          {
+           "text": "TPAL: Term (37+ wks), Preterm (28–37), Abortions (before 28 wks), Living children.",
+           "ref": "OG slide 224",
+           "n": 7
+          }
+         ]
+        },
+        {
+         "type": "numbers",
+         "title": "Worked example",
+         "lines": [
+          {
+           "text": "Example: 2 children + 2 stillbirths + 1 abortion, now pregnant → gravida 6, para 4.",
+           "ref": "OG slide 226",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "numbers",
+         "title": "Key numbers",
+         "lines": [
+          {
+           "text": "Gestational age by fundal height: from 20 weeks, cm ≈ weeks (1 cm = 1 week); finger method 1 finger ≈ 2 weeks, less accurate.",
+           "ref": "OG slide 245",
+           "n": 9
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A woman with 3 living children (one set of twins among them, born at term), no abortions, is pregnant now. She had 2 deliveries before. What is her gravida and para?",
+           "ref": "OG slide 225",
+           "n": 10
+          },
+          {
+           "text": "a. G4 P3 ✗: twins count as one delivery for parity.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "b. G3 P2 ✓: two previous deliveries (one was twins) plus current pregnancy = G3; para counts deliveries, not babies.",
+           "ref": "OG slide 225",
+           "n": 12
+          },
+          {
+           "text": "c. G3 P3 ✗: para counts births beyond viability, not number of babies.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          },
+          {
+           "text": "d. G2 P2 ✗: the current pregnancy is counted in gravida.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    },
+    {
+     "title": "Antenatal examination",
+     "notes": [
+      {
+       "id": "og-leopold",
+       "title": "Leopold's maneuvers: lie, presentation, position",
+       "path": [
+        "Pregnancy & antenatal care",
+        "Antenatal examination"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "At 36 weeks, a nurse palpates a soft, irregular mass at the fundus and a hard, round, movable part just above the pubis.",
+           "ref": "OG slide 235, 239",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "1st (fundal): what is in the fundus? Head = hard, round, ballotable; breech = soft, irregular.",
+           "ref": "OG slide 235",
+           "n": 2
+          },
+          {
+           "text": "2nd (lateral): where is the back? Smooth firm side = back; lumpy side = limbs.",
+           "ref": "OG slide 237",
+           "n": 3
+          },
+          {
+           "text": "3rd (Pawlik, suprapubic): what is the presenting part and is it engaged?",
+           "ref": "OG slide 239",
+           "n": 4
+          },
+          {
+           "text": "4th (deep pelvic, facing her feet): is the head flexed or extended?",
+           "ref": "OG slide 241",
+           "n": 5
+          },
+          {
+           "text": "Lie: longitudinal, oblique or transverse. Presentation: cephalic (vertex best), breech, shoulder.",
+           "ref": "OG slide 245, 247",
+           "n": 6
+          },
+          {
+           "text": "Hear fetal heart best over the fetal back; check maternal pulse at the same time.",
+           "ref": "OG slide 244",
+           "n": 7
+          },
+          {
+           "text": "Station 0 = presenting part at the ischial spines; engaged when only 2/5 or less of the head is palpable above the brim.",
+           "ref": "OG slide 264",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Ask her to empty the bladder; position supine with knees slightly flexed and head slightly raised.",
+           "ref": "OG slide 234",
+           "n": 9
+          },
+          {
+           "text": "Inspect for size, shape, skin changes and scars before palpating.",
+           "ref": "OG slide 232",
+           "n": 10
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "During Leopold's maneuver the nurse feels a hard round movable mass in the fundus. What does this suggest?",
+           "ref": "OG slide 235",
+           "n": 11
+          },
+          {
+           "text": "a. Vertex presentation ✗: the head would be at the pelvis, not the fundus.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          },
+          {
+           "text": "b. Breech presentation ✓: the head is in the fundus, so the buttocks present.",
+           "ref": "OG slide 235",
+           "n": 13
+          },
+          {
+           "text": "c. Transverse lie ✗: in transverse lie the fundus is empty of poles.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          },
+          {
+           "text": "d. Twin pregnancy ✗: one finding does not show twins.",
+           "ref": "",
+           "basis": "practice",
+           "n": 15
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-anc",
+       "title": "Antenatal care: visits, tests, TT, nutrition",
+       "path": [
+        "Pregnancy & antenatal care",
+        "Antenatal examination"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A 24-year-old comes for her first ANC visit at 10 weeks.",
+           "ref": "OG slide 275",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "WHO now advises at least 8 ANC contacts, the first before 12 weeks. The older focused model used 4 visits: before 16 wks, 24–28, 32, 36.",
+           "ref": "OG slide 275",
+           "n": 2
+          },
+          {
+           "text": "Routine tests: Hgb (anemia below 11 g/dl), blood group and Rh, VDRL/syphilis, HIV, HBsAg, urine for protein, sugar, pus cells.",
+           "ref": "OG slide 267, 269, 270",
+           "n": 3
+          },
+          {
+           "text": "Rh-negative mother: indirect Coombs test, repeated at 28 weeks.",
+           "ref": "OG slide 269",
+           "n": 4
+          },
+          {
+           "text": "Every pregnant woman: iron + folic acid throughout pregnancy.",
+           "ref": "OG slide 679",
+           "n": 5
+          },
+          {
+           "text": "Teach danger signs: vaginal bleeding, severe headache, blurred vision, fits, fever, leaking fluid, reduced fetal movement, severe abdominal pain.",
+           "ref": "OG slide 628",
+           "n": 6
+          }
+         ]
+        },
+        {
+         "type": "numbers",
+         "title": "Key numbers",
+         "lines": [
+          {
+           "text": "TT (Td) schedule: TT1 at first contact; TT2 4 weeks later (protects 3 yrs); TT3 6 months later (5 yrs); TT4 1 year later (10 yrs); TT5 1 year later (lifelong). 0.5 ml IM deltoid.",
+           "ref": "OG slide 272, 273",
+           "n": 7
+          },
+          {
+           "text": "Recommended weight gain: 11.5–16 kg (average); about 0.4 kg/week in the 2nd and 3rd trimesters. Underweight gain more, obese less.",
+           "ref": "OG slide 282, 284, 285",
+           "n": 8
+          },
+          {
+           "text": "Limit caffeine below 150 mg/day; no alcohol.",
+           "ref": "OG slide 286",
+           "n": 9
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Exercise 30 minutes daily; sex is safe unless bleeding, leaking or previa.",
+           "ref": "OG slide 279, 288, 289",
+           "n": 10
+          },
+          {
+           "text": "Wash breasts with water only (no soap); supportive bra.",
+           "ref": "OG slide 278",
+           "n": 11
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A pregnant woman received TT1 at her first visit. When is the earliest she can get TT2?",
+           "ref": "OG slide 273",
+           "n": 12
+          },
+          {
+           "text": "a. After 1 week ✗: too short to build immunity.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          },
+          {
+           "text": "b. After 4 weeks ✓: minimum interval between TT1 and TT2 is 4 weeks.",
+           "ref": "OG slide 273",
+           "n": 14
+          },
+          {
+           "text": "c. After 6 months ✗: that is the interval between TT2 and TT3.",
+           "ref": "",
+           "basis": "practice",
+           "n": 15
+          },
+          {
+           "text": "d. After 1 year ✗: that is the interval for TT3 to TT4.",
+           "ref": "",
+           "basis": "practice",
+           "n": 16
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-minor-disorders",
+       "title": "Minor discomforts of pregnancy",
+       "path": [
+        "Pregnancy & antenatal care",
+        "Antenatal examination"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "At 10 weeks a woman vomits every morning; at 30 weeks she complains of heartburn and constipation.",
+           "ref": "OG slide 296, 299, 292",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Morning sickness affects about 50% and usually settles after the first 3 months.",
+           "ref": "OG slide 296",
+           "n": 2
+          },
+          {
+           "text": "Vomiting beyond 12–16 weeks or causing weight loss, dehydration, ketones → hyperemesis gravidarum (not minor).",
+           "ref": "OG slide 297, 662",
+           "n": 3
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Nausea: dry carbohydrate (crackers) before getting up, small frequent meals, avoid fatty food, vitamin B6.",
+           "ref": "OG slide 298",
+           "n": 4
+          },
+          {
+           "text": "Heartburn: small frequent meals, do not lie down after eating, sleep with 2 pillows, antacids.",
+           "ref": "OG slide 300, 301",
+           "n": 5
+          },
+          {
+           "text": "Constipation: fibre, fruits, vegetables, 8 glasses of water; stool softener if needed.",
+           "ref": "OG slide 293, 295",
+           "n": 6
+          },
+          {
+           "text": "Hemorrhoids: prevent constipation, cold compress, Sims position rest.",
+           "ref": "OG slide 302, 303",
+           "n": 7
+          },
+          {
+           "text": "Back pain: good posture, low heels; back pain can be an early sign of UTI.",
+           "ref": "OG slide 304",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "traps",
+         "title": "Common traps",
+         "lines": [
+          {
+           "text": "No mineral oil (removes fat-soluble vitamins A, D, E, K) and no enemas (can start labor).",
+           "ref": "OG slide 294",
+           "n": 9
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A pregnant woman with constipation asks about mineral oil. What should the nurse say?",
+           "ref": "OG slide 293, 294",
+           "n": 10
+          },
+          {
+           "text": "a. It is the best laxative in pregnancy ✗: it removes fat-soluble vitamins.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "b. Avoid it; increase fibre and water instead ✓: diet measures are first-line and safe.",
+           "ref": "OG slide 293, 294",
+           "n": 12
+          },
+          {
+           "text": "c. Use an enema daily ✗: enemas may start labor.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          },
+          {
+           "text": "d. Stop iron tablets permanently ✗: iron is needed; manage constipation instead.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "og-labor",
+   "title": "Labor, birth & newborn",
+   "topics": [
+    {
+     "title": "Normal labor",
+     "notes": [
+      {
+       "id": "og-labor-stages",
+       "title": "Normal labor: true vs false, stages and phases",
+       "path": [
+        "Labor, birth & newborn",
+        "Normal labor"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A primigravida at 39 weeks has contractions every 4 minutes lasting 45 seconds that started in her back. Cervix 5 cm.",
+           "ref": "OG slide 312, 327",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "True labor: regular contractions that get stronger and closer, start in the back and sweep to the front, continue with walking, and dilate the cervix.",
+           "ref": "OG slide 312",
+           "n": 2
+          },
+          {
+           "text": "False labor: irregular, felt in the abdomen only, stop with walking or rest, no cervical change.",
+           "ref": "OG slide 312",
+           "n": 3
+          },
+          {
+           "text": "1st stage: onset of true labor to full dilatation (10 cm): longest stage.",
+           "ref": "OG slide 322",
+           "n": 4
+          },
+          {
+           "text": "2nd stage: full dilatation to birth of the baby.",
+           "ref": "OG slide 322, 336",
+           "n": 5
+          },
+          {
+           "text": "3rd stage: birth of baby to delivery of placenta: shortest, but highest PPH risk.",
+           "ref": "OG slide 323",
+           "n": 6
+          },
+          {
+           "text": "4th stage: first 1–4 hours after the placenta.",
+           "ref": "OG slide 323",
+           "n": 7
+          },
+          {
+           "text": "Normal labor: spontaneous, term, single, vertex, finished within 24 hours, no complications.",
+           "ref": "OG slide 308",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "numbers",
+         "title": "Key numbers",
+         "lines": [
+          {
+           "text": "Latent phase: 0–3 cm, mild contractions every 5–20 min lasting 20–40 s.",
+           "ref": "OG slide 325",
+           "n": 9
+          },
+          {
+           "text": "Active phase: 4–7 cm, contractions every 3–5 min lasting 40–60 s; cervix dilates about 1 cm/hour.",
+           "ref": "OG slide 327, 385",
+           "n": 10
+          },
+          {
+           "text": "Transition: 8–10 cm, contractions every 2–3 min lasting 60–90 s, urge to push at the end.",
+           "ref": "OG slide 329, 330",
+           "n": 11
+          },
+          {
+           "text": "2nd stage normally up to 2 hours in nullipara, 1 hour in multipara.",
+           "ref": "OG slide 710",
+           "n": 12
+          }
+         ]
+        },
+        {
+         "type": "traps",
+         "title": "Common traps",
+         "lines": [
+          {
+           "text": "Primigravida: cervix effaces before it dilates; multipara: both happen together.",
+           "ref": "OG slide 332",
+           "n": 13
+          },
+          {
+           "text": "Signs of labor: regular contractions (surest), show, rupture of membranes.",
+           "ref": "OG slide 311",
+           "n": 14
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A woman has irregular contractions felt only in the lower abdomen that stop when she walks. The cervix has not changed. What is this?",
+           "ref": "OG slide 312",
+           "n": 15
+          },
+          {
+           "text": "a. Active labor ✗: active labor has regular contractions and cervical change.",
+           "ref": "",
+           "basis": "practice",
+           "n": 16
+          },
+          {
+           "text": "b. False labor ✓: irregular, abdominal, relieved by walking, no cervical change.",
+           "ref": "OG slide 312",
+           "n": 17
+          },
+          {
+           "text": "c. Transition phase ✗: transition has strong frequent contractions at 8–10 cm.",
+           "ref": "",
+           "basis": "practice",
+           "n": 18
+          },
+          {
+           "text": "d. Second stage ✗: requires full dilatation.",
+           "ref": "",
+           "basis": "practice",
+           "n": 19
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-mechanism",
+       "title": "Mechanism of labor and the 5 P's",
+       "path": [
+        "Labor, birth & newborn",
+        "Normal labor"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "During the second stage the head crowns, is born by extension, then turns to face the mother's thigh.",
+           "ref": "OG slide 341, 342",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "5 P's affecting labor: Passenger, Powers, Passage, Position, Psyche.",
+           "ref": "OG slide 313",
+           "n": 2
+          },
+          {
+           "text": "Cardinal movements in order: Descent → Flexion → Internal rotation → Extension → External rotation (restitution) → Expulsion.",
+           "ref": "OG slide 337",
+           "n": 3
+          },
+          {
+           "text": "Flexion shrinks the presenting diameter from about 12 cm to 9.5 cm.",
+           "ref": "OG slide 339",
+           "n": 4
+          },
+          {
+           "text": "The anterior shoulder is born first, then the posterior.",
+           "ref": "OG slide 344",
+           "n": 5
+          },
+          {
+           "text": "Upright positions in the 1st stage use gravity and shorten labor; avoid lying flat on the back (supine hypotension).",
+           "ref": "OG slide 320",
+           "n": 6
+          },
+          {
+           "text": "Fear and tension increase pain and slow labor: support matters.",
+           "ref": "OG slide 321",
+           "n": 7
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "What is the correct order of the cardinal movements of labor?",
+           "ref": "OG slide 337",
+           "n": 8
+          },
+          {
+           "text": "a. Flexion, descent, extension, internal rotation ✗: descent comes first; rotation precedes extension.",
+           "ref": "",
+           "basis": "practice",
+           "n": 9
+          },
+          {
+           "text": "b. Descent, flexion, internal rotation, extension, external rotation, expulsion ✓: the correct sequence.",
+           "ref": "OG slide 337",
+           "n": 10
+          },
+          {
+           "text": "c. Descent, extension, flexion, expulsion ✗: extension happens after rotation.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "d. Internal rotation, descent, flexion, expulsion ✗: descent begins the process.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-partograph",
+       "title": "Partograph: reading alert and action lines",
+       "path": [
+        "Labor, birth & newborn",
+        "Normal labor"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A woman admitted at 4 cm has her cervicogram crossing to the right of the alert line.",
+           "ref": "OG slide 385",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Start plotting in the active phase (4 cm).",
+           "ref": "OG slide 385, 388",
+           "n": 2
+          },
+          {
+           "text": "Alert line: from 4 cm, expected progress of 1 cm/hour. Crossing it → more watchful care, look for cause, consider referral.",
+           "ref": "OG slide 385",
+           "n": 3
+          },
+          {
+           "text": "Action line: 4 hours to the right of the alert line. Crossing it → act: assess for CPD/malpresentation, augment or cesarean.",
+           "ref": "OG slide 385, 708, 709",
+           "n": 4
+          },
+          {
+           "text": "Amniotic fluid codes: I = intact, C = clear, M = meconium, B = blood-stained.",
+           "ref": "OG slide 384",
+           "n": 5
+          },
+          {
+           "text": "Moulding: 1 = sutures touching, 2 = overlapped but reducible, 3 = overlapped not reducible (danger).",
+           "ref": "OG slide 385",
+           "n": 6
+          }
+         ]
+        },
+        {
+         "type": "numbers",
+         "title": "Key numbers",
+         "lines": [
+          {
+           "text": "FHR and contractions every 30 min; pulse every 30 min; BP every 4 h; temperature every 2 h; vaginal exam every 4 h; urine each time passed.",
+           "ref": "OG slide 384, 388, 389, 361",
+           "n": 7
+          },
+          {
+           "text": "Contractions: count how many in 10 minutes and how long each lasts (under 20 s, 20–40 s, over 40 s).",
+           "ref": "OG slide 388",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "On a partograph the cervicogram crosses the action line. What does this mean?",
+           "ref": "OG slide 385",
+           "n": 9
+          },
+          {
+           "text": "a. Labor is progressing normally ✗: normal progress stays left of the alert line.",
+           "ref": "",
+           "basis": "practice",
+           "n": 10
+          },
+          {
+           "text": "b. Labor is abnormal: urgent assessment and intervention needed ✓: crossing the action line means 4 hours behind expected progress.",
+           "ref": "OG slide 385",
+           "n": 11
+          },
+          {
+           "text": "c. The woman is in the latent phase ✗: the partograph tracks the active phase.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          },
+          {
+           "text": "d. The baby will be born in 1 hour ✗: no such meaning.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-amtsl",
+       "title": "Third stage: AMTSL and checking the placenta",
+       "path": [
+        "Labor, birth & newborn",
+        "Normal labor"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A baby has just been born. The nurse confirms there is no second baby.",
+           "ref": "OG slide 369, 376",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Active management of the third stage (AMTSL) prevents PPH: 1) uterotonic within 1 minute of birth (oxytocin 10 IU IM), 2) controlled cord traction, 3) uterine massage after the placenta.",
+           "ref": "OG slide 370, 376",
+           "n": 2
+          },
+          {
+           "text": "Exclude a second baby before giving oxytocin.",
+           "ref": "OG slide 376",
+           "n": 3
+          },
+          {
+           "text": "Signs of separation: uterus becomes globular and rises, cord lengthens, gush of blood.",
+           "ref": "OG slide 352, 353",
+           "n": 4
+          },
+          {
+           "text": "CCT: one hand above the pubis pushes the uterus upward (counter-traction) while the other pulls the cord down and back, during a contraction; never jerk.",
+           "ref": "OG slide 372",
+           "n": 5
+          },
+          {
+           "text": "Examine the placenta: cotyledons complete, membranes complete, 3 cord vessels (2 arteries, 1 vein).",
+           "ref": "OG slide 374",
+           "n": 6
+          }
+         ]
+        },
+        {
+         "type": "numbers",
+         "title": "Key numbers",
+         "lines": [
+          {
+           "text": "Normal blood loss 300–500 ml.",
+           "ref": "OG slide 353",
+           "n": 7
+          },
+          {
+           "text": "Misoprostol 600 mcg orally if oxytocin is not available.",
+           "ref": "OG slide 378",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "traps",
+         "title": "Common traps",
+         "lines": [
+          {
+           "text": "Ergometrine raises BP: not in hypertension/preeclampsia or heart disease.",
+           "ref": "OG slide 377, 637",
+           "n": 9
+          },
+          {
+           "text": "CCT without counter-traction can invert the uterus.",
+           "ref": "OG slide 768",
+           "n": 10
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "Which is the first step of active management of the third stage of labor?",
+           "ref": "OG slide 370, 376",
+           "n": 11
+          },
+          {
+           "text": "a. Pull the cord immediately after birth ✗: uterotonic and contraction come first; counter-traction is needed.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          },
+          {
+           "text": "b. Give oxytocin 10 IU IM within 1 minute after birth (after excluding another baby) ✓: the uterotonic is the most important step.",
+           "ref": "OG slide 370, 376",
+           "n": 13
+          },
+          {
+           "text": "c. Massage the uterus before the baby is born ✗: massage follows placental delivery.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          },
+          {
+           "text": "d. Wait 1 hour for the placenta ✗: that is expectant management, with more bleeding.",
+           "ref": "",
+           "basis": "practice",
+           "n": 15
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-labor-monitoring",
+       "title": "Monitoring in labor: maternal and fetal danger signs",
+       "path": [
+        "Labor, birth & newborn",
+        "Normal labor"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "During labor the FHR is 96/min and the liquor is thick green.",
+           "ref": "OG slide 355, 356",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "FHR outside 110–160/min is abnormal; above 180 or below 100/min → fetal distress.",
+           "ref": "OG slide 355",
+           "n": 2
+          },
+          {
+           "text": "Meconium-stained liquor → fetal hypoxia (except in breech presentation).",
+           "ref": "OG slide 356",
+           "n": 3
+          },
+          {
+           "text": "Maternal BP 140/90 or more → report (preeclampsia); falling BP or pulse above 100 → possible hemorrhage.",
+           "ref": "OG slide 357, 358",
+           "n": 4
+          },
+          {
+           "text": "Contractions becoming weaker or shorter → uterine inertia; no relaxation between contractions → danger to fetus.",
+           "ref": "OG slide 359",
+           "n": 5
+          },
+          {
+           "text": "Bandl's (pathological retraction) ring across the abdomen → obstructed labor, impending uterine rupture.",
+           "ref": "OG slide 360, 698",
+           "n": 6
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Fetal distress: turn to left side, stop oxytocin, give oxygen and IV fluids, call for help, prepare for quick delivery.",
+           "ref": "",
+           "basis": "practice",
+           "n": 7
+          },
+          {
+           "text": "Encourage walking until membranes rupture; empty bladder every 2–4 hours; continuous support.",
+           "ref": "OG slide 361",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "During labor a nurse finds FHR 98/min after contractions and meconium-stained fluid. What should she do first?",
+           "ref": "OG slide 355, 356",
+           "n": 9
+          },
+          {
+           "text": "a. Continue routine observation ✗: these are signs of fetal distress.",
+           "ref": "",
+           "basis": "practice",
+           "n": 10
+          },
+          {
+           "text": "b. Turn the mother to her left side, stop oxytocin, give oxygen and inform the midwife/doctor ✓: improves placental flow and starts urgent care.",
+           "ref": "OG slide 355, 356",
+           "n": 11
+          },
+          {
+           "text": "c. Encourage pushing at 6 cm ✗: pushing before full dilatation is harmful.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          },
+          {
+           "text": "d. Give pethidine ✗: sedation does not treat fetal hypoxia.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-episiotomy-tears",
+       "title": "Episiotomy and perineal tears",
+       "path": [
+        "Labor, birth & newborn",
+        "Normal labor"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "After a fast delivery a woman has a tear from the vagina through the perineal muscles, but the anal sphincter is intact.",
+           "ref": "OG slide 777",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Episiotomy only when indicated (instrumental delivery, fetal distress, rigid perineum), cut at crowning during a contraction.",
+           "ref": "OG slide 362, 363, 368",
+           "n": 2
+          },
+          {
+           "text": "Mediolateral (45°): less risk to the anal sphincter but more bleeding and pain. Midline: heals easily but can extend into the anus.",
+           "ref": "OG slide 364, 365",
+           "n": 3
+          },
+          {
+           "text": "Tears: 1st degree = skin and vaginal mucosa; 2nd = perineal muscles; 3rd = reaches the anal sphincter; 4th = into the rectal mucosa.",
+           "ref": "OG slide 777",
+           "n": 4
+          },
+          {
+           "text": "Uterus firm but bright bleeding continues → suspect a laceration (cervix, vagina, perineum).",
+           "ref": "OG slide 772",
+           "n": 5
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Infiltrate lidocaine 1% before cutting/repair; repair with 2/0 chromic catgut.",
+           "ref": "OG slide 367, 375",
+           "n": 6
+          },
+          {
+           "text": "3rd/4th degree: repair by an experienced provider; stool softener and high-fluid diet.",
+           "ref": "OG slide 778",
+           "n": 7
+          },
+          {
+           "text": "Perineal care: clean front to back, sitz bath, ice in first 24 hours.",
+           "ref": "",
+           "basis": "practice",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A woman bleeds bright red steadily after birth though her uterus is firm and well contracted. What is the likely cause?",
+           "ref": "OG slide 772",
+           "n": 9
+          },
+          {
+           "text": "a. Uterine atony ✗: the uterus would be soft and boggy.",
+           "ref": "",
+           "basis": "practice",
+           "n": 10
+          },
+          {
+           "text": "b. Genital tract laceration ✓: a firm uterus with bright bleeding suggests a tear.",
+           "ref": "OG slide 772",
+           "n": 11
+          },
+          {
+           "text": "c. Normal lochia ✗: lochia is not steady bright bleeding.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          },
+          {
+           "text": "d. Retained placenta ✗: would usually give a soft uterus.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    },
+    {
+     "title": "Newborn",
+     "notes": [
+      {
+       "id": "og-newborn-care",
+       "title": "Immediate newborn care and APGAR",
+       "path": [
+        "Labor, birth & newborn",
+        "Newborn"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "At 1 minute a baby has a pink body with blue hands and feet, HR 110, grimaces, some flexion and a weak cry.",
+           "ref": "OG slide 400",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Steps: dry and wrap (keep warm) → assess breathing → clamp/tie cord → skin-to-skin and breastfeed within 1 hour → eye ointment → vitamin K → weigh.",
+           "ref": "OG slide 398, 399, 403, 405, 408, 410",
+           "n": 2
+          },
+          {
+           "text": "Not breathing or gasping after drying → start resuscitation (bag and mask) within the first minute.",
+           "ref": "OG slide 399",
+           "n": 3
+          },
+          {
+           "text": "APGAR at 1 and 5 minutes: Appearance, Pulse, Grimace, Activity, Respiration (0–2 each).",
+           "ref": "OG slide 400",
+           "n": 4
+          },
+          {
+           "text": "7–10 normal; 4–6 moderate asphyxia (clear airway, oxygen); 0–3 severe (immediate resuscitation).",
+           "ref": "OG slide 401",
+           "n": 5
+          },
+          {
+           "text": "Heat loss: evaporation (wet skin), conduction (cold surface), convection (draught), radiation (cold walls nearby).",
+           "ref": "OG slide 406",
+           "n": 6
+          }
+         ]
+        },
+        {
+         "type": "numbers",
+         "title": "Key numbers",
+         "lines": [
+          {
+           "text": "Vitamin K 1 mg IM in the thigh (0.5 mg if preterm); tie cord 2 fingers from the abdomen.",
+           "ref": "OG slide 410, 403",
+           "n": 7
+          },
+          {
+           "text": "Newborn danger signs: RR ≥60 or ≤30, grunting, chest indrawing, poor sucking, temp below 35.5 or 37.5+ °C, convulsions, jaundice in first 24 h, pus from eyes, no stool in 24 h.",
+           "ref": "OG slide 411, 412",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "traps",
+         "title": "Common traps",
+         "lines": [
+          {
+           "text": "Do not bathe in the first 24 hours; leave vernix on.",
+           "ref": "OG slide 398",
+           "n": 9
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A newborn at 1 minute: pink body with blue extremities, HR 110, grimace, some flexion, weak irregular cry. What is the APGAR score?",
+           "ref": "OG slide 400",
+           "n": 10
+          },
+          {
+           "text": "a. 4 ✗: too low; count each sign.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "b. 6 ✓: appearance 1 + pulse 2 + grimace 1 + activity 1 + respiration 1 = 6.",
+           "ref": "OG slide 400",
+           "n": 12
+          },
+          {
+           "text": "c. 8 ✗: would need vigorous cry or active motion.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          },
+          {
+           "text": "d. 10 ✗: requires all signs scored 2.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "og-post",
+   "title": "Postpartum & family planning",
+   "topics": [
+    {
+     "title": "Postpartum",
+     "notes": [
+      {
+       "id": "og-puerperium",
+       "title": "Normal puerperium: involution, lochia, breastfeeding",
+       "path": [
+        "Postpartum & family planning",
+        "Postpartum"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "On day 2 after delivery a mother has red lochia and cramps while breastfeeding. Fundus is firm 2 fingers below the umbilicus.",
+           "ref": "OG slide 420, 432",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Puerperium lasts 6 weeks.",
+           "ref": "OG slide 415",
+           "n": 2
+          },
+          {
+           "text": "Fundus at the umbilicus after delivery, descends about 1 cm/day; not palpable abdominally after about 10–14 days.",
+           "ref": "OG slide 417, 418, 419",
+           "n": 3
+          },
+          {
+           "text": "Lochia: rubra (red, days 1–3/4) → serosa (pinkish-yellow) → alba (white). Never foul-smelling; never pure blood.",
+           "ref": "OG slide 432",
+           "n": 4
+          },
+          {
+           "text": "Afterpains are normal, stronger in multiparas and during breastfeeding (oxytocin).",
+           "ref": "OG slide 420",
+           "n": 5
+          },
+          {
+           "text": "Soft, high uterus with persistent lochia → subinvolution (retained tissue, infection).",
+           "ref": "OG slide 421, 422",
+           "n": 6
+          },
+          {
+           "text": "Blood clots more easily for weeks → DVT risk: early walking.",
+           "ref": "OG slide 433",
+           "n": 7
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Check bleeding and uterine tone every 15 minutes for the first 2 hours.",
+           "ref": "OG slide 434",
+           "n": 8
+          },
+          {
+           "text": "Breastfeed within 1 hour, on demand every 2–3 hours; exclusive for 6 months.",
+           "ref": "OG slide 431",
+           "n": 9
+          },
+          {
+           "text": "Teach danger signs: fever, heavy bleeding, foul lochia, headache, blurred vision, breast pain, calf pain.",
+           "ref": "OG slide 434",
+           "n": 10
+          },
+          {
+           "text": "Encourage voiding: a full bladder pushes the uterus up and causes bleeding.",
+           "ref": "OG slide 428",
+           "n": 11
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "On day 3 postpartum, which finding needs reporting?",
+           "ref": "OG slide 432, 434",
+           "n": 12
+          },
+          {
+           "text": "a. Red lochia with small clots ✗: normal lochia rubra in the first days.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          },
+          {
+           "text": "b. Foul-smelling lochia and fever ✓: suggests puerperal infection.",
+           "ref": "OG slide 432, 434",
+           "n": 14
+          },
+          {
+           "text": "c. Afterpains during breastfeeding ✗: normal oxytocin effect.",
+           "ref": "",
+           "basis": "practice",
+           "n": 15
+          },
+          {
+           "text": "d. Fundus 3 cm below the umbilicus ✗: normal involution.",
+           "ref": "",
+           "basis": "practice",
+           "n": 16
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-pmtct",
+       "title": "PMTCT: HIV in pregnancy, birth and breastfeeding",
+       "path": [
+        "Postpartum & family planning",
+        "Postpartum"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A pregnant woman tests HIV positive at her first ANC visit.",
+           "ref": "OG slide 494",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Transmission: pregnancy 5–10%, labor and delivery 10–20% (highest), breastfeeding 5–10%.",
+           "ref": "OG slide 487",
+           "n": 2
+          },
+          {
+           "text": "Start lifelong ART for every HIV-positive pregnant or breastfeeding woman the same day (option B+); current first-line is dolutegravir-based (TLD).",
+           "ref": "OG slide 494, 500",
+           "n": 3
+          },
+          {
+           "text": "High viral load is the biggest risk factor.",
+           "ref": "OG slide 488",
+           "n": 4
+          },
+          {
+           "text": "Labor: avoid unnecessary ARM, episiotomy, instrumental delivery and prolonged rupture of membranes (over 4 h increases risk).",
+           "ref": "OG slide 489, 497, 498",
+           "n": 5
+          },
+          {
+           "text": "Infant: nevirapine daily for 6 weeks (high-risk infants: AZT + NVP).",
+           "ref": "OG slide 501",
+           "n": 6
+          },
+          {
+           "text": "Exclusive breastfeeding for 6 months while the mother is on ART; no mixed feeding.",
+           "ref": "OG slide 502, 503",
+           "n": 7
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Also give: iron-folate, TT, ITN for malaria, cotrimoxazole if indicated, screen for TB and STIs.",
+           "ref": "OG slide 493, 495",
+           "n": 8
+          },
+          {
+           "text": "Link mother and baby to follow-up; early infant diagnosis (DNA PCR at 6 weeks).",
+           "ref": "OG slide 504",
+           "n": 9
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "An HIV-positive mother on ART asks how to feed her baby. What is the best advice?",
+           "ref": "OG slide 503",
+           "n": 10
+          },
+          {
+           "text": "a. Mixed feeding with formula and breast milk ✗: mixed feeding increases transmission risk.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "b. Exclusive breastfeeding for 6 months while continuing ART ✓: safe and protects the baby when the mother is on ART.",
+           "ref": "OG slide 503",
+           "n": 12
+          },
+          {
+           "text": "c. Stop ART while breastfeeding ✗: ART must continue to protect mother and baby.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          },
+          {
+           "text": "d. Never breastfeed ✗: exclusive breastfeeding is recommended unless replacement feeding is AFASS.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    },
+    {
+     "title": "Family planning",
+     "notes": [
+      {
+       "id": "og-fp-natural",
+       "title": "Natural family planning, LAM and withdrawal",
+       "path": [
+        "Postpartum & family planning",
+        "Family planning"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A woman's last six cycles were 21, 25, 32, 24, 28 and 34 days. She wants to use the calendar method.",
+           "ref": "OG slide 442",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Calendar method: first fertile day = shortest cycle − 18; last fertile day = longest cycle − 11. Works only with regular cycles.",
+           "ref": "OG slide 439, 441",
+           "n": 2
+          },
+          {
+           "text": "Ovulation signs: temperature rises about 0.5 °C, cervical mucus becomes clear and stretchy.",
+           "ref": "OG slide 440",
+           "n": 3
+          },
+          {
+           "text": "LAM is 98% effective only if ALL 3: exclusive breastfeeding day and night, no return of periods, baby under 6 months.",
+           "ref": "OG slide 444",
+           "n": 4
+          },
+          {
+           "text": "Withdrawal often fails (up to 15%): pre-ejaculate contains sperm.",
+           "ref": "OG slide 443",
+           "n": 5
+          }
+         ]
+        },
+        {
+         "type": "numbers",
+         "title": "Worked example",
+         "lines": [
+          {
+           "text": "Example: 21 − 18 = day 3; 34 − 11 = day 23 → avoid sex from day 3 to day 23 (wide because cycles are irregular).",
+           "ref": "OG slide 442",
+           "n": 6
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A breastfeeding mother using LAM tells you her baby is now 7 months old. What should the nurse advise?",
+           "ref": "OG slide 444",
+           "n": 7
+          },
+          {
+           "text": "a. Continue LAM, it is still reliable ✗: LAM is reliable only until 6 months.",
+           "ref": "",
+           "basis": "practice",
+           "n": 8
+          },
+          {
+           "text": "b. Start another method now ✓: after 6 months LAM no longer protects.",
+           "ref": "OG slide 444",
+           "n": 9
+          },
+          {
+           "text": "c. Stop breastfeeding ✗: breastfeeding should continue.",
+           "ref": "",
+           "basis": "practice",
+           "n": 10
+          },
+          {
+           "text": "d. Use the calendar method immediately ✗: cycles may not be regular yet; choose a reliable method.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-fp-hormonal",
+       "title": "Hormonal contraception: who can use what",
+       "path": [
+        "Postpartum & family planning",
+        "Family planning"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A 3-month postpartum breastfeeding mother wants a pill.",
+           "ref": "OG slide 459",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Combined pills (estrogen + progestin): prevent ovulation; 99% if taken correctly. Not for breastfeeding mothers under 6 months, smokers over 35, history of clots, liver disease, high BP, unexplained bleeding.",
+           "ref": "OG slide 456, 457, 473",
+           "n": 2
+          },
+          {
+           "text": "Missed COC more than 12 hours, vomiting or diarrhea → use backup protection.",
+           "ref": "OG slide 458",
+           "n": 3
+          },
+          {
+           "text": "Progestin-only pill (minipill): safe in breastfeeding; must be taken at the SAME time daily (within 3 hours).",
+           "ref": "OG slide 459, 461",
+           "n": 4
+          },
+          {
+           "text": "DMPA injection every 3 months (8–12 weeks): irregular bleeding then amenorrhea, weight gain; fertility may take a year to return.",
+           "ref": "OG slide 463, 465, 466",
+           "n": 5
+          },
+          {
+           "text": "Implants: Implanon 1 rod = 3 years; Jadelle 2 rods = 5 years; most effective and immediately reversible.",
+           "ref": "OG slide 468, 470",
+           "n": 6
+          },
+          {
+           "text": "Emergency contraception: pills up to 5 days (120 h) after unprotected sex (sooner is better); copper IUD within 5 days is most effective.",
+           "ref": "OG slide 475, 476",
+           "n": 7
+          }
+         ]
+        },
+        {
+         "type": "traps",
+         "title": "Common traps",
+         "lines": [
+          {
+           "text": "Rifampicin and some anti-epileptics reduce pill effectiveness.",
+           "ref": "OG slide 458",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A breastfeeding mother 6 weeks after birth wants an oral contraceptive. Which is most appropriate?",
+           "ref": "OG slide 459",
+           "n": 9
+          },
+          {
+           "text": "a. Combined oral contraceptive ✗: estrogen reduces milk supply; avoid before 6 months of breastfeeding.",
+           "ref": "",
+           "basis": "practice",
+           "n": 10
+          },
+          {
+           "text": "b. Progestin-only pill ✓: no estrogen; safe during breastfeeding.",
+           "ref": "OG slide 459",
+           "n": 11
+          },
+          {
+           "text": "c. No contraception needed while breastfeeding ✗: partial breastfeeding does not protect reliably.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          },
+          {
+           "text": "d. Emergency pills monthly ✗: not a regular method.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-fp-iucd-barrier",
+       "title": "IUCD, barrier methods and sterilization",
+       "path": [
+        "Postpartum & family planning",
+        "Family planning"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A woman with 4 children wants a long-acting method without hormones.",
+           "ref": "OG slide 451",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Copper IUCD: up to 10–12 years, immediately reversible, no hormones; can be inserted right after delivery or within 48 hours.",
+           "ref": "OG slide 451, 452",
+           "n": 2
+          },
+          {
+           "text": "IUCD side effects: heavier, more painful periods in the first 3–6 months.",
+           "ref": "OG slide 452",
+           "n": 3
+          },
+          {
+           "text": "Condoms are the only method that also protects against STIs/HIV.",
+           "ref": "OG slide 447",
+           "n": 4
+          },
+          {
+           "text": "Diaphragm stays in for at least 6 hours after sex, used with spermicide.",
+           "ref": "OG slide 449",
+           "n": 5
+          },
+          {
+           "text": "Vasectomy is not effective immediately: use another method until 2 negative semen tests (about 3 months).",
+           "ref": "OG slide 480",
+           "n": 6
+          },
+          {
+           "text": "Tubal ligation: permanent; counsel carefully.",
+           "ref": "OG slide 478, 481",
+           "n": 7
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "IUCD: teach to feel for the strings after each period; report fever, abnormal discharge, pelvic pain (PID) or missing strings.",
+           "ref": "",
+           "basis": "practice",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A man asks if he can stop other contraception the day after his vasectomy. What should the nurse say?",
+           "ref": "OG slide 480",
+           "n": 9
+          },
+          {
+           "text": "a. Yes, it works immediately ✗: sperm remain in the tubes for weeks.",
+           "ref": "",
+           "basis": "practice",
+           "n": 10
+          },
+          {
+           "text": "b. Use another method until two semen tests show no sperm ✓: confirmation takes about 3 months.",
+           "ref": "OG slide 480",
+           "n": 11
+          },
+          {
+           "text": "c. Only for 1 week ✗: too short.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          },
+          {
+           "text": "d. Vasectomy does not prevent pregnancy ✗: it is highly effective once confirmed.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "og-comp",
+   "title": "Complications of pregnancy",
+   "topics": [
+    {
+     "title": "Bleeding in late pregnancy",
+     "notes": [
+      {
+       "id": "og-previa",
+       "title": "Placenta previa: painless bright red bleeding",
+       "path": [
+        "Complications of pregnancy",
+        "Bleeding in late pregnancy"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "At 32 weeks a grand multipara with a previous cesarean has sudden painless bright red vaginal bleeding. Uterus soft, FHR normal, presenting part high.",
+           "ref": "OG slide 511, 514",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Antepartum hemorrhage (APH) = bleeding after 28 weeks (in Ethiopia) and before birth.",
+           "ref": "OG slide 508",
+           "n": 2
+          },
+          {
+           "text": "Previa = placenta lies over or near the internal os. Painless, bright red, recurrent bleeding; soft non-tender uterus; often malpresentation.",
+           "ref": "OG slide 510, 514",
+           "n": 3
+          },
+          {
+           "text": "Risks: high parity, older age, previous cesarean or curettage, twins, smoking.",
+           "ref": "OG slide 511",
+           "n": 4
+          },
+          {
+           "text": "Grades: 1 low-lying, 2 marginal, 3 partial, 4 complete. Grades 3–4 → cesarean.",
+           "ref": "OG slide 512, 519",
+           "n": 5
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "NEVER do a vaginal or rectal examination in suspected previa: it can cause massive bleeding.",
+           "ref": "OG slide 518",
+           "n": 6
+          },
+          {
+           "text": "Bed rest on her side, IV line, blood for Hgb, group and cross-match; vital signs every 5–15 minutes; weigh pads.",
+           "ref": "OG slide 517, 518, 519",
+           "n": 7
+          },
+          {
+           "text": "Diagnose with ultrasound.",
+           "ref": "OG slide 520",
+           "n": 8
+          },
+          {
+           "text": "Bleeding stopped, fetus under 36 weeks, mother and baby stable → expectant care; heavy bleeding or labor → deliver regardless of gestational age.",
+           "ref": "OG slide 521, 522",
+           "n": 9
+          }
+         ]
+        },
+        {
+         "type": "traps",
+         "title": "Common traps",
+         "lines": [
+          {
+           "text": "High PPH risk after delivery: the lower segment contracts poorly; also placenta accreta.",
+           "ref": "OG slide 523",
+           "n": 10
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A woman at 34 weeks has painless bright red bleeding. What should the nurse avoid?",
+           "ref": "OG slide 518",
+           "n": 11
+          },
+          {
+           "text": "a. Checking vital signs ✗: needed to detect shock.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          },
+          {
+           "text": "b. Digital vaginal examination ✓: may tear the placenta and cause massive hemorrhage.",
+           "ref": "OG slide 518",
+           "n": 13
+          },
+          {
+           "text": "c. Starting an IV line ✗: needed for fluids and blood.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          },
+          {
+           "text": "d. Monitoring fetal heart rate ✗: essential to assess the fetus.",
+           "ref": "",
+           "basis": "practice",
+           "n": 15
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-abruption",
+       "title": "Placental abruption: painful bleeding, hard uterus",
+       "path": [
+        "Complications of pregnancy",
+        "Bleeding in late pregnancy"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A woman with severe preeclampsia at 36 weeks has sudden severe abdominal pain, a hard tender uterus, small dark bleeding, and signs of shock.",
+           "ref": "OG slide 525, 529, 531",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Abruption = placenta separates before the baby is born.",
+           "ref": "OG slide 524",
+           "n": 2
+          },
+          {
+           "text": "Painful, dark bleeding; board-like, tender uterus; fetal distress or death.",
+           "ref": "OG slide 529, 531",
+           "n": 3
+          },
+          {
+           "text": "Shock may be out of proportion to visible bleeding: the blood can be concealed behind the placenta.",
+           "ref": "OG slide 526, 531",
+           "n": 4
+          },
+          {
+           "text": "Risks: hypertension/preeclampsia (main), trauma, high parity, short cord, polyhydramnios, smoking, cocaine.",
+           "ref": "OG slide 525",
+           "n": 5
+          },
+          {
+           "text": "Complications: DIC, renal failure, PPH, fetal death.",
+           "ref": "OG slide 535, 536",
+           "n": 6
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Left lateral position, oxygen, two large IV lines, blood cross-match, vital signs every 5–15 minutes, monitor FHR.",
+           "ref": "OG slide 532, 533",
+           "n": 7
+          },
+          {
+           "text": "Check clotting (platelets, fibrinogen) for DIC.",
+           "ref": "OG slide 535",
+           "n": 8
+          },
+          {
+           "text": "No vaginal exam or enema.",
+           "ref": "OG slide 533",
+           "n": 9
+          },
+          {
+           "text": "Deliver: cesarean if baby alive and distressed; vaginal if baby dead or delivery is near.",
+           "ref": "OG slide 534",
+           "n": 10
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "Which finding best differentiates abruptio placenta from placenta previa?",
+           "ref": "OG slide 529, 531",
+           "n": 11
+          },
+          {
+           "text": "a. Bright red painless bleeding ✗: typical of previa.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          },
+          {
+           "text": "b. Painful, rigid, tender uterus ✓: typical of abruption.",
+           "ref": "OG slide 529, 531",
+           "n": 13
+          },
+          {
+           "text": "c. Soft uterus ✗: seen in previa.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          },
+          {
+           "text": "d. Malpresentation ✗: more common in previa.",
+           "ref": "",
+           "basis": "practice",
+           "n": 15
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    },
+    {
+     "title": "Fluid & membranes",
+     "notes": [
+      {
+       "id": "og-amniotic-fluid",
+       "title": "Too much or too little amniotic fluid",
+       "path": [
+        "Complications of pregnancy",
+        "Fluid & membranes"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "At 30 weeks a diabetic woman's uterus is much larger than dates, tense, fetal parts are hard to feel and she is breathless. AFI is 28 cm.",
+           "ref": "OG slide 542, 548",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Polyhydramnios: AFI over 25 cm, deepest pocket over 8 cm, or volume over 2 L.",
+           "ref": "OG slide 542",
+           "n": 2
+          },
+          {
+           "text": "Causes of poly: diabetes, fetal swallowing problems (anencephaly, esophageal atresia), twins, Rh disease.",
+           "ref": "OG slide 545, 546",
+           "n": 3
+          },
+          {
+           "text": "Risks of poly: preterm labor, cord prolapse when membranes rupture, abruption, PPH.",
+           "ref": "OG slide 547",
+           "n": 4
+          },
+          {
+           "text": "Oligohydramnios: AFI below 5 cm, deepest pocket under 2 cm, or under 500 ml.",
+           "ref": "OG slide 557",
+           "n": 5
+          },
+          {
+           "text": "Causes of oligo: ruptured membranes (commonest), fetal kidney problems, post-term, placental insufficiency.",
+           "ref": "OG slide 558",
+           "n": 6
+          },
+          {
+           "text": "Risks of oligo: lung hypoplasia, limb/face deformities, cord compression, IUGR.",
+           "ref": "OG slide 559",
+           "n": 7
+          }
+         ]
+        },
+        {
+         "type": "numbers",
+         "title": "Key numbers",
+         "lines": [
+          {
+           "text": "Normal AFI 5–25 cm; normal deepest pocket 2–8 cm; term volume about 800–1000 ml.",
+           "ref": "OG slide 538, 541",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Poly: rest, report leaking fluid immediately (cord prolapse risk), avoid constipation; amnioreduction if severe.",
+           "ref": "OG slide 549, 551, 555",
+           "n": 9
+          },
+          {
+           "text": "Oligo: hydrate the mother, frequent fetal surveillance.",
+           "ref": "OG slide 561",
+           "n": 10
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A pregnant woman's AFI is 3 cm at 38 weeks. What is this called?",
+           "ref": "OG slide 557",
+           "n": 11
+          },
+          {
+           "text": "a. Normal amniotic fluid ✗: normal is 5–25 cm.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          },
+          {
+           "text": "b. Oligohydramnios ✓: AFI below 5 cm.",
+           "ref": "OG slide 557",
+           "n": 13
+          },
+          {
+           "text": "c. Polyhydramnios ✗: AFI above 25 cm.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          },
+          {
+           "text": "d. Hydrops ✗: a fetal condition, not an AFI value.",
+           "ref": "",
+           "basis": "practice",
+           "n": 15
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-prom",
+       "title": "Premature rupture of membranes",
+       "path": [
+        "Complications of pregnancy",
+        "Fluid & membranes"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "At 32 weeks a woman reports a gush of fluid from the vagina followed by continuous leaking. No contractions.",
+           "ref": "OG slide 565",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "PROM = membranes rupture at least 1 hour before labor starts; PPROM = before 37 weeks.",
+           "ref": "OG slide 562",
+           "n": 2
+          },
+          {
+           "text": "Main risks: infection (chorioamnionitis), cord prolapse, preterm birth.",
+           "ref": "OG slide 564",
+           "n": 3
+          },
+          {
+           "text": "Confirm by sterile speculum: pool of fluid, ask her to cough.",
+           "ref": "OG slide 566",
+           "n": 4
+          },
+          {
+           "text": "Signs of chorioamnionitis: maternal fever, fast pulse, tender uterus, foul-smelling fluid, fetal tachycardia → IV antibiotics and deliver regardless of gestational age.",
+           "ref": "OG slide 567, 568",
+           "n": 5
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "AVOID digital vaginal exams: they introduce infection.",
+           "ref": "OG slide 565, 567",
+           "n": 6
+          },
+          {
+           "text": "Term (37+ wks): deliver/induce; antibiotics if ruptured over 12 hours.",
+           "ref": "OG slide 569",
+           "n": 7
+          },
+          {
+           "text": "Under 34 weeks, no infection: expectant care → bed rest, steroids, prophylactic antibiotics (amoxicillin + erythromycin), check temperature and FHR.",
+           "ref": "OG slide 569, 570",
+           "n": 8
+          },
+          {
+           "text": "Betamethasone 12 mg IM, 2 doses 24 hours apart (or dexamethasone 6 mg × 4 doses 12 h apart) to mature fetal lungs.",
+           "ref": "OG slide 570",
+           "n": 9
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A woman at 31 weeks has PROM without signs of infection. Which action is contraindicated?",
+           "ref": "OG slide 565, 567",
+           "n": 10
+          },
+          {
+           "text": "a. Giving betamethasone ✗: matures fetal lungs; recommended.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "b. Repeated digital vaginal examinations ✓: increase the risk of ascending infection.",
+           "ref": "OG slide 565, 567",
+           "n": 12
+          },
+          {
+           "text": "c. Monitoring maternal temperature ✗: detects chorioamnionitis early.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          },
+          {
+           "text": "d. Giving prophylactic antibiotics ✗: recommended in expectant management.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-preterm",
+       "title": "Preterm labor",
+       "path": [
+        "Complications of pregnancy",
+        "Fluid & membranes"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "At 30 weeks a woman has 4 contractions in 20 minutes; cervix 2 cm, membranes intact.",
+           "ref": "OG slide 572",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Preterm labor: before 37 completed weeks; 4 contractions in 20 minutes with cervical change.",
+           "ref": "OG slide 572",
+           "n": 2
+          },
+          {
+           "text": "Associated with UTI, chorioamnionitis, dehydration, adolescents, poor ANC, heavy work.",
+           "ref": "OG slide 573",
+           "n": 3
+          },
+          {
+           "text": "Try to stop labor only if membranes intact, no bleeding, no fetal distress, cervix under 4–5 cm.",
+           "ref": "OG slide 574",
+           "n": 4
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Bed rest on the side, IV hydration, treat infection, tocolytic (nifedipine, terbutaline) as ordered.",
+           "ref": "OG slide 575",
+           "n": 5
+          },
+          {
+           "text": "Give corticosteroids (betamethasone) between 28 and 34 weeks to mature the lungs.",
+           "ref": "OG slide 575",
+           "n": 6
+          },
+          {
+           "text": "If labor cannot be stopped: continuous monitoring, prepare newborn resuscitation and warmth.",
+           "ref": "OG slide 576",
+           "n": 7
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "Why is betamethasone given to a woman in preterm labor at 30 weeks?",
+           "ref": "OG slide 575",
+           "n": 8
+          },
+          {
+           "text": "a. To stop contractions ✗: it is not a tocolytic.",
+           "ref": "",
+           "basis": "practice",
+           "n": 9
+          },
+          {
+           "text": "b. To speed fetal lung maturity ✓: reduces respiratory distress syndrome.",
+           "ref": "OG slide 575",
+           "n": 10
+          },
+          {
+           "text": "c. To treat infection ✗: it is a steroid, not an antibiotic.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "d. To lower blood pressure ✗: no such effect.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    },
+    {
+     "title": "Fetal growth & timing",
+     "notes": [
+      {
+       "id": "og-iugr-iufd",
+       "title": "IUGR and intrauterine fetal death",
+       "path": [
+        "Complications of pregnancy",
+        "Fetal growth & timing"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "At 34 weeks a woman with chronic hypertension has fundal height of 29 cm. Ultrasound shows a small abdomen with normal head size.",
+           "ref": "OG slide 582, 584",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "IUGR/SGA: below the 10th percentile for gestational age. LBW = under 2500 g; VLBW = under 1500 g.",
+           "ref": "OG slide 577, 578",
+           "n": 2
+          },
+          {
+           "text": "Asymmetric IUGR (70–80%): head spared, late, from placental insufficiency (hypertension, preeclampsia, anemia, malnutrition).",
+           "ref": "OG slide 584",
+           "n": 3
+          },
+          {
+           "text": "Symmetric IUGR: all proportionally small, early (chromosomal, infection).",
+           "ref": "OG slide 583",
+           "n": 4
+          },
+          {
+           "text": "Fundal height 3 cm or more below dates → suspect IUGR; confirm with ultrasound.",
+           "ref": "OG slide 582",
+           "n": 5
+          },
+          {
+           "text": "Newborn risks: hypoglycemia, hypothermia, polycythemia, asphyxia.",
+           "ref": "OG slide 585",
+           "n": 6
+          },
+          {
+           "text": "Fetal death: absent fetal movements and no heartbeat on ultrasound; risk of DIC if retained.",
+           "ref": "OG slide 588, 589",
+           "n": 7
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "IUGR newborn: keep warm, check glucose early, feed early.",
+           "ref": "OG slide 586",
+           "n": 8
+          },
+          {
+           "text": "After IUFD: check clotting, induce labor if it does not start, watch for PPH, support grieving.",
+           "ref": "OG slide 589",
+           "n": 9
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A newborn with IUGR is 2 hours old and jittery. What should the nurse check first?",
+           "ref": "OG slide 585",
+           "n": 10
+          },
+          {
+           "text": "a. Blood glucose ✓: IUGR babies have low glycogen stores and develop hypoglycemia.",
+           "ref": "OG slide 585",
+           "n": 11
+          },
+          {
+           "text": "b. Hearing ✗: not urgent.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          },
+          {
+           "text": "c. Hip dysplasia ✗: not related to jitteriness.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          },
+          {
+           "text": "d. Bilirubin ✗: jaundice is not the first concern at 2 hours.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-postterm-twins",
+       "title": "Post-term pregnancy and twins",
+       "path": [
+        "Complications of pregnancy",
+        "Fetal growth & timing"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A woman is at 41 weeks + 3 days by an early ultrasound.",
+           "ref": "OG slide 590, 594",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Post-term = beyond 42 completed weeks. Risks: oligohydramnios, placental insufficiency, macrosomia, meconium aspiration, CPD.",
+           "ref": "OG slide 590, 592",
+           "n": 2
+          },
+          {
+           "text": "Confirm dates (early ultrasound, LNMP, quickening); induce at 41 completed weeks if no contraindication.",
+           "ref": "OG slide 593, 594",
+           "n": 3
+          },
+          {
+           "text": "Twins: higher risk of preeclampsia, anemia, polyhydramnios, preterm labor, malpresentation, cord prolapse, PPH.",
+           "ref": "OG slide 601",
+           "n": 4
+          },
+          {
+           "text": "Twins: deliver in hospital by 40 weeks; vaginal if first twin is vertex; cesarean if first twin is not vertex.",
+           "ref": "OG slide 603, 604",
+           "n": 5
+          },
+          {
+           "text": "Monozygotic (identical) from one ovum; dizygotic (fraternal) from two ova, always 2 placentas.",
+           "ref": "OG slide 596, 597",
+           "n": 6
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Twins: watch for PPH after delivery (over-stretched uterus); oxytocin after the last baby.",
+           "ref": "OG slide 601",
+           "n": 7
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "In a twin delivery, which situation is an indication for cesarean section?",
+           "ref": "OG slide 604",
+           "n": 8
+          },
+          {
+           "text": "a. Both twins vertex ✗: vaginal delivery is recommended.",
+           "ref": "",
+           "basis": "practice",
+           "n": 9
+          },
+          {
+           "text": "b. First twin breech ✓: a non-vertex first twin → cesarean.",
+           "ref": "OG slide 604",
+           "n": 10
+          },
+          {
+           "text": "c. First twin vertex, second breech ✗: vaginal for twin A, then assisted breech/version for twin B.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "d. Mother is a multipara ✗: not an indication.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    },
+    {
+     "title": "Hypertension in pregnancy",
+     "notes": [
+      {
+       "id": "og-preeclampsia",
+       "title": "Preeclampsia: recognize, classify, manage",
+       "path": [
+        "Complications of pregnancy",
+        "Hypertension in pregnancy"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A primigravida at 34 weeks has BP 165/112, proteinuria 3+, severe headache, blurred vision and epigastric pain.",
+           "ref": "OG slide 624, 625",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Hypertension in pregnancy: 140/90 or more on 2 readings at least 4–6 hours apart, or a single 160/110.",
+           "ref": "OG slide 606",
+           "n": 2
+          },
+          {
+           "text": "Gestational hypertension: after 20 weeks, no proteinuria. Preeclampsia: hypertension + proteinuria after 20 weeks.",
+           "ref": "OG slide 610, 611",
+           "n": 3
+          },
+          {
+           "text": "Severe preeclampsia: BP 160/110 or more, or proteinuria 3+, or any symptom: severe headache, blurred vision, epigastric/RUQ pain, oliguria (under 400 ml/24 h), pulmonary edema, HELLP, low platelets.",
+           "ref": "OG slide 624, 625",
+           "n": 4
+          },
+          {
+           "text": "Chronic hypertension: before 20 weeks or persisting beyond 12 weeks postpartum.",
+           "ref": "OG slide 654",
+           "n": 5
+          },
+          {
+           "text": "Risk: first pregnancy, age under 20 or over 40, twins, diabetes, kidney disease, molar pregnancy, previous preeclampsia.",
+           "ref": "OG slide 613, 617",
+           "n": 6
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Mild (under 37 wks): follow up twice weekly, BP, urine protein, fetal growth; teach danger signs; normal diet with no salt restriction.",
+           "ref": "OG slide 627, 628, 629, 638",
+           "n": 7
+          },
+          {
+           "text": "Severe: admit, MgSO4 to prevent fits, antihypertensive (hydralazine 5–10 mg IV or nifedipine) to keep diastolic under 110, deliver once stable regardless of gestational age.",
+           "ref": "OG slide 632, 633, 635",
+           "n": 8
+          },
+          {
+           "text": "Left lateral position, catheter, urine output at least 30 ml/hour, strict input/output.",
+           "ref": "OG slide 634",
+           "n": 9
+          },
+          {
+           "text": "Mild preeclampsia oral drug: methyldopa.",
+           "ref": "OG slide 629",
+           "n": 10
+          },
+          {
+           "text": "Delivery is the only cure.",
+           "ref": "OG slide 632",
+           "n": 11
+          }
+         ]
+        },
+        {
+         "type": "traps",
+         "title": "Common traps",
+         "lines": [
+          {
+           "text": "Ergometrine is contraindicated in preeclampsia (raises BP): use oxytocin for the third stage.",
+           "ref": "OG slide 637",
+           "n": 12
+          },
+          {
+           "text": "Edema of legs alone is common in pregnancy; edema of face and hands is more significant.",
+           "ref": "OG slide 618",
+           "n": 13
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A woman at 35 weeks has BP 168/114 and proteinuria 3+ with severe headache. What drug is given to prevent convulsions?",
+           "ref": "OG slide 647",
+           "n": 14
+          },
+          {
+           "text": "a. Diazepam as first choice ✗: a second-line option; causes neonatal depression.",
+           "ref": "",
+           "basis": "practice",
+           "n": 15
+          },
+          {
+           "text": "b. Magnesium sulfate ✓: drug of choice to prevent and treat eclamptic fits.",
+           "ref": "OG slide 647",
+           "n": 16
+          },
+          {
+           "text": "c. Ergometrine ✗: raises BP; contraindicated.",
+           "ref": "",
+           "basis": "practice",
+           "n": 17
+          },
+          {
+           "text": "d. Furosemide ✗: does not prevent seizures.",
+           "ref": "",
+           "basis": "practice",
+           "n": 18
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-eclampsia-mgso4",
+       "title": "Eclampsia and magnesium sulfate",
+       "path": [
+        "Complications of pregnancy",
+        "Hypertension in pregnancy"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A woman with severe preeclampsia suddenly has a generalized tonic-clonic seizure.",
+           "ref": "OG slide 639, 642",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Eclampsia = fits in a woman with preeclampsia; 50% before labor, 30% in labor, 20% after delivery.",
+           "ref": "OG slide 639, 641",
+           "n": 2
+          },
+          {
+           "text": "Priorities: protect airway, control fits (MgSO4), control BP, deliver within 12 hours regardless of gestational age.",
+           "ref": "OG slide 644, 645, 646",
+           "n": 3
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "During the fit: do not leave her, turn on the left side, protect from injury, suction, oxygen 4–6 L/min; do not put anything in the mouth during the fit.",
+           "ref": "OG slide 645",
+           "n": 4
+          },
+          {
+           "text": "Loading dose: 4 g MgSO4 (20%) IV over 5 minutes + 10 g (50%) deep IM, 5 g in each buttock with 1 ml 2% lidocaine.",
+           "ref": "OG slide 648",
+           "n": 5
+          },
+          {
+           "text": "Maintenance: 5 g (50%) IM every 4 hours, alternate buttocks, until 24 hours after delivery or the last fit.",
+           "ref": "OG slide 649",
+           "n": 6
+          },
+          {
+           "text": "If fits recur after 15 minutes: 2 g (50%) IV over 5 minutes.",
+           "ref": "OG slide 648",
+           "n": 7
+          },
+          {
+           "text": "Before each dose check: respiration at least 16/min, patellar reflexes present, urine at least 100 ml in 4 hours (25–30 ml/h).",
+           "ref": "OG slide 650",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "traps",
+         "title": "Common traps",
+         "lines": [
+          {
+           "text": "Toxicity: RR below 12 or absent reflexes → stop MgSO4 and give calcium gluconate 1 g (10 ml of 10%) IV slowly.",
+           "ref": "OG slide 650, 652",
+           "n": 9
+          },
+          {
+           "text": "Newborn of a mother on MgSO4: watch for breathing depression and floppiness.",
+           "ref": "OG slide 651",
+           "n": 10
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "Before giving the next MgSO4 maintenance dose, the nurse finds RR 10/min and absent knee reflexes. What should she do?",
+           "ref": "OG slide 650, 652",
+           "n": 11
+          },
+          {
+           "text": "a. Give the dose as scheduled ✗: these are signs of magnesium toxicity.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          },
+          {
+           "text": "b. Withhold MgSO4 and give calcium gluconate as ordered ✓: calcium gluconate is the antidote.",
+           "ref": "OG slide 650, 652",
+           "n": 13
+          },
+          {
+           "text": "c. Double the next dose ✗: would worsen toxicity.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          },
+          {
+           "text": "d. Give diazepam ✗: would further depress breathing.",
+           "ref": "",
+           "basis": "practice",
+           "n": 15
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    },
+    {
+     "title": "Other pregnancy problems",
+     "notes": [
+      {
+       "id": "og-rh",
+       "title": "Rh incompatibility and anti-D",
+       "path": [
+        "Complications of pregnancy",
+        "Other pregnancy problems"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "An Rh-negative woman married to an Rh-positive man has just delivered an Rh-positive baby.",
+           "ref": "OG slide 659",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Problem only when mother is Rh negative and baby is Rh positive.",
+           "ref": "OG slide 659",
+           "n": 2
+          },
+          {
+           "text": "First pregnancy usually not affected: she becomes sensitized; antibodies attack the next Rh-positive baby (hemolytic disease, hydrops).",
+           "ref": "OG slide 660",
+           "n": 3
+          },
+          {
+           "text": "Sensitizing events: delivery, abortion, ectopic, amniocentesis, abruption, trauma, wrong blood transfusion.",
+           "ref": "OG slide 660",
+           "n": 4
+          },
+          {
+           "text": "Prevention: anti-D immunoglobulin within 72 hours of any sensitizing event (also routinely at 28 weeks where available).",
+           "ref": "OG slide 661",
+           "n": 5
+          },
+          {
+           "text": "Indirect Coombs test checks if the mother already has antibodies (at booking and 28 weeks).",
+           "ref": "OG slide 269",
+           "n": 6
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "An Rh-negative mother delivered an Rh-positive baby and her indirect Coombs test is negative. When should anti-D be given?",
+           "ref": "OG slide 661",
+           "n": 7
+          },
+          {
+           "text": "a. Before the next pregnancy only ✗: too late; sensitization happens now.",
+           "ref": "",
+           "basis": "practice",
+           "n": 8
+          },
+          {
+           "text": "b. Within 72 hours after delivery ✓: prevents antibody formation.",
+           "ref": "OG slide 661",
+           "n": 9
+          },
+          {
+           "text": "c. Only if the baby is jaundiced ✗: it protects future pregnancies, not this baby.",
+           "ref": "",
+           "basis": "practice",
+           "n": 10
+          },
+          {
+           "text": "d. Never, because Coombs is negative ✗: negative Coombs means she is not yet sensitized; give anti-D.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-hyperemesis",
+       "title": "Hyperemesis gravidarum",
+       "path": [
+        "Complications of pregnancy",
+        "Other pregnancy problems"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "At 11 weeks a woman cannot keep any food or fluid down, has lost 4 kg, dry mouth, and ketones in urine.",
+           "ref": "OG slide 662, 664",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Severe vomiting causing dehydration, ketonuria and weight loss → hyperemesis gravidarum.",
+           "ref": "OG slide 662",
+           "n": 2
+          },
+          {
+           "text": "More common with high hCG: twins, molar pregnancy.",
+           "ref": "OG slide 663",
+           "n": 3
+          },
+          {
+           "text": "Untreated: electrolyte imbalance, IUGR, preterm birth.",
+           "ref": "OG slide 664",
+           "n": 4
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Admit; nothing by mouth for about 24 hours; IV fluids (e.g., 3 L Ringer's with vitamin B).",
+           "ref": "OG slide 665, 666",
+           "n": 5
+          },
+          {
+           "text": "Antiemetic (metoclopramide), strict input/output including vomitus, daily weight, check urine ketones.",
+           "ref": "OG slide 666",
+           "n": 6
+          },
+          {
+           "text": "Reintroduce small amounts of clear fluids, then dry carbohydrates every 2–3 hours.",
+           "ref": "OG slide 667",
+           "n": 7
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A woman with hyperemesis gravidarum is admitted. What is the initial management?",
+           "ref": "OG slide 665, 666",
+           "n": 8
+          },
+          {
+           "text": "a. Encourage large meals ✗: will provoke vomiting.",
+           "ref": "",
+           "basis": "practice",
+           "n": 9
+          },
+          {
+           "text": "b. Withhold oral intake and give IV fluids with vitamins ✓: rests the gut and corrects dehydration.",
+           "ref": "OG slide 665, 666",
+           "n": 10
+          },
+          {
+           "text": "c. Give only oral fluids ✗: she cannot keep them down.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "d. Discharge with advice ✗: she is dehydrated and ketotic.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-anemia-preg",
+       "title": "Anemia in pregnancy",
+       "path": [
+        "Complications of pregnancy",
+        "Other pregnancy problems"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "At 28 weeks a woman with hookworm and short birth interval has Hgb 8.5 g/dl, pallor and tiredness.",
+           "ref": "OG slide 669, 672",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Anemia in pregnancy: Hgb below 11 g/dl (1st and 3rd trimester), below 10.5 in the 2nd.",
+           "ref": "OG slide 669",
+           "n": 2
+          },
+          {
+           "text": "80–95% is iron deficiency; also folate deficiency.",
+           "ref": "OG slide 670",
+           "n": 3
+          },
+          {
+           "text": "Causes: poor diet, short birth spacing, heavy periods, hookworm, malaria, bleeding.",
+           "ref": "OG slide 672",
+           "n": 4
+          },
+          {
+           "text": "Risks: preterm birth, LBW, heart failure in labor, PPH, infection.",
+           "ref": "OG slide 677, 678",
+           "n": 5
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Ferrous sulfate 300 mg three times daily; continue 3 months after Hgb normal.",
+           "ref": "OG slide 674",
+           "n": 6
+          },
+          {
+           "text": "Folic acid 5 mg for megaloblastic anemia.",
+           "ref": "OG slide 675",
+           "n": 7
+          },
+          {
+           "text": "Deworm (mebendazole after 1st trimester), treat malaria, use bed nets, iron-rich diet, family planning.",
+           "ref": "OG slide 679",
+           "n": 8
+          },
+          {
+           "text": "Transfuse if Hgb very low (e.g., under 6–7 g/dl in labor) or heart failure.",
+           "ref": "OG slide 676",
+           "n": 9
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "What is the most common cause of anemia in pregnancy?",
+           "ref": "OG slide 670",
+           "n": 10
+          },
+          {
+           "text": "a. Vitamin B12 deficiency ✗: uncommon.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "b. Iron deficiency ✓: accounts for 80–95% of cases.",
+           "ref": "OG slide 670",
+           "n": 12
+          },
+          {
+           "text": "c. Sickle cell disease ✗: uncommon cause.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          },
+          {
+           "text": "d. Thalassemia ✗: uncommon in Ethiopia.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-gdm",
+       "title": "Diabetes in pregnancy",
+       "path": [
+        "Complications of pregnancy",
+        "Other pregnancy problems"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "At 26 weeks an obese woman with a previous 4.5 kg baby has a 1-hour 50 g glucose screen of 160 mg/dl.",
+           "ref": "OG slide 683",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Screen at 24–28 weeks: 50 g glucose, 1-hour value over 135–140 mg/dl → do full OGTT.",
+           "ref": "OG slide 683, 684",
+           "n": 2
+          },
+          {
+           "text": "Pregnancy hormones (HPL, cortisol, estrogen, progesterone) increase insulin resistance.",
+           "ref": "OG slide 681",
+           "n": 3
+          },
+          {
+           "text": "Baby: macrosomia, shoulder dystocia, polyhydramnios, congenital anomalies, stillbirth, newborn hypoglycemia and RDS.",
+           "ref": "OG slide 685, 688",
+           "n": 4
+          },
+          {
+           "text": "Mother: preeclampsia, infections (candida, UTI), operative delivery.",
+           "ref": "OG slide 686",
+           "n": 5
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Diet first; insulin if glucose stays high. Oral hypoglycemics are avoided in pregnancy.",
+           "ref": "OG slide 689, 690",
+           "n": 6
+          },
+          {
+           "text": "Check the newborn's glucose early and feed early.",
+           "ref": "OG slide 688",
+           "n": 7
+          },
+          {
+           "text": "Repeat 75 g OGTT 6–12 weeks after delivery; higher lifelong risk of type 2 diabetes.",
+           "ref": "OG slide 691",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A baby of a diabetic mother is 1 hour old. Which complication should the nurse watch for first?",
+           "ref": "OG slide 688",
+           "n": 9
+          },
+          {
+           "text": "a. Hyperglycemia ✗: the baby's high insulin causes LOW glucose.",
+           "ref": "",
+           "basis": "practice",
+           "n": 10
+          },
+          {
+           "text": "b. Hypoglycemia ✓: fetal hyperinsulinemia continues after the glucose supply stops.",
+           "ref": "OG slide 688",
+           "n": 11
+          },
+          {
+           "text": "c. Hypertension ✗: not typical.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          },
+          {
+           "text": "d. Post-maturity ✗: not related.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "og-abnlabor",
+   "title": "Abnormal labor & operative birth",
+   "topics": [
+    {
+     "title": "Abnormal labor",
+     "notes": [
+      {
+       "id": "og-obstructed-labor",
+       "title": "Prolonged and obstructed labor",
+       "path": [
+        "Abnormal labor & operative birth",
+        "Abnormal labor"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A woman in labor for 20 hours at home arrives dehydrated with strong contractions, the head not descending, heavy moulding and caput, and a ring across the lower abdomen.",
+           "ref": "OG slide 697, 698",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Causes of abnormal labor = 3 P's: Powers (weak or uncoordinated contractions), Passage (CPD), Passenger (malposition/malpresentation, big baby).",
+           "ref": "OG slide 694",
+           "n": 2
+          },
+          {
+           "text": "Obstructed labor: no descent despite strong contractions → CPD, brow/shoulder presentation, hydrocephalus.",
+           "ref": "OG slide 695, 696",
+           "n": 3
+          },
+          {
+           "text": "Late signs: caput and moulding grade 3, fetal distress, Bandl's ring, uterus fails to relax → impending rupture.",
+           "ref": "OG slide 698",
+           "n": 4
+          },
+          {
+           "text": "Prolonged latent phase: over 20 h (nullipara) or 14 h (multipara). Prolonged active phase: under 1 cm/hour.",
+           "ref": "OG slide 704, 706",
+           "n": 5
+          },
+          {
+           "text": "Prolonged 2nd stage: over 2 hours (nullipara) or 1 hour (multipara).",
+           "ref": "OG slide 710",
+           "n": 6
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "IV fluids for dehydration, blood group and cross-match, catheterize, antibiotics.",
+           "ref": "OG slide 699",
+           "n": 7
+          },
+          {
+           "text": "Obstructed labor with a live baby → cesarean section as soon as possible. Never augment with oxytocin.",
+           "ref": "OG slide 699, 716",
+           "n": 8
+          },
+          {
+           "text": "Prolonged 2nd stage with head at 0/5–1/5 → vacuum or forceps; head 2/5 or higher → cesarean.",
+           "ref": "OG slide 712",
+           "n": 9
+          }
+         ]
+        },
+        {
+         "type": "traps",
+         "title": "Common traps",
+         "lines": [
+          {
+           "text": "Complications: uterine rupture, vesicovaginal fistula, infection, PPH, stillbirth, newborn brain damage.",
+           "ref": "OG slide 700",
+           "n": 10
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A woman with obstructed labor has a Bandl's ring and fetal distress. What is the correct management?",
+           "ref": "OG slide 698, 699",
+           "n": 11
+          },
+          {
+           "text": "a. Start oxytocin augmentation ✗: dangerous: can rupture the uterus.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          },
+          {
+           "text": "b. Rehydrate, catheterize, antibiotics and immediate cesarean section ✓: relieves obstruction safely.",
+           "ref": "OG slide 698, 699",
+           "n": 13
+          },
+          {
+           "text": "c. Wait 4 more hours ✗: delay risks rupture and fetal death.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          },
+          {
+           "text": "d. Apply fundal pressure ✗: can rupture the uterus.",
+           "ref": "",
+           "basis": "practice",
+           "n": 15
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-induction",
+       "title": "Induction and augmentation: Bishop score and oxytocin",
+       "path": [
+        "Abnormal labor & operative birth",
+        "Abnormal labor"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A woman at 41+ weeks: cervix 1 cm, 30% effaced, firm, posterior, station −2.",
+           "ref": "OG slide 718",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Bishop score: dilatation, effacement, station, consistency, position (0–13).",
+           "ref": "OG slide 718",
+           "n": 2
+          },
+          {
+           "text": "Score 9 or more (favorable) → oxytocin alone. Below 9 → ripen first with misoprostol 25 mcg vaginally every 4–6 hours or a Foley catheter.",
+           "ref": "OG slide 719, 723, 724",
+           "n": 3
+          },
+          {
+           "text": "Indications: post-term, severe preeclampsia, PROM, diabetes, IUFD.",
+           "ref": "OG slide 715",
+           "n": 4
+          },
+          {
+           "text": "Contraindications: placenta previa, transverse lie, cord prolapse, CPD, active genital herpes, previous classical scar.",
+           "ref": "OG slide 716, 815",
+           "n": 5
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Oxytocin in IV fluid, start low and increase every 20–40 minutes until 3–5 contractions in 10 minutes each lasting 40–60 s.",
+           "ref": "OG slide 725, 727",
+           "n": 6
+          },
+          {
+           "text": "Someone stays at the bedside; check FHR, contractions, pulse and BP every 15–30 minutes.",
+           "ref": "OG slide 726, 729",
+           "n": 7
+          },
+          {
+           "text": "Too many/too long contractions or fetal distress → STOP the infusion, left lateral, oxygen, call for help.",
+           "ref": "OG slide 730",
+           "n": 8
+          },
+          {
+           "text": "Start oxytocin 6–12 hours after the last prostaglandin dose.",
+           "ref": "OG slide 721, 722",
+           "n": 9
+          }
+         ]
+        },
+        {
+         "type": "traps",
+         "title": "Common traps",
+         "lines": [
+          {
+           "text": "Oxytocin complications: hyperstimulation, fetal distress, uterine rupture, water intoxication, PPH.",
+           "ref": "OG slide 731",
+           "n": 10
+          },
+          {
+           "text": "Failed induction: no established labor after 6 hours at maximum dose.",
+           "ref": "OG slide 734",
+           "n": 11
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "During oxytocin infusion, contractions come every 90 seconds lasting 90 seconds and FHR drops to 95. What should the nurse do first?",
+           "ref": "OG slide 730",
+           "n": 12
+          },
+          {
+           "text": "a. Increase the oxytocin rate ✗: worsens hyperstimulation.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          },
+          {
+           "text": "b. Stop the oxytocin infusion ✓: removes the cause of hyperstimulation and fetal distress.",
+           "ref": "OG slide 730",
+           "n": 14
+          },
+          {
+           "text": "c. Ask her to push ✗: she may not be fully dilated; does not treat the cause.",
+           "ref": "",
+           "basis": "practice",
+           "n": 15
+          },
+          {
+           "text": "d. Lay her flat on her back ✗: supine position reduces placental flow.",
+           "ref": "",
+           "basis": "practice",
+           "n": 16
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    },
+    {
+     "title": "Malpresentation & emergencies",
+     "notes": [
+      {
+       "id": "og-malpresentation",
+       "title": "Malpresentations: OP, face, brow, breech, transverse",
+       "path": [
+        "Abnormal labor & operative birth",
+        "Malpresentation & emergencies"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "At 38 weeks the fetal head is felt in the fundus and the FHR is heard above the umbilicus.",
+           "ref": "OG slide 756",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Occiput posterior: long labor and backache; most rotate; deep transverse arrest or persistent OP may need cesarean.",
+           "ref": "OG slide 741, 742",
+           "n": 2
+          },
+          {
+           "text": "Brow presentation: largest diameter → cannot deliver vaginally (live baby) → cesarean.",
+           "ref": "OG slide 743, 713",
+           "n": 3
+          },
+          {
+           "text": "Face: chin anterior can deliver vaginally; chin (mentum) posterior → cesarean.",
+           "ref": "OG slide 745, 707",
+           "n": 4
+          },
+          {
+           "text": "Transverse lie at term → cesarean (after trying external version before labor).",
+           "ref": "OG slide 747, 767",
+           "n": 5
+          },
+          {
+           "text": "Breech: fetal head in the fundus, FHR heard high; frank (legs extended), complete (flexed), footling.",
+           "ref": "OG slide 750, 756",
+           "n": 6
+          },
+          {
+           "text": "Breech risks: cord prolapse, head entrapment, birth injury; planned cesarean is usual.",
+           "ref": "OG slide 755, 758, 759",
+           "n": 7
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Breech vaginal birth: hands off until the umbilicus is born; deliver the head with flexion (Mauriceau), never pull.",
+           "ref": "OG slide 757, 758",
+           "n": 8
+          },
+          {
+           "text": "Compound presentation with prolapsed hand: often delivers vaginally; watch for cord prolapse.",
+           "ref": "OG slide 763, 765",
+           "n": 9
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "Which presentation at term with a live fetus requires cesarean section?",
+           "ref": "OG slide 743, 713",
+           "n": 10
+          },
+          {
+           "text": "a. Occiput anterior vertex ✗: the ideal presentation.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "b. Brow presentation ✓: presents the largest diameter; vaginal delivery is not possible.",
+           "ref": "OG slide 743, 713",
+           "n": 12
+          },
+          {
+           "text": "c. Face presentation with chin anterior ✗: can deliver vaginally.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          },
+          {
+           "text": "d. Occiput posterior in good labor ✗: most rotate and deliver.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-shoulder-cord-inversion",
+       "title": "Shoulder dystocia, cord prolapse, uterine inversion",
+       "path": [
+        "Abnormal labor & operative birth",
+        "Malpresentation & emergencies"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "After the head of a 4.5 kg baby is born, it pulls back against the perineum (turtle sign) and the shoulders do not deliver.",
+           "ref": "OG slide 748",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Shoulder dystocia: risk with macrosomia, diabetes, post-term, obesity.",
+           "ref": "OG slide 748",
+           "n": 2
+          },
+          {
+           "text": "Uterine inversion: sudden heavy bleeding and shock, no fundus palpable, mass in the vagina; caused by cord traction on a relaxed uterus or fundal pressure.",
+           "ref": "OG slide 768, 769",
+           "n": 3
+          },
+          {
+           "text": "Cord prolapse: cord in front of the presenting part after membranes rupture → emergency; risk with polyhydramnios, malpresentation, high presenting part.",
+           "ref": "OG slide 763",
+           "n": 4
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Shoulder dystocia: call for help; McRoberts (thighs pulled to abdomen) + suprapubic pressure; NO fundal pressure.",
+           "ref": "OG slide 749",
+           "n": 5
+          },
+          {
+           "text": "Cord prolapse: push the presenting part up off the cord with a gloved hand, knee-chest or Trendelenburg position, do not handle the cord, urgent cesarean.",
+           "ref": "",
+           "basis": "practice",
+           "n": 6
+          },
+          {
+           "text": "Uterine inversion: do not pull the placenta off, stop oxytocin, call for help, treat shock; the uterus is replaced under relaxation then oxytocin is given.",
+           "ref": "OG slide 770, 771",
+           "n": 7
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "During labor the membranes rupture and the nurse sees the umbilical cord at the vulva. What is the first action?",
+           "ref": "OG slide 763",
+           "n": 8
+          },
+          {
+           "text": "a. Push the cord back into the vagina ✗: handling causes spasm and does not relieve compression.",
+           "ref": "",
+           "basis": "practice",
+           "n": 9
+          },
+          {
+           "text": "b. Relieve pressure on the cord by lifting the presenting part and positioning knee-chest ✓: keeps blood flowing through the cord.",
+           "ref": "OG slide 763",
+           "n": 10
+          },
+          {
+           "text": "c. Ask the woman to push hard ✗: increases cord compression.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "d. Start oxytocin ✗: worsens compression.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    },
+    {
+     "title": "Operative birth",
+     "notes": [
+      {
+       "id": "og-instrumental-cs",
+       "title": "Vacuum, forceps, cesarean and VBAC",
+       "path": [
+        "Abnormal labor & operative birth",
+        "Operative birth"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A woman with one previous lower-segment cesarean asks if she can deliver vaginally.",
+           "ref": "OG slide 814",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Before vacuum/forceps: full dilatation, ruptured membranes, empty bladder, vertex at station 0 or below, live baby, consent.",
+           "ref": "OG slide 782, 783",
+           "n": 2
+          },
+          {
+           "text": "Vacuum: only vertex, not before 34 weeks; max 3 pulls, 20–30 minutes, 2 pop-offs.",
+           "ref": "OG slide 784, 787, 788",
+           "n": 3
+          },
+          {
+           "text": "Most common cesarean indications: fetal distress, CPD, previous cesarean.",
+           "ref": "OG slide 802",
+           "n": 4
+          },
+          {
+           "text": "VBAC possible after ONE previous low transverse cesarean, no recurring indication, in a facility that can do emergency cesarean.",
+           "ref": "OG slide 814",
+           "n": 5
+          },
+          {
+           "text": "No VBAC: classical or T-scar, previous myomectomy, estimated weight 4000 g or more, contracted pelvis, malpresentation.",
+           "ref": "OG slide 815",
+           "n": 6
+          },
+          {
+           "text": "Signs of scar rupture: pain over the scar, maternal tachycardia, fetal distress, poor progress, vaginal bleeding.",
+           "ref": "OG slide 819",
+           "n": 7
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A woman with a previous cesarean is in labor and develops pain over the scar, rising pulse and fetal bradycardia. What should the nurse suspect?",
+           "ref": "OG slide 819",
+           "n": 8
+          },
+          {
+           "text": "a. Normal labor pain ✗: scar pain with tachycardia and fetal distress is not normal.",
+           "ref": "",
+           "basis": "practice",
+           "n": 9
+          },
+          {
+           "text": "b. Impending uterine rupture ✓: classic signs of scar rupture.",
+           "ref": "OG slide 819",
+           "n": 10
+          },
+          {
+           "text": "c. False labor ✗: would not cause fetal distress.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "d. Urinary tract infection ✗: does not cause these signs.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "og-ppcomp",
+   "title": "Postpartum complications",
+   "topics": [
+    {
+     "title": "Postpartum complications",
+     "notes": [
+      {
+       "id": "og-pph",
+       "title": "Postpartum hemorrhage: the 4 T's",
+       "path": [
+        "Postpartum complications",
+        "Postpartum complications"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "Twenty minutes after delivering twins, a woman soaks pads with blood; the uterus is soft and above the umbilicus.",
+           "ref": "OG slide 825, 826",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "PPH = blood loss of 500 ml or more after vaginal birth (1000 ml after cesarean). Primary: within 24 hours; secondary: 24 h to 6 weeks.",
+           "ref": "OG slide 823",
+           "n": 2
+          },
+          {
+           "text": "4 T's: Tone (atony, most common), Trauma (tears, rupture, inversion), Tissue (retained placenta), Thrombin (clotting problems).",
+           "ref": "OG slide 825",
+           "n": 3
+          },
+          {
+           "text": "Atony risks: over-distended uterus (twins, polyhydramnios, big baby), prolonged or rapid labor, grand multipara, oxytocin use, infection.",
+           "ref": "OG slide 826",
+           "n": 4
+          },
+          {
+           "text": "Soft uterus → atony. Firm uterus with bleeding → look for tears.",
+           "ref": "OG slide 772",
+           "n": 5
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Call for help; massage the uterus until firm; empty the bladder.",
+           "ref": "",
+           "basis": "practice",
+           "n": 6
+          },
+          {
+           "text": "Oxytocin 10 IU IM/IV, then infusion (20 IU in 1 L); ergometrine (if no hypertension) or misoprostol 800 mcg.",
+           "ref": "OG slide 376, 377, 378",
+           "n": 7
+          },
+          {
+           "text": "Two large IV lines, fluids, cross-match blood; monitor vital signs and blood loss.",
+           "ref": "OG slide 532",
+           "n": 8
+          },
+          {
+           "text": "Check placenta completeness and look for tears; bimanual compression if bleeding continues.",
+           "ref": "OG slide 374",
+           "n": 9
+          },
+          {
+           "text": "Prevention: AMTSL for every woman.",
+           "ref": "OG slide 370",
+           "n": 10
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A woman bleeds heavily after delivery and her uterus is soft and boggy. What is the first nursing action?",
+           "ref": "OG slide 825, 826",
+           "n": 11
+          },
+          {
+           "text": "a. Massage the fundus ✓: stimulates contraction to control atonic bleeding.",
+           "ref": "OG slide 825, 826",
+           "n": 12
+          },
+          {
+           "text": "b. Pack the vagina ✗: does not treat atony.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          },
+          {
+           "text": "c. Give ergometrine without checking BP ✗: check for hypertension first; massage comes first.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          },
+          {
+           "text": "d. Place her in Trendelenburg and wait ✗: does not stop bleeding.",
+           "ref": "",
+           "basis": "practice",
+           "n": 15
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-puerperal-infection",
+       "title": "Puerperal infection, UTI and mastitis",
+       "path": [
+        "Postpartum complications",
+        "Postpartum complications"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "On day 4 after cesarean for prolonged labor a mother has fever 38.8 °C, lower abdominal pain, tender uterus and foul-smelling lochia.",
+           "ref": "OG slide 833",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Puerperal morbidity: temperature 38 °C or more on any 2 of the first 10 days postpartum (excluding the first 24 hours).",
+           "ref": "OG slide 828",
+           "n": 2
+          },
+          {
+           "text": "Endometritis: fever, uterine tenderness, foul lochia, subinvolution → antibiotics.",
+           "ref": "OG slide 833",
+           "n": 3
+          },
+          {
+           "text": "Risks: cesarean, prolonged labor, prolonged ROM, many vaginal exams, manual placenta removal, anemia.",
+           "ref": "OG slide 831",
+           "n": 4
+          },
+          {
+           "text": "Mastitis: fever, chills, red, hot, tender area of one breast; caused by milk stasis and cracked nipples.",
+           "ref": "OG slide 838, 839",
+           "n": 5
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Endometritis: IV antibiotics, fluids, semi-Fowler's (drains lochia), perineal hygiene.",
+           "ref": "OG slide 833",
+           "n": 6
+          },
+          {
+           "text": "Mastitis: CONTINUE breastfeeding or express milk, start on the affected side, warm compress, rest, fluids, analgesia, antibiotics.",
+           "ref": "OG slide 839",
+           "n": 7
+          },
+          {
+           "text": "Prevent: correct latch, frequent feeds, hand hygiene, limit vaginal exams.",
+           "ref": "OG slide 839",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A breastfeeding mother has a red, hot, tender area on one breast and fever. What should the nurse advise?",
+           "ref": "OG slide 839",
+           "n": 9
+          },
+          {
+           "text": "a. Stop breastfeeding from that breast ✗: milk stasis worsens mastitis.",
+           "ref": "",
+           "basis": "practice",
+           "n": 10
+          },
+          {
+           "text": "b. Continue breastfeeding or express milk, apply warm compresses and take antibiotics as ordered ✓: emptying the breast resolves stasis.",
+           "ref": "OG slide 839",
+           "n": 11
+          },
+          {
+           "text": "c. Bind the breasts tightly ✗: used for suppressing lactation, not mastitis.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          },
+          {
+           "text": "d. Apply cold only and wait ✗: milk must be removed.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-postpartum-mood",
+       "title": "Postpartum blues, depression and psychosis",
+       "path": [
+        "Postpartum complications",
+        "Postpartum complications"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "On day 3 a new mother cries easily, feels irritable and anxious, but cares for her baby well.",
+           "ref": "OG slide 846",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Blues: 50–70% of mothers, first 2 weeks, crying, mood swings; resolves by about day 10 without drugs.",
+           "ref": "OG slide 845, 846, 847",
+           "n": 2
+          },
+          {
+           "text": "Depression: 10–15%, weeks to months; hopelessness, insomnia, loss of interest, poor bonding, inability to cope.",
+           "ref": "OG slide 842, 848, 850",
+           "n": 3
+          },
+          {
+           "text": "Psychosis: rare (0.1–0.2%), hallucinations, delusions, risk of harming self or baby → emergency.",
+           "ref": "OG slide 845, 851",
+           "n": 4
+          },
+          {
+           "text": "Refer urgently if suicidal or harmful thoughts, hallucinations, lack of interest in the baby.",
+           "ref": "OG slide 849",
+           "n": 5
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Blues: support, reassurance, rest, involve family.",
+           "ref": "OG slide 847",
+           "n": 6
+          },
+          {
+           "text": "Depression: counseling, antidepressants; screen at postnatal visits.",
+           "ref": "OG slide 850",
+           "n": 7
+          },
+          {
+           "text": "Psychosis: do not leave mother alone with the baby; psychiatric admission.",
+           "ref": "OG slide 852",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A mother 2 weeks after birth hears voices telling her the baby is evil. What is the priority?",
+           "ref": "OG slide 849, 851",
+           "n": 9
+          },
+          {
+           "text": "a. Reassure her it is postpartum blues ✗: hallucinations are not blues.",
+           "ref": "",
+           "basis": "practice",
+           "n": 10
+          },
+          {
+           "text": "b. Ensure the safety of mother and baby and refer urgently to psychiatry ✓: postpartum psychosis is an emergency.",
+           "ref": "OG slide 849, 851",
+           "n": 11
+          },
+          {
+           "text": "c. Encourage more rest at home ✗: inadequate for psychosis.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          },
+          {
+           "text": "d. Teach breastfeeding technique ✗: not the priority.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "og-gyn",
+   "title": "Gynecology",
+   "topics": [
+    {
+     "title": "Bleeding & infection",
+     "notes": [
+      {
+       "id": "og-aub",
+       "title": "Abnormal uterine bleeding: name the pattern",
+       "path": [
+        "Gynecology",
+        "Bleeding & infection"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A 45-year-old has heavy periods lasting 9 days every month and a bulky uterus.",
+           "ref": "OG slide 855",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Menorrhagia: heavy or long periods (fibroids, IUD, hyperplasia).",
+           "ref": "OG slide 855",
+           "n": 2
+          },
+          {
+           "text": "Metrorrhagia: bleeding between periods (polyps, cancer).",
+           "ref": "OG slide 856",
+           "n": 3
+          },
+          {
+           "text": "Polymenorrhea: cycles shorter than 21 days. Oligomenorrhea: cycles longer than 35 days.",
+           "ref": "OG slide 856, 858",
+           "n": 4
+          },
+          {
+           "text": "Menometrorrhagia: irregular, heavy bleeding.",
+           "ref": "OG slide 857",
+           "n": 5
+          },
+          {
+           "text": "Postcoital (contact) bleeding = cervical cancer until proven otherwise.",
+           "ref": "OG slide 859",
+           "n": 6
+          },
+          {
+           "text": "Postmenopausal bleeding needs endometrial biopsy to exclude cancer.",
+           "ref": "OG slide 863",
+           "n": 7
+          },
+          {
+           "text": "Dysfunctional bleeding is a diagnosis after excluding pregnancy, cancer and other causes.",
+           "ref": "OG slide 861",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Always rule out pregnancy first; check Hgb; treat with hormones (COC, progestin), D&C, ablation or hysterectomy as needed.",
+           "ref": "OG slide 862, 864, 865",
+           "n": 9
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A 38-year-old reports bleeding after intercourse. What must be ruled out first?",
+           "ref": "OG slide 859",
+           "n": 10
+          },
+          {
+           "text": "a. Normal ovulation bleeding ✗: not a cause of contact bleeding.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "b. Cervical cancer ✓: postcoital bleeding is cervical cancer until proven otherwise.",
+           "ref": "OG slide 859",
+           "n": 12
+          },
+          {
+           "text": "c. Menopause ✗: she is 38 and bleeding is linked to intercourse.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          },
+          {
+           "text": "d. Constipation ✗: unrelated.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-pid",
+       "title": "Pelvic inflammatory disease",
+       "path": [
+        "Gynecology",
+        "Bleeding & infection"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A 22-year-old with multiple partners has lower abdominal pain, fever, purulent discharge, pain during intercourse, and cervical motion tenderness.",
+           "ref": "OG slide 873, 874",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "PID = infection of the upper genital tract: endometritis, salpingitis, oophoritis, peritonitis.",
+           "ref": "OG slide 866",
+           "n": 2
+          },
+          {
+           "text": "Mostly sexually transmitted: gonorrhea and chlamydia; also after abortion, delivery, IUD insertion.",
+           "ref": "OG slide 871, 872",
+           "n": 3
+          },
+          {
+           "text": "Minimum signs: lower abdominal tenderness + adnexal tenderness + cervical motion tenderness.",
+           "ref": "OG slide 874",
+           "n": 4
+          },
+          {
+           "text": "Always do a pregnancy test: exclude ectopic pregnancy.",
+           "ref": "OG slide 875",
+           "n": 5
+          },
+          {
+           "text": "Complications: infertility (tubal blockage), ectopic pregnancy, chronic pelvic pain, abscess.",
+           "ref": "OG slide 870",
+           "n": 6
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Outpatient: ceftriaxone (or spectinomycin) + doxycycline 14 days + metronidazole 14 days; admit if no improvement in 72 h, pregnant, or very ill.",
+           "ref": "OG slide 876",
+           "n": 7
+          },
+          {
+           "text": "Treat the partner; no sex until both finish treatment; condoms; test for HIV and syphilis.",
+           "ref": "OG slide 871, 875",
+           "n": 8
+          },
+          {
+           "text": "Priority nursing diagnosis: acute pain; semi-Fowler's helps drainage.",
+           "ref": "",
+           "basis": "practice",
+           "n": 9
+          },
+          {
+           "text": "Doxycycline is not given in pregnancy.",
+           "ref": "",
+           "basis": "practice",
+           "n": 10
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A woman has lower abdominal pain, fever and cervical motion tenderness. What is the most important complication to prevent through prompt treatment?",
+           "ref": "OG slide 870",
+           "n": 11
+          },
+          {
+           "text": "a. Cervical cancer ✗: PID does not directly cause cervical cancer.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          },
+          {
+           "text": "b. Infertility and ectopic pregnancy from tubal damage ✓: scarred tubes are the main long-term harm.",
+           "ref": "OG slide 870",
+           "n": 13
+          },
+          {
+           "text": "c. Menopause ✗: unrelated.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          },
+          {
+           "text": "d. Fibroids ✗: not caused by infection.",
+           "ref": "",
+           "basis": "practice",
+           "n": 15
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    },
+    {
+     "title": "Early pregnancy loss",
+     "notes": [
+      {
+       "id": "og-abortion-types",
+       "title": "Abortion types: which one is it?",
+       "path": [
+        "Gynecology",
+        "Early pregnancy loss"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "At 10 weeks a woman has heavy bleeding with clots, cramping, and the cervix is open with tissue felt in the os.",
+           "ref": "OG slide 887",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Abortion = loss before viability (28 weeks in Ethiopia, about 500 g).",
+           "ref": "OG slide 878",
+           "n": 2
+          },
+          {
+           "text": "Threatened: light bleeding, mild cramps, cervix CLOSED, fetus alive → may continue.",
+           "ref": "OG slide 883",
+           "n": 3
+          },
+          {
+           "text": "Inevitable (imminent): heavy bleeding, painful contractions, cervix OPEN, nothing passed yet.",
+           "ref": "OG slide 884",
+           "n": 4
+          },
+          {
+           "text": "Incomplete: some tissue passed, cervix OPEN, bleeding continues → evacuate (MVA/D&E).",
+           "ref": "OG slide 887",
+           "n": 5
+          },
+          {
+           "text": "Complete: all tissue passed, cervix CLOSED, bleeding settling.",
+           "ref": "OG slide 886",
+           "n": 6
+          },
+          {
+           "text": "Missed: fetus dead but retained, uterus small for dates, no FHR; risk of DIC.",
+           "ref": "OG slide 888",
+           "n": 7
+          },
+          {
+           "text": "Septic: fever, foul discharge, tender uterus, often after unsafe abortion → IV antibiotics + evacuation.",
+           "ref": "OG slide 891, 892",
+           "n": 8
+          },
+          {
+           "text": "Recurrent: 3 or more consecutive losses; painless 2nd trimester loss → cervical incompetence.",
+           "ref": "OG slide 890, 882",
+           "n": 9
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Threatened: rest, avoid sex, follow-up ultrasound.",
+           "ref": "OG slide 883",
+           "n": 10
+          },
+          {
+           "text": "Inevitable/incomplete: IV line, oxytocin or ergometrine, evacuation, blood if needed.",
+           "ref": "OG slide 885",
+           "n": 11
+          },
+          {
+           "text": "Give anti-D to Rh-negative women.",
+           "ref": "OG slide 897",
+           "n": 12
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A woman at 8 weeks has light bleeding and mild cramps; the cervix is closed and ultrasound shows a live fetus. What is the diagnosis?",
+           "ref": "OG slide 883",
+           "n": 13
+          },
+          {
+           "text": "a. Inevitable abortion ✗: the cervix would be open.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          },
+          {
+           "text": "b. Threatened abortion ✓: bleeding with closed cervix and live fetus.",
+           "ref": "OG slide 883",
+           "n": 15
+          },
+          {
+           "text": "c. Incomplete abortion ✗: tissue passed and open cervix.",
+           "ref": "",
+           "basis": "practice",
+           "n": 16
+          },
+          {
+           "text": "d. Missed abortion ✗: the fetus would be dead.",
+           "ref": "",
+           "basis": "practice",
+           "n": 17
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-safe-abortion",
+       "title": "Induced abortion and Ethiopian law",
+       "path": [
+        "Gynecology",
+        "Early pregnancy loss"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A 17-year-old who was raped asks about ending her pregnancy at 9 weeks.",
+           "ref": "OG slide 894",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Ethiopian law allows termination for: rape or incest, danger to the mother's life or health, serious fetal anomaly, mother physically or mentally unable to raise the child (and minors).",
+           "ref": "OG slide 894",
+           "n": 2
+          },
+          {
+           "text": "Unsafe abortion = untrained provider or unhygienic setting: a major cause of maternal death.",
+           "ref": "OG slide 893",
+           "n": 3
+          },
+          {
+           "text": "1st trimester methods: manual vacuum aspiration, medical (mifepristone then misoprostol).",
+           "ref": "OG slide 895",
+           "n": 4
+          },
+          {
+           "text": "Complications: hemorrhage, infection, uterine perforation, Rh isoimmunization.",
+           "ref": "OG slide 897",
+           "n": 5
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Counsel without judgment; keep confidentiality; offer post-abortion contraception and anti-D if Rh negative.",
+           "ref": "OG slide 895",
+           "n": 6
+          },
+          {
+           "text": "For rape survivors also: emergency contraception if early, HIV PEP within 72 hours, STI prophylaxis, psychological support.",
+           "ref": "",
+           "basis": "practice",
+           "n": 7
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "Under Ethiopian law, which situation allows legal termination of pregnancy?",
+           "ref": "OG slide 894",
+           "n": 8
+          },
+          {
+           "text": "a. Pregnancy resulting from rape ✓: rape and incest are legal grounds.",
+           "ref": "OG slide 894",
+           "n": 9
+          },
+          {
+           "text": "b. Wanting a baby of a different sex ✗: not a legal ground.",
+           "ref": "",
+           "basis": "practice",
+           "n": 10
+          },
+          {
+           "text": "c. Partner refuses to marry ✗: not a legal ground.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "d. Pregnancy at 35 weeks for convenience ✗: not allowed.",
+           "ref": "",
+           "basis": "practice",
+           "n": 12
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-ectopic",
+       "title": "Ectopic pregnancy",
+       "path": [
+        "Gynecology",
+        "Early pregnancy loss"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A woman with 7 weeks of amenorrhea and past PID collapses with severe one-sided pelvic pain, shoulder pain, pulse 124, BP 80/50.",
+           "ref": "OG slide 902, 904",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Implantation outside the uterus; 95% in the fallopian tube (mostly ampulla).",
+           "ref": "OG slide 898",
+           "n": 2
+          },
+          {
+           "text": "Risks: previous PID/salpingitis, previous ectopic, tubal surgery, IUD, smoking.",
+           "ref": "OG slide 900, 901",
+           "n": 3
+          },
+          {
+           "text": "Classic triad: amenorrhea + vaginal bleeding/spotting + abdominal pain.",
+           "ref": "OG slide 902",
+           "n": 4
+          },
+          {
+           "text": "Rupture: sudden severe pain, shoulder-tip pain (blood under the diaphragm), fainting, shock, distended tender abdomen.",
+           "ref": "OG slide 904",
+           "n": 5
+          },
+          {
+           "text": "Differential: threatened abortion, PID, ruptured/twisted ovarian cyst, appendicitis.",
+           "ref": "OG slide 905",
+           "n": 6
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Ruptured: treat shock (2 IV lines, cross-match), prepare for immediate laparotomy (salpingectomy).",
+           "ref": "OG slide 906",
+           "n": 7
+          },
+          {
+           "text": "Unruptured and stable: methotrexate or conservative surgery if fertility matters.",
+           "ref": "OG slide 907",
+           "n": 8
+          },
+          {
+           "text": "Anti-D for Rh-negative women.",
+           "ref": "OG slide 907",
+           "n": 9
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A woman with 6 weeks amenorrhea has sudden severe pelvic pain, shoulder pain, and BP 85/50. What is the priority?",
+           "ref": "OG slide 904, 906",
+           "n": 10
+          },
+          {
+           "text": "a. Give analgesics and observe ✗: she is in shock from probable rupture.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "b. Resuscitate and prepare for emergency laparotomy ✓: ruptured ectopic needs urgent surgery.",
+           "ref": "OG slide 904, 906",
+           "n": 12
+          },
+          {
+           "text": "c. Schedule ultrasound next week ✗: dangerous delay.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          },
+          {
+           "text": "d. Start methotrexate ✗: only for unruptured, stable ectopic.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    },
+    {
+     "title": "Gynecologic cancers",
+     "notes": [
+      {
+       "id": "og-cervical-cancer",
+       "title": "Cervical cancer: HPV, screening, treatment",
+       "path": [
+        "Gynecology",
+        "Gynecologic cancers"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A 48-year-old with many births has postcoital bleeding and foul yellow discharge. A cervical mass bleeds on contact.",
+           "ref": "OG slide 912",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Most common gynecologic cancer worldwide in developing countries; caused by high-risk HPV (16, 18).",
+           "ref": "OG slide 908, 911",
+           "n": 2
+          },
+          {
+           "text": "Risks: early sexual debut, multiple partners, high parity, smoking, HIV, low socioeconomic status.",
+           "ref": "OG slide 908",
+           "n": 3
+          },
+          {
+           "text": "Signs: postcoital, intermenstrual or postmenopausal bleeding; foul discharge; contact-bleeding cervical mass; pelvic pain, anemia late.",
+           "ref": "OG slide 912",
+           "n": 4
+          },
+          {
+           "text": "Screening: VIA (visual inspection with acetic acid), Pap smear, HPV test; biopsy confirms.",
+           "ref": "OG slide 915, 916, 918",
+           "n": 5
+          },
+          {
+           "text": "Precancer (CIN 2–3): cryotherapy, LEEP, cone biopsy. Invasive cancer: surgery, radiation, chemotherapy.",
+           "ref": "OG slide 920",
+           "n": 6
+          },
+          {
+           "text": "Prevention: HPV vaccine for girls (bivalent 16/18 or quadrivalent 6/11/16/18), screening, condoms.",
+           "ref": "OG slide 918",
+           "n": 7
+          }
+         ]
+        },
+        {
+         "type": "numbers",
+         "title": "Key numbers",
+         "lines": [
+          {
+           "text": "5-year survival: stage 1 about 75%, stage 2 55%, stage 3 30%, stage 4 7%.",
+           "ref": "OG slide 922",
+           "n": 8
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Follow-up 2–6 weeks after treatment; counsel about regular screening.",
+           "ref": "OG slide 923",
+           "n": 9
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "What is the main cause of cervical cancer?",
+           "ref": "OG slide 911",
+           "n": 10
+          },
+          {
+           "text": "a. Herpes simplex virus ✗: not the main cause.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          },
+          {
+           "text": "b. High-risk human papillomavirus (types 16 and 18) ✓: persistent infection causes most cervical cancers.",
+           "ref": "OG slide 911",
+           "n": 12
+          },
+          {
+           "text": "c. Candida infection ✗: not carcinogenic.",
+           "ref": "",
+           "basis": "practice",
+           "n": 13
+          },
+          {
+           "text": "d. Oral contraceptive use alone ✗: a minor factor only.",
+           "ref": "",
+           "basis": "practice",
+           "n": 14
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-ovarian-cancer",
+       "title": "Ovarian cancer",
+       "path": [
+        "Gynecology",
+        "Gynecologic cancers"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A 58-year-old nulliparous woman has abdominal bloating, early fullness, weight loss and a pelvic mass.",
+           "ref": "OG slide 925, 926",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Highest death rate of gynecologic cancers because it is found late.",
+           "ref": "OG slide 924",
+           "n": 2
+          },
+          {
+           "text": "Risk: age over 40, nulliparity, infertility, family history, breast/endometrial cancer.",
+           "ref": "OG slide 925",
+           "n": 3
+          },
+          {
+           "text": "Protective: pregnancy, breastfeeding, oral contraceptive use.",
+           "ref": "OG slide 925",
+           "n": 4
+          },
+          {
+           "text": "Vague symptoms: bloating, abdominal swelling, constipation, weight loss; pelvic mass on exam.",
+           "ref": "OG slide 926",
+           "n": 5
+          },
+          {
+           "text": "Diagnosis: ultrasound, surgery; treatment: surgery, chemotherapy.",
+           "ref": "OG slide 927",
+           "n": 6
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "Which factor protects against ovarian cancer?",
+           "ref": "OG slide 925",
+           "n": 7
+          },
+          {
+           "text": "a. Nulliparity ✗: a risk factor.",
+           "ref": "",
+           "basis": "practice",
+           "n": 8
+          },
+          {
+           "text": "b. Long-term oral contraceptive use ✓: suppressing ovulation lowers risk.",
+           "ref": "OG slide 925",
+           "n": 9
+          },
+          {
+           "text": "c. Family history ✗: a risk factor.",
+           "ref": "",
+           "basis": "practice",
+           "n": 10
+          },
+          {
+           "text": "d. Age over 60 ✗: a risk factor.",
+           "ref": "",
+           "basis": "practice",
+           "n": 11
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    },
+    {
+     "title": "Fertility & pelvic support",
+     "notes": [
+      {
+       "id": "og-infertility",
+       "title": "Infertility",
+       "path": [
+        "Gynecology",
+        "Fertility & pelvic support"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A couple has had regular unprotected sex for 14 months without pregnancy. The wife had PID before.",
+           "ref": "OG slide 928, 931",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Infertility: no conception after 1 year of regular unprotected sex. Primary = never pregnant; secondary = pregnant before.",
+           "ref": "OG slide 928, 929",
+           "n": 2
+          },
+          {
+           "text": "Female causes: ovulation problems, tubal damage (PID, chlamydia), uterine problems (fibroids, adhesions), cervical factors.",
+           "ref": "OG slide 930, 931",
+           "n": 3
+          },
+          {
+           "text": "Evaluate BOTH partners; semen analysis is a first-line test.",
+           "ref": "OG slide 932, 934",
+           "n": 4
+          },
+          {
+           "text": "Clomiphene induces ovulation (pregnancy about 40%, twins about 5%).",
+           "ref": "OG slide 936",
+           "n": 5
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "A woman has never conceived after 18 months of trying. What is this called?",
+           "ref": "OG slide 929",
+           "n": 6
+          },
+          {
+           "text": "a. Secondary infertility ✗: means she had a previous pregnancy.",
+           "ref": "",
+           "basis": "practice",
+           "n": 7
+          },
+          {
+           "text": "b. Primary infertility ✓: never pregnant after 1 year of trying.",
+           "ref": "OG slide 929",
+           "n": 8
+          },
+          {
+           "text": "c. Sterility ✗: means permanent inability to conceive.",
+           "ref": "",
+           "basis": "practice",
+           "n": 9
+          },
+          {
+           "text": "d. Recurrent abortion ✗: requires pregnancy losses.",
+           "ref": "",
+           "basis": "practice",
+           "n": 10
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      },
+      {
+       "id": "og-prolapse",
+       "title": "Pelvic organ prolapse",
+       "path": [
+        "Gynecology",
+        "Fertility & pelvic support"
+       ],
+       "sections": [
+        {
+         "type": "scene",
+         "title": "The situation",
+         "lines": [
+          {
+           "text": "A 60-year-old grand multipara feels something coming down from the vagina, worse on standing and straining.",
+           "ref": "OG slide 938",
+           "n": 1
+          }
+         ]
+        },
+        {
+         "type": "rules",
+         "title": "Decision rules",
+         "lines": [
+          {
+           "text": "Weak pelvic floor after many births, prolonged labor, aging → organs bulge into the vagina.",
+           "ref": "OG slide 938",
+           "n": 2
+          },
+          {
+           "text": "Cystocele (bladder, front wall), rectocele (rectum, back wall), enterocele (bowel), uterine prolapse.",
+           "ref": "OG slide 939",
+           "n": 3
+          },
+          {
+           "text": "Mild: Kegel exercises, pessary. Severe: surgery.",
+           "ref": "OG slide 940",
+           "n": 4
+          }
+         ]
+        },
+        {
+         "type": "actions",
+         "title": "What the nurse does",
+         "lines": [
+          {
+           "text": "Teach Kegel exercises: tighten pelvic floor muscles as if stopping urine, hold 10 seconds, repeat many times daily.",
+           "ref": "OG slide 940",
+           "n": 5
+          }
+         ]
+        },
+        {
+         "type": "worked",
+         "title": "Practice question",
+         "lines": [
+          {
+           "text": "Which exercise helps a woman with mild uterine prolapse?",
+           "ref": "OG slide 940",
+           "n": 6
+          },
+          {
+           "text": "a. Sit-ups ✗: increase abdominal pressure.",
+           "ref": "",
+           "basis": "practice",
+           "n": 7
+          },
+          {
+           "text": "b. Kegel (pelvic floor) exercises ✓: strengthen pelvic support.",
+           "ref": "OG slide 940",
+           "n": 8
+          },
+          {
+           "text": "c. Heavy lifting ✗: worsens prolapse.",
+           "ref": "",
+           "basis": "practice",
+           "n": 9
+          },
+          {
+           "text": "d. Running long distances ✗: increases downward pressure.",
+           "ref": "",
+           "basis": "practice",
+           "n": 10
+          }
+         ]
+        }
+       ],
+       "links": [],
+       "flags": []
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

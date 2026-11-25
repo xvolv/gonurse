@@ -45,7 +45,7 @@ Course loadCourse(String id) => Course.fromJson(
 
 void main() {
   final courses = {
-    for (final id in ['pharmacology', 'medsurg']) id: loadCourse(id),
+    for (final id in ['pharmacology', 'medsurg', 'obgyn']) id: loadCourse(id),
   };
   late Box uiBox;
   late FakeRepository repo;
@@ -73,12 +73,14 @@ void main() {
   }
 
   group('home', () {
-    testWidgets('lists both courses with their note counts', (tester) async {
+    testWidgets('lists every course with its note counts', (tester) async {
       await openApp(tester);
       expect(find.text('Pharmacology'), findsOneWidget);
       expect(find.text('51 notes · 8 units'), findsOneWidget);
       expect(find.text('Medical-Surgical Nursing'), findsOneWidget);
       expect(find.text('47 notes · 6 units'), findsOneWidget);
+      expect(find.text('Obstetrics & Gynecology Nursing'), findsOneWidget);
+      expect(find.text('47 notes · 7 units'), findsOneWidget);
     });
 
     testWidgets("tapping a course opens that course's map", (tester) async {
@@ -175,6 +177,7 @@ void main() {
     expect(find.text('Version 2 · 51 notes'), findsOneWidget);
     expect(find.text('Medical-Surgical Nursing'), findsOneWidget);
     expect(find.text('Version 2 · 47 notes'), findsOneWidget);
+    expect(find.text('Version 1 · 47 notes'), findsOneWidget);
 
     await tester.tap(find.text('Check for updated notes'));
     await tester.pumpAndSettle();

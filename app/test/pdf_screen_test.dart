@@ -29,7 +29,7 @@ void main() {
   final course = courses['pharmacology']!;
 
   test('every source file of every course is bundled as a PDF', () async {
-    expect(courses.keys, containsAll(['pharmacology', 'medsurg']));
+    expect(courses.keys, containsAll(['pharmacology', 'medsurg', 'obgyn']));
     for (final c in courses.values) {
       for (final source in c.sources.values) {
         final bytes = await rootBundle.load(
@@ -112,25 +112,31 @@ void main() {
       expect((uiBox.get('last_note') as Map)['note'], 'v2-digoxin');
     });
 
-    // Medical-Surgical refs open that course's files.
-    for (final (key, file, unit) in [
-      ('Mal p.', 'Malaria Case Management Manual 2022.pdf', 'Page'),
-      ('Burns slide', 'Burns.pdf', 'Slide'),
-      ('CVS slide', 'Unit III. Cardiovascular Disorders B.pdf', 'Slide'),
+    // Each course's refs open that course's files.
+    for (final (courseId, key, file, unit) in [
+      ('medsurg', 'Mal p.', 'Malaria Case Management Manual 2022.pdf', 'Page'),
+      ('medsurg', 'Burns slide', 'Burns.pdf', 'Slide'),
+      (
+        'medsurg',
+        'CVS slide',
+        'Unit III. Cardiovascular Disorders B.pdf',
+        'Slide',
+      ),
+      ('obgyn', 'OG slide', 'Obstetrics and Gynecology Nursing.pdf', 'Slide'),
     ]) {
-      testWidgets('Medical-Surgical "$key" ref opens $file', (tester) async {
-        final medsurg = courses['medsurg']!;
+      testWidgets('$courseId "$key" ref opens $file', (tester) async {
+        final course = courses[courseId]!;
         // A line whose only ref is to this source.
         final (note, line, ref) = [
-          for (final n in medsurg.allNotes)
+          for (final n in course.allNotes)
             for (final l in n.lines)
-              if (parseRefs(l.ref, medsurg.sources.keys) case [
+              if (parseRefs(l.ref, course.sources.keys) case [
                 final r,
               ] when r.sourceKey == key)
                 (n, l, r),
         ].first;
 
-        await pump(tester, ReaderScreen(courseId: 'medsurg', noteId: note.id));
+        await pump(tester, ReaderScreen(courseId: courseId, noteId: note.id));
         await tester.scrollUntilVisible(
           find.text(line.text),
           300,
@@ -146,7 +152,7 @@ void main() {
         expect(shown.last, ('$sourceFilesAssetDir$file', ref.page));
         expect(find.text(file), findsOneWidget);
         expect(
-          find.text('$unit ${ref.page} of ${medsurg.sources[key]!.pages}'),
+          find.text('$unit ${ref.page} of ${course.sources[key]!.pages}'),
           findsOneWidget,
         );
       });

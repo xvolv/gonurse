@@ -142,7 +142,7 @@ void main() {
     expect(medsurg.noteCount, 47);
   });
 
-  test('the real bundled version.json: both courses, from the files', () async {
+  test('the real bundled version.json: all courses, from the files', () async {
     final r = ContentRepository(
       box,
       loadAsset: (asset) async => File(
@@ -150,8 +150,9 @@ void main() {
       ).readAsString(),
       client: offline,
     );
-    expect(await r.courseIds(), ['pharmacology', 'medsurg']);
+    expect(await r.courseIds(), ['pharmacology', 'medsurg', 'obgyn']);
     expect((await r.load('pharmacology'))!.noteCount, 51);
     expect((await r.load('medsurg'))!.course, 'Medical-Surgical Nursing');
+    expect((await r.load('obgyn'))!.course, 'Obstetrics & Gynecology Nursing');
   });
 }

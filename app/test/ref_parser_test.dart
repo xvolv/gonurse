@@ -14,6 +14,7 @@ Iterable<String> keysOf(String file) =>
 void main() {
   final pharmacology = keysOf('pharmacology_notes.json');
   final medsurg = keysOf('medsurg_notes.json');
+  final obgyn = keysOf('obgyn_notes.json');
 
   List<(String, int)> pages(String ref, [Iterable<String>? keys]) => [
     for (final r in parseRefs(ref, keys ?? pharmacology)) (r.sourceKey, r.page),
@@ -88,6 +89,14 @@ void main() {
       expect(pages('CVS slide 98', pharmacology), isEmpty);
       expect(pages('CVS p.97', medsurg), isEmpty);
     });
+  });
+
+  test('Obstetrics & Gynecology slides', () {
+    expect(pages('OG slide 685, 688', obgyn), [
+      ('OG slide', 685),
+      ('OG slide', 688),
+    ]);
+    expect(pages('OG slide 362-363', obgyn), [('OG slide', 362)]);
   });
 
   test('no keys or an empty ref gives nothing', () {
